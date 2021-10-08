@@ -6,7 +6,7 @@ namespace Solution.Capture1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Thank you Brother =)");
             Console.ReadKey();
         }
         
