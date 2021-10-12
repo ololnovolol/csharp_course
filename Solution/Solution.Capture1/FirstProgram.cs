@@ -2,7 +2,7 @@
 
 namespace Solution.Capture1
 {
-    class Program
+    class FirstProgram
     {
         static void Main(string[] args)
         {
