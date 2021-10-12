@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Solution.Capture3.Intheritance.Builder">
+    <Position X="5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Intheritance\Builder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Solution.Capture3.Intheritance.Children">
+    <Position X="13.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAQAAAAAAAAQAAAAAEAAgAgAAAAAAAAAA=</HashCode>
+      <FileName>Intheritance\Children.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Solution.Capture3.Intheritance.Employe">
+    <Position X="8.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Intheritance\Employe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Solution.Capture3.Intheritance.Human">
+    <Position X="4.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAwAAAAAgAAACACAAAAAAAAA=</HashCode>
+      <FileName>Intheritance\Human.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Solution.Capture3.Intheritance.Manager">
+    <Position X="12.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Intheritance\Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Solution.Capture3.Intheritance.Schoolboy">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Intheritance\Schoolboy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Solution.Capture3.Intheritance.Student">
+    <Position X="10.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Intheritance\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -2,3 +2,6 @@
 
 # Default severity for all analyzer diagnostics
 dotnet_analyzer_diagnostic.severity = suggestion
+
+# CS0162: Обнаружен недостижимый код
+dotnet_diagnostic.CS0162.severity = silent

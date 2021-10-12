@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Solution.Capture2
 {
-    public static class Factorial
+    public  class Factorial
     {
 
-       
-        
 
             public static int Factor(int x)
             {
@@ -23,6 +21,20 @@ namespace Solution.Capture2
                     return x * Factor(x - 1);
                 }
             }
+
+        public static void PrintArray(int[] masive, int i = 0)
+        {
+            if (i < masive.Length)
+            {
+                Console.WriteLine(masive[i]);
+                i++;
+                PrintArray(masive, i);
+            }
+            else
+            {
+                
+            }
+        }
         
     }
 }
