@@ -9,15 +9,13 @@ namespace Solution.Capture4
     internal class MyExceptoin : ArgumentException
     {
         int value;
-        public MyExceptoin()
-        {
-            string g;
-        }
+        string g;
 
         public MyExceptoin(string message) : base(message)
         {
-            string g = base.Message;
+            g = base.Message;
             Console.WriteLine(g + " <--output inside MyExceptoin ctor");
+
         }
 
         public MyExceptoin(string message, int value) : base(message)
