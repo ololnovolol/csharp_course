@@ -20,8 +20,4 @@
     <ProjectReference Include="..\Solution.Capture2\Solution.Capture2.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Virtual methods and properties\" />
-  </ItemGroup>
-
 </Project>
