@@ -17,7 +17,6 @@ namespace Solution.Capture4
         {
             try
             {
-
                 result = x / j;
                 j = f.Length > 0 ? 10 : throw new ArgumentException("Danger! exception by Throw new =)");
 
