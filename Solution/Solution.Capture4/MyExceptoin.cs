@@ -6,19 +6,14 @@ using System.Threading.Tasks;
 
 namespace Solution.Capture4
 {
-    class MyExceptoin : ArgumentException
+    internal class MyExceptoin : ArgumentException
     {
         int value;
-        public MyExceptoin()
-        {
-            string g = base.Message;
-
-
-        }
+        string g;
 
         public MyExceptoin(string message) : base(message)
         {
-            string g = base.Message;
+            g = base.Message;
             Console.WriteLine(g + " <--output inside MyExceptoin ctor");
 
         }

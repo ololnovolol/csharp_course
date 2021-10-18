@@ -10,22 +10,16 @@ namespace Solution.Capture4
     {
         private int x = 10;
         private int j = 10;
-        string[] f = new string[5];
+        private readonly string[] f = new string[5];
         public int result;
 
         public ExceptionHandling()
         {
             try
             {
+
                 result = x / j;
-                if (f.Length > 0)
-                {
-                    j = 10;
-                }
-                else
-                {
-                    throw new ArgumentException("Danger! exception by Throw new =)");
-                }
+                j = f.Length > 0 ? 10 : throw new ArgumentException("Danger! exception by Throw new =)");
 
                 try
                 {

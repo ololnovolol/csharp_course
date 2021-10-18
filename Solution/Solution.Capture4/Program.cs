@@ -11,7 +11,6 @@ namespace Solution.Capture4
 
             Console.ReadKey();
 
-
         }
     }
 }
