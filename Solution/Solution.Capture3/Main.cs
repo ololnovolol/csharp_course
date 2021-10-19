@@ -3,6 +3,7 @@ using print = System.Console;
 using stru = Solution.Capture3.ClassesAndObjects;
 using Solution.Capture2;
 using OlolLybrary;
+using System.Collections.Generic;
 
 
 
@@ -329,7 +330,24 @@ namespace Solution.Capture3
             print.WriteLine(genAcaunt1.Id);
             GenericAccount<byte> genAcaunt2 = new GenericAccount<byte>(254, "Oleg", 30);
             print.WriteLine(genAcaunt2.Id);
+            print.WriteLine("-------------------------------------Part two-----------------------------------");
+            MasiveGeneric<int> arrInt = new MasiveGeneric<int>();
+            MasiveGeneric<string> arrString = new MasiveGeneric<string>();
+            MasiveGeneric<char> arrChar = new MasiveGeneric<char>();
 
+            arrInt.AddGenMasive(12);
+            arrInt.AddGenMasive(120);
+            arrInt.PrintMasive();
+            print.WriteLine("masive l = " + arrInt.GetGenMasiveLeunght());
+            arrInt.RemoveGenMasiveforIndex(2);
+            arrInt.PrintMasive();
+            print.WriteLine();
+            arrString.AddGenMasive("Hello");
+            arrString.AddGenMasive("World");
+            arrString.PrintMasive();
+            print.WriteLine("masive l = " + arrString.GetGenMasiveLeunght());
+            arrString.RemoveGenMasiveforIndex(1);
+            arrString.PrintMasive();
 
 
             HelpMEClean.Cleaner();
