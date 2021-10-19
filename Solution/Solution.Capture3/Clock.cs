@@ -8,9 +8,9 @@ namespace Solution.Capture3
 {
     class Clock
     {
-        public int Hours { get; set; }
-        public int Minutess { get; set; }
-        public int Seconds { get; set; }
+        public byte Hours { get; set; }
+        public byte Minutess { get; set; }
+        public byte Seconds { get; set; }
         public string CName { get; set; }
 
         public override string ToString()

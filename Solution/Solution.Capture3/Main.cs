@@ -304,23 +304,36 @@ namespace Solution.Capture3
                 Intheritance.Children baby = new Intheritance.Children { age = 12, name = "Stepan", rase = "Зелёненький" };
                 baby.Display();
                 HelpMEClean.Cleaner();
-            }
-            print.WriteLine("----------------------------------------\nPart 3.21:\t The System.Object Class and Its Methods!\n----------------------------------------\n");
-            Clock tiktak = new Clock() { Hours = 9, Minutess = 25,Seconds = 55,CName = "22/09/2021" };
-            print.WriteLine(tiktak.ToString());
-            Clock tiktak1 = new Clock() { CName = "22/09/2021" };
-            print.WriteLine(tiktak1.GetHashCode());
-            Clock tiktak2 = new Clock() { CName = "01/10/2022" };
-            print.WriteLine(tiktak2.GetHashCode());
-            Clock tiktak3 = new Clock() { CName = "22/09/2021" };
-            print.WriteLine(tiktak3.GetHashCode());
 
-            print.WriteLine(tiktak1.GetType().Equals(tiktak3.GetType()));
-            print.WriteLine(tiktak1.Equals(tiktak2));
-            print.WriteLine(tiktak1.Equals(tiktak3));
+                print.WriteLine("----------------------------------------\nPart 3.21:\t The System.Object Class and Its Methods!\n----------------------------------------\n");
+                Clock tiktak = new Clock() { Hours = 9, Minutess = 25, Seconds = 55, CName = "22/09/2021" };
+                print.WriteLine(tiktak.ToString());
+                Clock tiktak1 = new Clock() { CName = "22/09/2021" };
+                print.WriteLine(tiktak1.GetHashCode());
+                Clock tiktak2 = new Clock() { CName = "01/10/2022" };
+                print.WriteLine(tiktak2.GetHashCode());
+                Clock tiktak3 = new Clock() { CName = "22/09/2021" };
+                print.WriteLine(tiktak3.GetHashCode());
+
+                print.WriteLine(tiktak1.GetType().Equals(tiktak3.GetType()));
+                print.WriteLine(tiktak1.Equals(tiktak2));
+                print.WriteLine(tiktak1.Equals(tiktak3));
+                HelpMEClean.Cleaner();
+
+            }
+
+            print.WriteLine("----------------------------------------\nPart 3.21:\t Generics!\n----------------------------------------\n");
+            GenericAccount<string> genAcaunt = new GenericAccount<string>("25t625", "Oleg", 28);
+            print.WriteLine($"{genAcaunt.Id} his type = { genAcaunt.GetType()}");
+            GenericAccount<int> genAcaunt1 = new GenericAccount<int>(25625, "Oleg", 29);
+            print.WriteLine(genAcaunt1.Id);
+            GenericAccount<byte> genAcaunt2 = new GenericAccount<byte>(254, "Oleg", 30);
+            print.WriteLine(genAcaunt2.Id);
+
 
 
             HelpMEClean.Cleaner();
+            print.WriteLine("Solution 3 is comlete=)");
             Console.ReadKey();
         }
 
