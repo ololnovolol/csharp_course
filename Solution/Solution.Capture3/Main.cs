@@ -306,7 +306,18 @@ namespace Solution.Capture3
                 HelpMEClean.Cleaner();
             }
             print.WriteLine("----------------------------------------\nPart 3.21:\t The System.Object Class and Its Methods!\n----------------------------------------\n");
+            Clock tiktak = new Clock() { Hours = 9, Minutess = 25,Seconds = 55,CName = "22/09/2021" };
+            print.WriteLine(tiktak.ToString());
+            Clock tiktak1 = new Clock() { CName = "22/09/2021" };
+            print.WriteLine(tiktak1.GetHashCode());
+            Clock tiktak2 = new Clock() { CName = "01/10/2022" };
+            print.WriteLine(tiktak2.GetHashCode());
+            Clock tiktak3 = new Clock() { CName = "22/09/2021" };
+            print.WriteLine(tiktak3.GetHashCode());
 
+            print.WriteLine(tiktak1.GetType().Equals(tiktak3.GetType()));
+            print.WriteLine(tiktak1.Equals(tiktak2));
+            print.WriteLine(tiktak1.Equals(tiktak3));
 
 
             HelpMEClean.Cleaner();
