@@ -11,15 +11,15 @@ namespace Solution.Capture3
         F[] arar;
         public MasiveGeneric()
         {
-            arar = new F[1];
+            arar = new F[0];
         }
 
         public void PrintMasive()
         {
             Console.Write("|");
-            for (int i = 0; i < arar.Length;i++)
+            for (int i = 0; i < arar.Length; i++)
             {
-                Console.Write(" "+arar[i]+" |");
+                Console.Write(" " + arar[i] + " |");
             }
             Console.WriteLine();
         }
@@ -39,13 +39,22 @@ namespace Solution.Capture3
 
         public void RemoveGenMasiveforIndex(int index)
         {
-
-            if (index > -1 && index < arar.Length)
+            F[] ararNext = new F[arar.Length - 1];
+            for (int i = 0, j = 0; i < ararNext.Length; i++)
             {
-                arar[index] = default;
+                if (index == j)
+                {
+                    j++;
+                    i--;
+                }
+                else
+                {
+                    ararNext[i] = arar[j];
+                    j++;
+                }
+
             }
-            else
-                throw new IndexOutOfRangeException();
+            arar = ararNext;
         }
 
 
@@ -56,7 +65,12 @@ namespace Solution.Capture3
 
         public F GetGenMasive(int index)
         {
-            return arar[index];
+            if (index > -1 && index < arar.Length)
+            {
+                return arar[index];
+            }
+            else
+                throw new IndexOutOfRangeException();
         }
     }
 }

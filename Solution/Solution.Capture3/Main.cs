@@ -337,16 +337,18 @@ namespace Solution.Capture3
 
             arrInt.AddGenMasive(12);
             arrInt.AddGenMasive(120);
+            arrInt.AddGenMasive(1200);
             arrInt.PrintMasive();
             print.WriteLine("masive l = " + arrInt.GetGenMasiveLeunght());
+            arrInt.RemoveGenMasiveforIndex(0);
             arrInt.RemoveGenMasiveforIndex(2);
             arrInt.PrintMasive();
             print.WriteLine();
-            arrString.AddGenMasive("Hello");
+            arrString.AddGenMasive("Hi");
             arrString.AddGenMasive("World");
+            arrString.AddGenMasive("Hello");
             arrString.PrintMasive();
-            print.WriteLine("masive l = " + arrString.GetGenMasiveLeunght());
-            arrString.RemoveGenMasiveforIndex(1);
+            arrString.RemoveGenMasiveforIndex(0);
             arrString.PrintMasive();
 
 

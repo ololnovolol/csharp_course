@@ -32,6 +32,7 @@ namespace Solution.Capture3
             ID = Id;
             Name = name;
             Age = age;
+
         }
     }
 }
