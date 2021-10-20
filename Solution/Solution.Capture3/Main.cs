@@ -321,35 +321,51 @@ namespace Solution.Capture3
                 print.WriteLine(tiktak1.Equals(tiktak3));
                 HelpMEClean.Cleaner();
 
+
+
+                print.WriteLine("----------------------------------------\nPart 3.21:\t Generics!\n----------------------------------------\n");
+                GenericAccount<string> genAcaunt = new GenericAccount<string>("25t625", "Oleg", 28);
+                print.WriteLine($"{genAcaunt.Id} his type = { genAcaunt.GetType()}");
+                GenericAccount<int> genAcaunt1 = new GenericAccount<int>(25625, "Oleg", 29);
+                print.WriteLine(genAcaunt1.Id);
+                GenericAccount<byte> genAcaunt2 = new GenericAccount<byte>(254, "Oleg", 30);
+                print.WriteLine(genAcaunt2.Id);
+                print.WriteLine("-------------------------------------Part two-----------------------------------");
+                MasiveGeneric<int> arrInt = new MasiveGeneric<int>();
+                MasiveGeneric<string> arrString = new MasiveGeneric<string>();
+                MasiveGeneric<char> arrChar = new MasiveGeneric<char>();
+
+                arrInt.AddGenMasive(12);
+                arrInt.AddGenMasive(120);
+                arrInt.AddGenMasive(1200);
+                arrInt.PrintMasive();
+                print.WriteLine("masive l = " + arrInt.GetGenMasiveLeunght());
+                arrInt.RemoveGenMasiveforIndex(0);
+                arrInt.RemoveGenMasiveforIndex(2);
+                arrInt.PrintMasive();
+                print.WriteLine();
+                arrString.AddGenMasive("Hi");
+                arrString.AddGenMasive("World");
+                arrString.AddGenMasive("Hello");
+                arrString.PrintMasive();
+                arrString.RemoveGenMasiveforIndex(0);
+                arrString.PrintMasive();
             }
 
-            print.WriteLine("----------------------------------------\nPart 3.21:\t Generics!\n----------------------------------------\n");
-            GenericAccount<string> genAcaunt = new GenericAccount<string>("25t625", "Oleg", 28);
-            print.WriteLine($"{genAcaunt.Id} his type = { genAcaunt.GetType()}");
-            GenericAccount<int> genAcaunt1 = new GenericAccount<int>(25625, "Oleg", 29);
-            print.WriteLine(genAcaunt1.Id);
-            GenericAccount<byte> genAcaunt2 = new GenericAccount<byte>(254, "Oleg", 30);
-            print.WriteLine(genAcaunt2.Id);
-            print.WriteLine("-------------------------------------Part two-----------------------------------");
-            MasiveGeneric<int> arrInt = new MasiveGeneric<int>();
-            MasiveGeneric<string> arrString = new MasiveGeneric<string>();
-            MasiveGeneric<char> arrChar = new MasiveGeneric<char>();
+            Generic.Account acc1 = new Generic.Account(252) { CurrentSum = 25000};
+            Generic.Account acc2 = new Generic.Account(253) { CurrentSum = 100 };
+            Generic.Transaction<Generic.Account> operation1 = new Generic.Transaction<Generic.Account> { FromAccount = acc1, ToAccount = acc2, SumTransaction = 50 };
+            print.WriteLine("sum = acc1 = " + acc1.CurrentSum);
+            print.WriteLine("sum = acc2 = " + acc2.CurrentSum);
+            print.WriteLine("after transaction");
+            operation1.Execute();
 
-            arrInt.AddGenMasive(12);
-            arrInt.AddGenMasive(120);
-            arrInt.AddGenMasive(1200);
-            arrInt.PrintMasive();
-            print.WriteLine("masive l = " + arrInt.GetGenMasiveLeunght());
-            arrInt.RemoveGenMasiveforIndex(0);
-            arrInt.RemoveGenMasiveforIndex(2);
-            arrInt.PrintMasive();
-            print.WriteLine();
-            arrString.AddGenMasive("Hi");
-            arrString.AddGenMasive("World");
-            arrString.AddGenMasive("Hello");
-            arrString.PrintMasive();
-            arrString.RemoveGenMasiveforIndex(0);
-            arrString.PrintMasive();
+            Generic.DepositAccount<int> acc11 = new Generic.DepositAccount<int>(34);
+            Generic.DepositAccount<string> acc12 = new Generic.DemandAccount<string>("45");
+            Generic.DemandAccount<int> acc13 = new Generic.DemandAccount<int>(49);
+            Console.WriteLine(acc11.id);
+            Console.WriteLine(acc12.id);
+            Console.WriteLine(acc13.id);
 
 
             HelpMEClean.Cleaner();
