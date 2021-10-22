@@ -7,14 +7,20 @@ namespace OlolLybrary
 {
     public class MyCleaner
     {
-        /*
-        Console.WriteLine("\n----------------------------------------\nto go to the next part, press any key!!!!!!!!!!!!!!!!\n----------------------------------------");
+
+
+
+        public MyCleaner()
+        {
+            //Console.WriteLine("Hello I am Solution.Capture 1");
+            Console.WriteLine("\n----------------------------------------\nto go to the next part, press any key!!!!!!!!!!!!!!!!\n----------------------------------------");
             Console.ReadLine();
             Console.Clear();
-        */
-        public  MyCleaner()
+        }
+
+        public static void Clear ()
         {
-            Console.WriteLine("Hello I am Solution.Capture 1");
+            new MyCleaner();
         }
 
     }
