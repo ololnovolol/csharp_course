@@ -12,7 +12,7 @@ namespace Solution.Capture5
         delegate int Prilegate(int y, int x);
         delegate T Operation<T, K>(K val, K val1);
         delegate T OperationRef<T, K>(ref K val, ref K val1);
-
+        //delegate void EvantHandler<T>(string from, string to, string subject);
 
         static void Main(string[] args)
         {
@@ -45,21 +45,48 @@ namespace Solution.Capture5
                 Console.WriteLine("c= " + c);
 
                 //opOne = opTwo;//
+
+
+                IPhone msg = new IPhone("Hello");
+                // msg.RegisterDelMg(new IPhone.MessageDelagate(PrintMsg));
+                msg.Departure += PrintMsg;
+                msg.Sent += PrintMsg;
+                msg.Сame += PrintMsg;
+                msg.IncomingMessage("hello");
+                msg.IncomingMessage("how are you");
+                msg.OutgoingMessage();
             }
 
-            IPhone msg = new IPhone("Hello");
-            // msg.RegisterDelMg(new IPhone.MessageDelagate(PrintMsg));
-            msg.Departure += PrintMsg;
-            msg.Sent += PrintMsg;
-            msg.Сame += PrintMsg;
-            msg.IncomingMessage("hello");
-            msg.IncomingMessage("how are you");
-            msg.OutgoingMessage();
+            var mm = new MailManager();
+            mm.NewMail += MailManagerNewMail;
+            Console.WriteLine("Input your name: ");
+            var sender = Console.ReadLine();
 
+            var sms = new SMS();
+            mm.NewMail += sms.MmNewMail;
+
+            Console.WriteLine("enter the name of the interlocutor : ");
+            var target = Console.ReadLine();
+
+            Console.WriteLine("Input the text SMS: ");
+            var message = Console.ReadLine();
+
+            mm.SimilateNewMail(sender, target, message);
 
             MyCleaner.Clear();
             Console.ReadKey();
         }
+
+        private static void MailManagerNewMail(object sender,NewMailEventArgs e)
+        {
+            var sms = new SMS();
+            sms.Send(e.Subject);
+
+            var printer = new Printer();
+            printer.Print($"Message from {e.From} for {e.To}\r\n <<{e.Subject}>>");
+        }
+
+
         private static void PrintMsg(string msg)
         {
             Console.WriteLine(msg);
