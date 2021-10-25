@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OlolLybrary", "OlolLybrary\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.Capture4", "Solution.Capture4\Solution.Capture4.csproj", "{5148E049-8BBF-4964-8408-05E30ED7C9C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture5", "Solution.Capture5\Solution.Capture5.csproj", "{A0805642-4837-4930-AD63-DF5DCA49F679}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.Capture5", "Solution.Capture5\Solution.Capture5.csproj", "{A0805642-4837-4930-AD63-DF5DCA49F679}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture6", "Solution.Capture6\Solution.Capture6.csproj", "{2C2A3656-3101-4186-91E1-04AB6B17012C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{A0805642-4837-4930-AD63-DF5DCA49F679}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0805642-4837-4930-AD63-DF5DCA49F679}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0805642-4837-4930-AD63-DF5DCA49F679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C2A3656-3101-4186-91E1-04AB6B17012C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C2A3656-3101-4186-91E1-04AB6B17012C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C2A3656-3101-4186-91E1-04AB6B17012C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C2A3656-3101-4186-91E1-04AB6B17012C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
