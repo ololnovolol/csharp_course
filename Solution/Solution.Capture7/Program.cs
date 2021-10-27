@@ -4,7 +4,7 @@ namespace Solution.Capture7
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string s = "Привет мир";
             char c = 'и';
@@ -28,7 +28,7 @@ namespace Solution.Capture7
             (string name, int age) = persik;
             Console.WriteLine("Deconstruct = " + name + " " + age);
 
-            Person langOleg = new() { Language = "Rusian", Age = 28};
+            Person langOleg = new() { Language = "Rusian", Age = 28 };
             string oleg = GetLanguage(langOleg);
             Person langStepan = new() { Language = "Moldovian", Age = 55 };
             string stepan = GetLanguage(langStepan);
@@ -43,7 +43,7 @@ namespace Solution.Capture7
             Console.WriteLine(traPepito);
             Console.WriteLine(traAndy);
             Console.WriteLine(traTolyan);
-
+            Console.WriteLine("Relational and logical patterns");
             Console.WriteLine(Calculate(-200));
             Console.WriteLine(Calculate(0));
             Console.WriteLine(Calculate(10000));
@@ -55,7 +55,60 @@ namespace Solution.Capture7
             Console.WriteLine(CheckAge(17));
             Console.WriteLine(CheckAge(18));
 
+            NullableClas nc = new();
+            nc.PrinterNullable();
+            nc.ExplicitConversFromTtoTNull();
+            nc.ExplicitConversFromTtoT();
+            nc.ImplicitConversFromTtoT();
+            nc.ImplicitConvExtenshions();
+            nc.ExplicitNarrowingConv();
+            nc.VtoT();
+            nc.TtoV();
+            Console.WriteLine("Local variable reference");
+            int a = 5;
+            int b = 10;
+            ref int refic = ref a;
+            Console.WriteLine(refic += 25);
+            Console.WriteLine(refic = ref b);
+            int res = 0;
+            Console.WriteLine(res = MinPlusTen(ref a, ref b));
+
+
+            PropInModificInit inits = new(24) { distanceInit = 25 };// ctor or autoprop
+            //inits.distanceInit = 25; no
+
+            Car audi = new Car(){ speed = 250, name = "Audi" };
+            Car deo = new Car() { speed = 60, name = "Deo" };
+
+            Audi audiA = new() { speed = 250, name = "Audi" };
+            Audi deoA = new() { speed = 60, name = "Deo" };
+            var agrigat = deo with { speed = 60, name = "Aveo" };
+            agrigat.Drive();          
+
+            Console.WriteLine(audi.Equals(deo));
+            Console.WriteLine(audiA == deoA);
+
+            var (speedA, nameA) = audi;
+            Console.WriteLine(speedA + " km/h " + nameA);
+
+
+
+
             Console.Read();
+        }
+
+        public static ref int MinPlusTen(ref int a, ref int b)
+        {
+            if (b > a)
+            {
+                a += 10;
+                return ref a;
+            }
+            else
+            {
+                b += 10;
+                return ref b;
+            }
         }
 
         static void UseHuman(Person p)
@@ -76,7 +129,7 @@ namespace Solution.Capture7
 
         }
 
-        public static string GetLanguage(Person p)
+        public static string GetLanguage(Person p) //передает в клас данные
         {
             return p switch
             {
@@ -88,7 +141,7 @@ namespace Solution.Capture7
             };
         }
 
-        public static string GetTranslate(Human huma)
+        public static string GetTranslate(Human huma) //берет данные из деконструктора
         {
             return huma switch
             {
