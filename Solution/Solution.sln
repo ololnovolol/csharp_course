@@ -27,9 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.Capture4", "Soluti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.Capture5", "Solution.Capture5\Solution.Capture5.csproj", "{A0805642-4837-4930-AD63-DF5DCA49F679}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture6", "Solution.Capture6\Solution.Capture6.csproj", "{2C2A3656-3101-4186-91E1-04AB6B17012C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.Capture6", "Solution.Capture6\Solution.Capture6.csproj", "{2C2A3656-3101-4186-91E1-04AB6B17012C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture7", "Solution.Capture7\Solution.Capture7.csproj", "{77B6E095-54F4-40B4-80C0-90776DEC3390}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.Capture7", "Solution.Capture7\Solution.Capture7.csproj", "{77B6E095-54F4-40B4-80C0-90776DEC3390}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture8", "Solution.Capture8\Solution.Capture8.csproj", "{F1D8E495-FA96-48E5-BC32-B2BB871961B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{77B6E095-54F4-40B4-80C0-90776DEC3390}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77B6E095-54F4-40B4-80C0-90776DEC3390}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77B6E095-54F4-40B4-80C0-90776DEC3390}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1D8E495-FA96-48E5-BC32-B2BB871961B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D8E495-FA96-48E5-BC32-B2BB871961B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D8E495-FA96-48E5-BC32-B2BB871961B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D8E495-FA96-48E5-BC32-B2BB871961B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
