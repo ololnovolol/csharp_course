@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankLibrary
+namespace SiteLibrary
 {
-    class RegistredAccount : Account
+    class FreeAccount : Account
     {
-        public RegistredAccount(string login, string pasword) : base(login, pasword)
+        public FreeAccount(string login, string pasword) : base(login, pasword)
         {
 
         }
     }
 }
+

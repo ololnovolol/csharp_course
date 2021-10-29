@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankLibrary
+namespace SiteLibrary
 {
     public interface IAcount
     {
@@ -12,7 +12,7 @@ namespace BankLibrary
 
         decimal OrderOnSite(decimal price); // покупка товара на сайте
 
-        void SendingAnOrder(); // отгрука заказа если товар оплачен
+        void SendingAnOrder(bool Seal); // отгрука заказа если товар оплачен
 
         void GetBalanse(); // показать баланс клиента бонусы
 

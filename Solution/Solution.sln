@@ -31,9 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.Capture6", "Soluti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.Capture7", "Solution.Capture7\Solution.Capture7.csproj", "{77B6E095-54F4-40B4-80C0-90776DEC3390}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture8", "Solution.Capture8\Solution.Capture8.csproj", "{F1D8E495-FA96-48E5-BC32-B2BB871961B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.Capture8", "Solution.Capture8\Solution.Capture8.csproj", "{F1D8E495-FA96-48E5-BC32-B2BB871961B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankLibrary", "BankLibrary\BankLibrary.csproj", "{FA1DAB0B-9411-45DE-913A-36AD4F0BF121}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteLibrary", "BankLibrary\SiteLibrary.csproj", "{FA1DAB0B-9411-45DE-913A-36AD4F0BF121}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
