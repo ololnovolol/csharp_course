@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture3
 {
@@ -27,11 +23,7 @@ namespace Solution.Capture3
             {
                 return clock.Hours;
             }
-
-
         }
-
-
 
         internal class Celcius
         {
@@ -46,8 +38,6 @@ namespace Solution.Capture3
             }
 
         }
-
-
         internal class Fahrenheit
         {
             static readonly double FarToCelsium = 5.00 / 9.00;
@@ -58,12 +48,8 @@ namespace Solution.Capture3
             {
                 double c = (FarToCelsium * (fahrenheit.Gradus - 32));
                 return new Celcius { Gradus = c };
-
             }
-
         }
-
-
 
         internal class Dollar
         {
@@ -85,7 +71,6 @@ namespace Solution.Capture3
             //}
         }
 
-
         internal class Euro
         {
             public decimal Sum { get; set; }
@@ -101,8 +86,5 @@ namespace Solution.Capture3
             //    throw new NotImplementedException();
             //}
         }
-
-
     }
-
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Solution.Capture3.Indexers
 {
     class FootballTeam
@@ -21,45 +16,14 @@ namespace Solution.Capture3.Indexers
 
             get
             {
-                if (_numberOfPlayer < 11 && _numberOfPlayer >= 0)
-                {
-                    return fPlayerS[_numberOfPlayer];
-                }
-                else
-                {
-                    return null;
-                }
+                return _numberOfPlayer < 11 && _numberOfPlayer >= 0 ? fPlayerS[_numberOfPlayer] : null;
             }
             set
             {
                 {
-                    if (_numberOfPlayer < 11 && _numberOfPlayer >= 0)
-                    {
-                        fPlayerS[_numberOfPlayer] = value;
-                    }
-                    else
-                    {
-                        fPlayerS[_numberOfPlayer] = null;
-                    }
-
+                    fPlayerS[_numberOfPlayer] = _numberOfPlayer < 11 && _numberOfPlayer >= 0 ? value : null;
                 }
-
-
             }
         }
-
-        //public FootballPayer this[string _numberOfPlayer]
-        //{
-        //    get
-        //    {
-        //        return _numberOfPlayer;
-        //    }
-                        
-        //    set
-        //    {
-
-        //    }
-                                     
-        //}             
     }
 }

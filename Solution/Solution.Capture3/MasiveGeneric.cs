@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture3
 {
@@ -36,7 +32,6 @@ namespace Solution.Capture3
             arar = ararNext;
         }
 
-
         public void RemoveGenMasiveforIndex(int index)
         {
             F[] ararNext = new F[arar.Length - 1];
@@ -56,7 +51,6 @@ namespace Solution.Capture3
             }
             arar = ararNext;
         }
-
 
         public int GetGenMasiveLeunght()
         {

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture3.Intheritance
 {
@@ -42,15 +38,8 @@ namespace Solution.Capture3.Intheritance
             {
                 Console.WriteLine($"I am Childrean can i speak {_speack}");
             }
-
-
-
         }
-        public Children()
-        {
-
-        }
-
+        public Children() { }
         public override void Display()
         {
             Console.WriteLine($"me rase = {rase}, my age = {age}, my name is {name}");

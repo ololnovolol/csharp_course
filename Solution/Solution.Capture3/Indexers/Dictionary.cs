@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture3.Indexers
 {
@@ -32,7 +28,7 @@ namespace Solution.Capture3.Indexers
                     case "blue": return words[1];
                     case "green": return words[2];
                     default: return null;
-                }  
+                }
             }
             set
             {
@@ -49,11 +45,7 @@ namespace Solution.Capture3.Indexers
                         break;
                 }
             }
-        }    
-
-
-
-    
+        } 
     }
 }
 

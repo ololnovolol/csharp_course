@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture3
 {
     class ClassesAndObjects
     {
-       
         private string name = "null";
         private int age = 0;
         private string @mail = "null";
-
-
         public ClassesAndObjects(string name) 
         {
             this.name = name;
@@ -27,7 +20,5 @@ namespace Solution.Capture3
             this.@mail = @mail;
             Console.WriteLine($"\nname = {this.name}, age = {this.age}, @mail = {this.@mail}");
         }
-
-        
     }
 }

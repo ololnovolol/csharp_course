@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture3.Intheritance
 {
@@ -12,11 +8,7 @@ namespace Solution.Capture3.Intheritance
         {
             Console.WriteLine($"I am Schollboy i can learn! i can speak, my name is = {name},i am {12} years old,  my race is = {rase},");
         }
-        public Schoolboy()
-        {
-
-        }
-
+        public Schoolboy() { }
         public sealed override void Display()
         {
             base.Display();

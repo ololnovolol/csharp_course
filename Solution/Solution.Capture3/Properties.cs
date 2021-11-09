@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture3
 {
@@ -12,9 +8,6 @@ namespace Solution.Capture3
         private int propertyAgeblock;
         public int propertyAge { get; set; }
 
-
-
-
         public Properties(int num, int num2)
         {
             propertyAgeblock = num;
@@ -22,7 +15,5 @@ namespace Solution.Capture3
             Console.WriteLine("propertyAgeblock = " + propertyAgeblock);
             Console.WriteLine("propertyAge = " + propertyAge);
         }
-
-
     }
 }

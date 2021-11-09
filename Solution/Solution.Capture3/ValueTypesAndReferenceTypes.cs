@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture3
 {
@@ -21,7 +17,6 @@ namespace Solution.Capture3
             age = usAge;
             //blood = usBlood;
             Console.WriteLine("\nerror!!!\tValueTypes <<in>> - readonly\n\t\t parametr groupBlood don`t cleared!!!\n ");
-
         }
 
         public static void AddOrDeleteToArray(ref int[] array, int item, int index)
@@ -42,23 +37,15 @@ namespace Solution.Capture3
             {
                 array[i] = massive[i];
             }
-
         }
-
         public static void AddFirst(ref int[] array, int item)
         {
             AddOrDeleteToArray(ref array, item, 0);
         }
-
         public static void AddLast(ref int[] array, int item)
         {
             AddOrDeleteToArray(ref array, item, array.Length);
         }
 
-
-
-
     }
-
-
 }

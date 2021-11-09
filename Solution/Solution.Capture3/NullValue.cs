@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Solution.Capture3
+﻿namespace Solution.Capture3
 {
     class NullValue
     {
@@ -21,5 +15,4 @@ namespace Solution.Capture3
         public string Name { get; set; }
 
     }
-
 }

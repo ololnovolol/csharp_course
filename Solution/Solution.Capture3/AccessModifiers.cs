@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Solution.Capture3
 {
      internal class AccessModifiers // default internal
     {
-        public int publ = 99;
-        
+        public int publ = 99;     
         private int priva { get; set; } = 99;   // from Constructor
         protected int protec { get; set; } = 99;  //yes
         internal int intern { get; set; } = 99;  //yes
@@ -23,9 +17,6 @@ namespace Solution.Capture3
             this.protec = protec;
             this.privaProtec = privaProtec;
         }
-
-
-
          public class AccessModifiersSubClass // default private
         {
             public string publ { get; set; } = "Bye Bye";  //yes
@@ -43,7 +34,6 @@ namespace Solution.Capture3
                 this.privaProtec = privaProtec;
 
             }
-
             public void SubClassPrinter()
             {
                 Console.WriteLine($"string publ = {publ}\nstring priva = {priva}\nstring protec = {protec}\nstring intern = {intern}\nstring protecIntern = {protecIntern}\nstring privaProtec = {privaProtec}");

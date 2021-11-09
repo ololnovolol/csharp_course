@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace Solution.Capture3
 {
@@ -17,11 +12,9 @@ namespace Solution.Capture3
             age = a;
         }
 
-
         public void DisplayInfo()
         {
             Console.WriteLine($"Name: {name}  Age: {age}");
         }
-
     }
 }
