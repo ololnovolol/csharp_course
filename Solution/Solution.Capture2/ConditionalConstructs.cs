@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture2
 {
@@ -10,8 +6,7 @@ namespace Solution.Capture2
     {
         public static int taskOne(int a, int b)
         {
-            int result = 0;
-            
+            int result = 0;     
             Console.WriteLine("--------------------------------------------\nУпражнение 1\nНапишите консольную программу, в которой \nпрограмма сранивает два введенных числа и выводит на консоль результат сравнения (два числа равны,\nпервое число больше второго или первое число меньше второго)");
             Console.WriteLine($"int a = {a}; \nint b = {b};");
             if (a > b) 
@@ -25,7 +20,6 @@ namespace Solution.Capture2
             {
                 Console.WriteLine("\tnumbers a and b are equal");
             }
-
             return result;
         }
 
@@ -142,14 +136,7 @@ namespace Solution.Capture2
 
                     return 0;
             }
-
-
-
-
             Cleaner.CCleaner();
-
         }
-
-       
     }
 }

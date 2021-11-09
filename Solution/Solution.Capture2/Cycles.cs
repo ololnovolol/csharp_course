@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture2
 {
@@ -29,8 +25,6 @@ namespace Solution.Capture2
                 result = (a*7/100) + a;               
             }
             Console.WriteLine("\tyour deposit amount in a year  = " + result);
-
-
         }
         public static void taskTwo(int a, int b)
         {
@@ -91,10 +85,7 @@ namespace Solution.Capture2
                     Console.WriteLine("Second number dont are in the range 0 to 10");
                     i--;
                 }
-
-
             }
-            
         }
     }
 }

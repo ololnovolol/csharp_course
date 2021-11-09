@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture2
 {
@@ -35,7 +31,9 @@ namespace Solution.Capture2
                     {
                         Console.Write(mas[i, j, k]);
                         if (k < z)
+                        {
                             Console.Write(" , ");
+                        }
                     }
 
                     Console.Write("}");

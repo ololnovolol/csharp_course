@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture2
 {
     public static class Enum
     {
-         public  enum Operation
+        public enum Operation
         {
             Add = 1,
             Subtract,

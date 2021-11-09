@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture2
 {
@@ -22,12 +18,8 @@ namespace Solution.Capture2
             Console.WriteLine($"result for (~x1)  logical negation or inversion = {~x1}");
             Console.WriteLine($"result for (~x2)  logical negation or inversion = {~x2}");
 
-
             Cleaner.CCleaner();
-
-        }   
-
-
+        }
 
     }
 }
