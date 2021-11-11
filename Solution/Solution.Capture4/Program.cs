@@ -1,6 +1,4 @@
 ﻿using System;
-
-
 namespace Solution.Capture4
 {
     class Program
@@ -10,7 +8,6 @@ namespace Solution.Capture4
             ExceptionHandling exH = new ExceptionHandling();
 
             Console.ReadKey();
-
         }
     }
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture5
 {
@@ -11,7 +7,6 @@ namespace Solution.Capture5
         public string From { get; }
         public string To { get; }
         public string Subject { get; }
-
         public NewMailEventArgs(string from, string to, string subject)
         {
             From = from;

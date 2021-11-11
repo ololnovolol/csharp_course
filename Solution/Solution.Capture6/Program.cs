@@ -2,15 +2,19 @@
 
 namespace Solution.Capture6
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
-            //Person p = new Person { name = "Test", age = 99 };
-            //Student s = new Student();
-            //p.Print();
-            //s.Print();
 
+            DefiningInterfaces();
+            WorkingInterfaces();
+
+            Console.ReadKey();
+        }
+
+        public static void DefiningInterfaces()
+        {
             IPrintablePerson pp = new Person() { name = "Iprintable test", age = 99 + 1 };
             IPrintablePerson ss = new Student() { nameS = "Petya", ageS = 16, groupe = 2 };
             IPrintableStudent pp1 = new Person() { name = "Tolya", age = 20 };
@@ -21,18 +25,24 @@ namespace Solution.Capture6
             pp1.Print();
             ss1.Print();
 
+            //Person p = new Person { name = "Test", age = 99 };
+            //Student s = new Student();
+            //p.Print();
+            //s.Print();
+        }
+        public static void WorkingInterfaces()
+        {
             Console.WriteLine("---------------Clone");
             Person p3 = new Person() { name = "Iprintable test", age = 99 + 1 };
             Person p4 = (Person)p3.Clone();
             Console.WriteLine(p3.name);
             Console.WriteLine(p3.age);
 
-            Student s1 = new Student { nameS = "Petya", ageS = 11, groupe = 2 };
-            Student s2 = new Student { nameS = "JOHNnn", ageS = 15, groupe = 3 };
-            Student s3 = new Student { nameS = "JOHN", ageS = 18, groupe = 3 };
-            Student s4 = new Student { nameS = "JO", ageS = 25, groupe = 3 };
-           
-            
+            Student s1 = new() { nameS = "Petya", ageS = 11, groupe = 2 };
+            Student s2 = new() { nameS = "JOHNnn", ageS = 15, groupe = 3 };
+            Student s3 = new() { nameS = "JOHN", ageS = 18, groupe = 3 };
+            Student s4 = new() { nameS = "JO", ageS = 25, groupe = 3 };
+
             Student[] course = new Student[] { s1, s2, s3, s4 };
             Console.WriteLine("---------------Sort by name.Leunght");
             Array.Sort(course, new Student()); //////////////////////////////////тут у меня затуп что делает - new Student
@@ -54,9 +64,7 @@ namespace Solution.Capture6
             {
                 Console.WriteLine($"name {s.nameS}=  age = {s.ageS}");
             }
-
-
-            Console.ReadKey();
         }
+
     }
 }

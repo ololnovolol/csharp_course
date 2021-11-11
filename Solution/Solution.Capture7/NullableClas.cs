@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture7
 {
     public class NullableClas
     {
         int? x = 35;
-        string? str = null;
+         string? str = null;
         bool? enable = null;
 
         public void PrinterNullable()
@@ -42,7 +38,6 @@ namespace Solution.Capture7
                 Console.WriteLine("ExplicitConversFromTtoT = " + x2);
             }
         }
-
         public void ImplicitConversFromTtoT()
         {
             int x1 = 1;
@@ -67,13 +62,11 @@ namespace Solution.Capture7
             int? x2 = (int?)x1;
             Console.WriteLine("VtoT = " + x2.Value);
         }
-
         public void TtoV()
         {
             long? x1 = 5;
             int x2 = (int)x1;
             Console.WriteLine("TtoV = " + x2);
         }
-
     }
 }

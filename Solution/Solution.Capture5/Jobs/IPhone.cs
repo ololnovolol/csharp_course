@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture5
 {
@@ -12,7 +8,6 @@ namespace Solution.Capture5
         public event MessageDelagate Departure;
         public event MessageDelagate Sent;
         public event MessageDelagate Сame;
-
 
         //private MessageDelagate mgdel = delegate
         //    {
@@ -28,14 +23,12 @@ namespace Solution.Capture5
         //    this.mgdel -= mgdel; 
         //}
 
-
         private string mg;
 
         public IPhone(string massage)
         {
             mg = massage;
         }
-
         public virtual void IncomingCall() => Departure?.Invoke("Incoming Call");
         public virtual void IncomingMessage(string message) => Сame?.Invoke($"Incoming Message :\n\t{message}");
         public virtual void OutgoingCall() => Sent?.Invoke("Outgoing Call");

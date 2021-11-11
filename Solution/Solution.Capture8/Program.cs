@@ -80,7 +80,6 @@ namespace Solution.Capture8
             NewAMail,
             GetBalans);
         }
-
         private static void GetBonuses(Site<Account> site)
         {
             Console.WriteLine("Введите id счета:");

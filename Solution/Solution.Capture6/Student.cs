@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture6
 {
     class Student : IPrintableStudent, IPrintablePerson, IComparer<Student>
     {
-
         private int Age;
-
         public int ageS
         {
             get { return Age; }
@@ -18,7 +13,6 @@ namespace Solution.Capture6
         }
         private string Name;
         private static Student sortByGroup;
-
         public string nameS
         {
             get { return Name; }
@@ -29,17 +23,14 @@ namespace Solution.Capture6
         public static Student SortByGroup { get => sortByGroup; set => sortByGroup = value; }
         public static Student SortByAge { get; set; }
 
-
         void IPrintablePerson.Print()
         {
             Console.WriteLine($"name = {Name}, age = {Age}, Groupe = {groupe}");
         }
-
         void IPrintableStudent.Print()
         {
             Console.WriteLine($"i am Student");
         }
-
         //public int CompareTo(Student s1, Student s2)
         //{
         //    if(s1.Name.Length > s2.Name.Length)
@@ -70,7 +61,6 @@ namespace Solution.Capture6
                 return 0;
             }
         }
-
         public class StudentComparer : IComparer<Student>
         {
             public StudentComparer()

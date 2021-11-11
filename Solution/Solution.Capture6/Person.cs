@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Solution.Capture6
 {
@@ -15,7 +11,6 @@ namespace Solution.Capture6
         {
             return this.MemberwiseClone();
         }
-
         void IPrintableStudent.Print()
         {
             Console.WriteLine($"I am Person");
