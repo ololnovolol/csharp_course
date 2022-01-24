@@ -9,7 +9,7 @@ namespace Solution.Capture9
         static void Main(string[] args)
         {
             //ArrayListMethod();
-            ListMethod();
+            //ListMethod();
 
 
         }
@@ -35,16 +35,33 @@ namespace Solution.Capture9
         }
         public static void ListMethod()
         {
-            List<int> numbers = new() { 0, 1, 2, 3, 4, 5 };
+            List<int> numbers = new() { 0, 1, 1, 2, 3, 4, 5 };
            
-            numbers.AddRange(new int[] { 6, 7, 8, 9, 10 });
+            numbers.AddRange(new int[] { 6, 7, 8, 10, });
+            numbers.Insert(9, 9);
+            numbers.RemoveAt(2);
 
             foreach (int item in numbers)
             {
-                Console.WriteLine(item);
+                Console.Write(item + " ");
             }
 
+            List<Person> human = new(3);
+            human.Add(new Person() { Name = "Oleg"});
+            human.Add(new Person() { Name = "Ivan" });
+
+            foreach (Person item in human)
+            {
+                Console.WriteLine(item.Name);
+            }
+            Console.WriteLine();
 
         }
+
+    }
+
+    internal class Person
+    {
+        public string Name { get; set; }
     }
 }
