@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Solution.Capture9
 {
@@ -8,14 +9,17 @@ namespace Solution.Capture9
     {
         private static void Main(string[] args)
         {
+            Caller();
+        }
+        public static void Caller()
+        {
             //ArrayListMethod();
-            //ListMethod();
-            //LinkedListMethodOne();
             //LinkedListMethodTwo();
             //QueueMethod();
             //StackMethod();
-            DictionaryMethod();
-
+            //DictionaryMethod();
+            //ObservableListMethod();
+            //EnumerableANDEnumerator();
         }
         public static void ArrayListMethod()
         {
@@ -36,6 +40,7 @@ namespace Solution.Capture9
             Console.WriteLine("\tzero = " + type0ik.ToString() + "\n\tzero type = " + type0ik.GetType());
             Console.WriteLine("\tone = " + type1ik.ToString() + "\n\tone type = " + type1ik.GetType());
             Console.WriteLine("\ttwo = " + type2ik.ToString() + "\n\tztwo type = " + type2ik.GetType());
+            ListMethod();
         }
         public static void ListMethod()
         {
@@ -59,6 +64,7 @@ namespace Solution.Capture9
                 Console.WriteLine(item.Name);
             }
             Console.WriteLine();
+            LinkedListMethodOne();
 
         }
         public static void LinkedListMethodOne()
@@ -181,6 +187,41 @@ namespace Solution.Capture9
             // проверяем количество элементов после удаления
             Console.WriteLine($"Count: {phoneBook.Count}"); // Count: 0
         }
+        public static void ObservableListMethod()
+        {
+            var people = new ObservableCollection<string>() { "l", "e"};
+            people.Add("g");
+            people.Insert(0, "o");
+
+            for (int i = 0; i < people.Count ; i++)
+            {
+                Console.Write(" " + people[i]);
+            }
+            Console.WriteLine();
+            if (people.Contains("O") == true)
+            {
+                Console.WriteLine("Big O is present");
+            }
+            else{
+                Console.WriteLine("Big O don`t present");
+                if((people.Contains("o") == true) && people.IndexOf("o") == 0)
+                {
+                    people.Remove("o");
+                    people.Insert(0, "O");
+                }
+            }
+
+            for (int i = 0; i < people.Count; i++)
+            {
+                Console.Write(" " + people[i]);
+            }
+
+        }
+        public static void EnumerableANDEnumerator()
+        {
+
+        }
+
 
 
         internal class Person
