@@ -19,7 +19,7 @@ namespace Solution.Capture9
             //StackMethod();
             //DictionaryMethod();
             //ObservableListMethod();
-            EnumerableANDEnumerator();
+            //EnumerableANDEnumerator();
         }
         public static void ArrayListMethod()
         {
@@ -220,11 +220,7 @@ namespace Solution.Capture9
         }
         public static void EnumerableANDEnumerator()
         {
-            Numbers numbers = new Numbers();
-            foreach (int n in numbers)
-            {
-                Console.WriteLine(n);
-            }
+
         }
 
 
@@ -248,16 +244,6 @@ namespace Solution.Capture9
                     Console.WriteLine($"Осмотр пациента {patient.Name}");
                 }
                 Console.WriteLine("Доктор закончил осматривать пациентов");
-            }
-        }
-        class Numbers
-        {
-            public IEnumerator<int> GetEnumerator()
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    yield return i * i;
-                }
             }
         }
     }
