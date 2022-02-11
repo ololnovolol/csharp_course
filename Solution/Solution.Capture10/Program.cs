@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Solution.Capture10
 {
@@ -22,6 +23,37 @@ namespace Solution.Capture10
             Console.WriteLine(s3);  // world
             Console.WriteLine(s4);  // orl
             Console.WriteLine(fChar);
+
+            string s5 = "apple";
+            string s6 = "a day";
+            string s7 = "keeps";
+            string s8 = "a doctor";
+            string s9 = "away";
+            string[] values = new string[] { s5, s6, s7, s8, s9 };
+
+            string s10 = string.Join(" ", values);
+            Console.WriteLine(s10); // apple a day keeps a doctor away 
+
+            string[] files = new string[]
+            {
+                "myapp.exe",
+                "forest.jpg",
+                "main.exe",
+                "book.pdf",
+                "river.png"
+            };
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                if (files[i].EndsWith(".exe"))
+                    Console.WriteLine(files[i]);
+            }
+
+            long number = 19876543210;
+            string result = string.Format("{0:+# (###) ###-##-##}", number);
+            Console.WriteLine(result); // +1 (987) 654-32-10
+
+
         }
     }
 }

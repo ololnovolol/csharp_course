@@ -189,11 +189,11 @@ namespace Solution.Capture9
         }
         public static void ObservableListMethod()
         {
-            var people = new ObservableCollection<string>() { "l", "e"};
+            var people = new ObservableCollection<string>() { "l", "e" };
             people.Add("g");
             people.Insert(0, "o");
 
-            for (int i = 0; i < people.Count ; i++)
+            for (int i = 0; i < people.Count; i++)
             {
                 Console.Write(" " + people[i]);
             }
@@ -202,9 +202,10 @@ namespace Solution.Capture9
             {
                 Console.WriteLine("Big O is present");
             }
-            else{
+            else
+            {
                 Console.WriteLine("Big O don`t present");
-                if((people.Contains("o") == true) && people.IndexOf("o") == 0)
+                if ((people.Contains("o") == true) && people.IndexOf("o") == 0)
                 {
                     people.Remove("o");
                     people.Insert(0, "O");
