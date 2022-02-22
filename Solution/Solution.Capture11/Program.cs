@@ -11,7 +11,6 @@ namespace Solution.Capture11
             FormatData();
             DateOnly();
             TimeOnly();
-
         }
 
         public static void DateTimeMethod()
@@ -61,7 +60,6 @@ namespace Solution.Capture11
             Console.WriteLine(time.Minute);     // 23
             Console.WriteLine(time.Second);     // 30
         }
-
         public static void DateOnly()
         {
             //DateOnly now = new DateOnly(2022, 1, 6);
@@ -80,7 +78,6 @@ namespace Solution.Capture11
             //Console.WriteLine(now1.ToShortDateString());  // 07.05.2021
             //Console.WriteLine(now1.ToLongDateString());   // 7 мая 2021 г.
         }
-
         public static void TimeOnly()
         {
             //TimeOnly time = TimeOnly.Parse("06:33:22");
