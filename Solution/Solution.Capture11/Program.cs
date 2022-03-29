@@ -55,10 +55,10 @@ namespace Solution.Capture11
             Console.WriteLine(mynow.ToString("hh:mm:ss"));
             Console.WriteLine(mynow.ToString("dd.MM.yyyy"));
 
-            TimeOnly time = new TimeOnly(14, 23, 30);
-            Console.WriteLine(time.Hour);       // 14
-            Console.WriteLine(time.Minute);     // 23
-            Console.WriteLine(time.Second);     // 30
+            //TimeOnly time = new TimeOnly(14, 23, 30);
+            //Console.WriteLine(time.Hour);       // 14
+            //Console.WriteLine(time.Minute);     // 23
+            //Console.WriteLine(time.Second);     // 30
         }
         public static void DateOnly()
         {
