@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace Solution.Capture14_ParallelProgrammingTPL_
 {
@@ -24,8 +25,14 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
                     //ReturnsTaskClass();
                     //ContinuationTasks();
                     //ContinuationTaskVol2();
-                    ParalellClassOfTask();
-
+                    //ParalellClassOfTasVol1();
+                    //ParallelFor();
+                    //ParallelForEach();
+                    //ParallelExitingForOperatorBreack();
+                    //SoftOperationCanceledExceptionVol1();
+                    //SoftOperationCanceledExceptionVol2();
+                    //OperationCanceledExceptionVol3();
+                    ParallelCAnselation();
 
 
                     Console.WriteLine(">>The end Main Tread<<");
@@ -144,9 +151,9 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
             {
                 var id = i + 1;
                 tasks[i] = new Task(() =>
-                {          
+                { 
                     Thread.Sleep(10);
-                    Console.WriteLine($"Task{id} is finished"); // с именем не понял в чем прикол в консольном выводе
+                    Console.WriteLine($"Task{id} is finished"); // разобпались)
                 });
                 tasks[i].Start();
             }
@@ -224,13 +231,211 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
             Console.WriteLine(">>Ending Task this.Method<<");
 
         }
-        public static void ParalellClassOfTask()
+        public static void ParalellClassOfTasVol1()
         {
+            Parallel.Invoke(
+                PrintForParallelVol1,
+                () =>
+                {
+                    Console.WriteLine($"Running {Task.CurrentId}");
+                    Thread.Sleep(1000);
+                },
+                () => MultipleForParallelVol1(5)
+                );
 
 
             Razdelitel();
         }
+        public static void PrintForParallelVol1()
+        {
+            Console.WriteLine($"Running {Task.CurrentId} method >>Print<<");
+            Thread.Sleep(1000);
+        }
+        public static void MultipleForParallelVol1(int x)
+        {
+            Console.WriteLine($"Running {Task.CurrentId} Method{x} >>Multiple<<");
+            Thread.Sleep(400);
+            Console.WriteLine($"result{x}: {x * x} for {Task.CurrentId} in Method >>Multiple<<");
+        }
+        public static void ParallelFor()
+        {
+            // вызывается как цикл начиная с 1 до 4, в аргумент метода пердается текущий итератор
+           // Parallel.For(1, 4, MultipleForParallelVol1);
+            Parallel.For(1, 5, MultipleForParallelVol1); //!!! обязательно принимает метод c параметром - ами,<<<<<<
 
+            Razdelitel();
+        }
+        public static void ParallelForEach()
+        {
+            // результатом вывода будет кол-во итераций = кол-ву елементов масива
+            // каждый елемент масива попадает в аргумет метода или делената
+            ParallelLoopResult loop = Parallel.ForEach<int>(new List<int>() { 1, 3, 5, 8}, MultipleForParallelVol1);
+
+            Razdelitel();
+        }
+        public static void ParallelExitingForOperatorBreack()
+        {
+            ParallelLoopResult result = Parallel.For(1, 10, ForParallelExitingg);
+
+            if (!result.IsCompleted) 
+                Console.WriteLine($"\nexecution process completed " +
+                    $",but was paused for >>№{result.LowestBreakIteration}<<" +
+                    $" iterations of running the thread");
+
+            Razdelitel();
+        }
+        public static void ForParallelExitingg(int x, ParallelLoopState pls)
+        {
+            if (x == 5) pls.Break();
+            Console.WriteLine($">>Task{Task.CurrentId}<< Result { x * x } = { x } * { x }");
+            Thread.Sleep(2000);
+        }
+        public static void SoftOperationCanceledExceptionVol1()
+        {
+            CancellationTokenSource cts = new CancellationTokenSource();
+            CancellationToken token = cts.Token;
+
+            Task task = new Task(() =>
+            {
+                for (int i = 1; i < 10; i++)
+                {
+                    if (token.IsCancellationRequested)
+                    {
+                        Console.WriteLine("Operation was Canseled");
+                        return;
+                    }
+
+                    Console.WriteLine($"Ineration number{i} >> {i} * {i} = {i * i}");
+                    Thread.Sleep(200);
+                }
+            }, token);
+
+            task.Start();
+
+            Thread.Sleep(1500);// после задержки по времени отменяем выполнение задачи
+
+            cts.Cancel();
+
+            Thread.Sleep(1000);
+
+            Console.WriteLine($"Task{task.Id} have a status \"{task.Status}\"");
+            cts.Dispose();// освобождаем ресурсы
+
+            Razdelitel();
+        }
+        public static void SoftOperationCanceledExceptionVol2()
+        {
+            CancellationTokenSource cts = new CancellationTokenSource();
+            CancellationToken token = cts.Token;
+
+            Task myTask = new Task(() =>
+            {               
+                int i = 1;
+                var name = $"Task{i}";
+                Thread.CurrentThread.Name = name;
+
+                token.Register(() =>
+                {
+                    Console.WriteLine("Operation canceled");
+                    i = 10;
+                });
+
+                for (; i < 10; i++)
+                {
+                    Console.WriteLine($"Ineration number{i} >> {i} * {i} = {i * i} >>Task{i}");
+                    Thread.Sleep(250);
+                }
+
+            }, token);
+
+            myTask.Start();
+
+            Thread.Sleep(1650);
+            cts.Cancel(); // после задержки по времени отменяем выполнение задачи
+
+            Thread.Sleep(1000);
+
+            Console.WriteLine($"Task status is = {myTask.Status}");
+            cts.Dispose();
+            
+            Razdelitel();
+        }
+        public static void OperationCanceledExceptionVol3()
+        {
+            CancellationTokenSource cts = new CancellationTokenSource();
+            CancellationToken token = cts.Token;
+
+            Task newTask = new Task(() => PrintForOperationsCancelVol3(token), token);
+            try
+            {
+                newTask.Start();
+
+                Thread.Sleep(1400);
+                cts.Cancel();
+
+                newTask.Wait();
+            }
+            catch (AggregateException ae)
+            {
+                foreach (Exception e in ae.InnerExceptions)
+                {
+                    if (e is TaskCanceledException)
+                        Console.WriteLine("Операция прервана");
+                    else
+                        Console.WriteLine(e.Message);
+                }
+            }
+            finally
+            {
+                cts.Dispose();
+            }
+            Console.WriteLine($"Task status = {newTask.Status}");
+
+            Razdelitel();
+        }     
+        public static void PrintForOperationsCancelVol3(CancellationToken t)
+        {
+            for (int i = 1; i < 11; i++)
+            {
+                if (t.IsCancellationRequested)
+                {
+                    t.ThrowIfCancellationRequested();
+                }
+
+                Console.WriteLine($"result multiplication {i} * {i} = {i}");
+                Thread.Sleep(200);
+            }
+        }
+        public static void ParallelCAnselation()
+        {
+            CancellationTokenSource cts = new CancellationTokenSource();
+            CancellationToken token = cts.Token;
+
+            Task task = new Task(() =>
+            {
+                Thread.Sleep(300);
+                Console.WriteLine("----------------->Cancelation is aviable");
+
+                cts.Cancel();
+            }); 
+            task.Start();
+
+            try
+            {
+                Parallel.For(1, 10, new ParallelOptions { CancellationToken = token }, MultipleForParallelVol1);
+            }
+            catch (OperationCanceledException)
+            {
+                Console.WriteLine("!!!Operation Canceled!!!");
+            }
+            finally
+            {
+                cts.Dispose();
+            }
+
+
+        }
+        
         public class PersonForReturnsTaskClass
         {
             private int age;
@@ -242,7 +447,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
                 this.age = age;
                 this.name = name;
             }
-        }
+        } 
 
     }
 }
