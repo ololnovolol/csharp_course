@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture14(Parallel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture15(asyncProgramming)", "Solution.Capture15(asyncProgramming)\Solution.Capture15(asyncProgramming).csproj", "{172FFFA2-33B5-4ED4-92A0-1122D977320D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture16(LINQ)", "Solution.Capture16(LINQ)\Solution.Capture16(LINQ).csproj", "{EDC9A31D-AEA9-4292-8AAF-7963B189298E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,13 +137,16 @@ Global
 		{172FFFA2-33B5-4ED4-92A0-1122D977320D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{172FFFA2-33B5-4ED4-92A0-1122D977320D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{172FFFA2-33B5-4ED4-92A0-1122D977320D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC9A31D-AEA9-4292-8AAF-7963B189298E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC9A31D-AEA9-4292-8AAF-7963B189298E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC9A31D-AEA9-4292-8AAF-7963B189298E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC9A31D-AEA9-4292-8AAF-7963B189298E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{27B0DA32-B6A2-4C8E-9DC1-C51860542E2C} = {270BC4A1-7043-40A4-A816-B4B7BFB08860}
-		{172FFFA2-33B5-4ED4-92A0-1122D977320D} = {270BC4A1-7043-40A4-A816-B4B7BFB08860}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1083A2E2-50AC-4338-B7AD-938DFFB4685B}
