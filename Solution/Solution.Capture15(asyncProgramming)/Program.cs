@@ -11,17 +11,30 @@ namespace Solution.Capture15_asyncProgramming_
             //BaseExampleVol1Async();
             //BaseExampleVol2Async();
             //await LyambdaAsynkExample();
+
             //await ReturnRezultVoidAsync();
             //await ReturnRezultTaskAsync();
             //await ReturnRezultTaskAsyncVol1();
             //await ReturnRezultTaskTAsyncVol2();
             //await ReturnRezultTaskTAsyncVol3();
-            await ReturnRezultVALUETaskTisSTRUCTAsync();
+            //await ReturnRezultVALUETaskTisSTRUCTAsync();
+
+            //await TaskWhenAllAsync();
+            //await TaskWhenAnyAsync();
+            //await TaskWhenAll2Async();
+            //await TaskWhenAny2Async();
+
+            //ErrorProcessingVoidAsynk();
+            //await ErrorProcessingTaskAsynk();
+            //await ExceptionTaskAsync();
+            //await WhenAllTasksExceptionsAsync();
+
+            //StreemsVolAsync(); //c# 8.0
+            //StreemsVolAsync(); //c# 8.0
 
             Console.ReadKey();
-
-
         }
+        //part1
         public async static void BaseExampleVol1Async()
         {
             await PrintAsync();   // вызов асинхронного метода
@@ -110,7 +123,7 @@ namespace Solution.Capture15_asyncProgramming_
             await Print("two");
             await Print("three");
         }
-
+        //part2
         public async static Task ReturnRezultVoidAsync()
         {
             VoidReturnExample voidRE = new VoidReturnExample();
@@ -179,7 +192,9 @@ namespace Solution.Capture15_asyncProgramming_
             }
         }
         public async static Task ReturnRezultVALUETaskTisSTRUCTAsync()
+
         {
+            await Task.Delay(0);
             //await PrintAsync("Hello METANIT.COM");
 
             //Person person = await GetPersonAsync("Tom");
@@ -202,9 +217,251 @@ namespace Solution.Capture15_asyncProgramming_
 
             ///данный код работает в новых версиях c# начиная с 9.0 вроде
         }
+        //part3
+        public async static Task TaskWhenAllAsync()
+        {
+            Task<int> task1 = Print(10, 5);
+            var task2 = Print(10, 5);
+            var task3 = Print(10, 5);
+            Console.WriteLine("Main job");
+
+            await Task.WhenAll(task1, task2, task3);
+
+            //int One = await task1;
+            //int Two = await task2;
+            //int Three = await task3;
+
+            //Console.WriteLine($"Rezult Sum third task  {One} + {Two} + {Three} = {One + Two + Three}");
+
+            Console.WriteLine("Main finish");//ждет всех и выполнется
+
+            async Task<int> Print(int a, int b)
+            {
+                await Task.Delay(new Random().Next(1000, 2000));
+                Console.WriteLine($"Result operation divide: {a} / {b} = {a / b}");
+                return a / b;
+            }
+        }
+        public static async Task TaskWhenAnyAsync()
+        {
+            Task<int> task1 = Print(10, 5);
+            var task2 = Print(10, 5);
+            var task3 = Print(10, 5);
+            Console.WriteLine("Main job");
+
+            await Task.WhenAny(task1, task2, task3);
+
+            //int One =  task1;
+            //int Two =  task2;
+            //int Three =  task3;
+
+            //Console.WriteLine($"Rezult Sum third task  {One} + {Two} + {Three} = {One + Two + Three}");
+            Console.WriteLine("Main finish");//ждет хоть один и выполняется
+
+            async Task<int> Print(int a, int b)
+            {
+                await Task.Delay(new Random().Next(1000, 2000));
+                Console.WriteLine($"Result operation divide: {a} / {b} = {a / b}");
+                return a / b;
+            }
+        }
+        public async static Task TaskWhenAll2Async()
+        {
+            int numberforMethod = 5;
+            Task<int> task1 = Result(numberforMethod++);
+            Task<int> task2 = Result(numberforMethod++);
+            Task<int> task3 = Result(numberforMethod++);
+
+            //так нельзя
+            //MasTask = await Task.WhenAny(task2, task1, task3);
+            int[] MasTask = await Task.WhenAll(task2, task1, task3);
+
+            int iter = 0;
+            foreach (var item in MasTask)
+            {
+                
+                Console.WriteLine($"mas[{iter}] = {item}");
+                iter++;
+            }
 
 
-        public class Person
+            async Task<int> Result(int num)
+            {
+                await Task.Delay(1000);
+                Console.WriteLine($"Result Operation multy: {num * num}");
+                return num * num;
+            }
+        }
+        public async static Task TaskWhenAny2Async()
+        {
+            int numberforMethod = 5;
+            Task<int> task1 = Result(numberforMethod++);
+            Task<int> task2 = Result(numberforMethod++);
+            Task<int> task3 = Result(numberforMethod++);
+
+            int[] MasTas = new int[3];
+
+            //так нельзя
+            //MasTask = await Task.WhenAny(task2, task1, task3);
+
+            for(int i = 0; i < 3; i++)
+            {
+                if (!task1.IsCanceled)
+                    MasTas[i] = await task1;
+                if (!task2.IsCanceled)
+                    MasTas[i] = await task2;
+                if (!task3.IsCanceled)
+                    MasTas[i] = await task3;
+            }
+            
+            int iter = 0;
+            foreach (var item in MasTas)
+            {
+
+                Console.WriteLine($"mas[{iter}] = {item}");
+                iter++;
+            }
+
+
+            async Task<int> Result(int num)
+            {
+                await Task.Delay(1000);
+                Console.WriteLine($"Result Operation multy: {num * num}");
+                return num * num;
+            }
+        }
+        //part4
+        public static async void ErrorProcessingVoidAsynk()
+        {
+            Print("hello");
+            Print("hi");
+            await Task.Delay(1000);
+
+            async void Print(string message)
+            {
+                try
+                {
+                    if (message.Length < 3) throw new Exception($"Invalid string length{message.Length}");
+                    await Task.Delay(200);
+                    Console.WriteLine(message);
+
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+        public static async Task ErrorProcessingTaskAsynk()
+        {
+            try
+            {
+                await PrintAsync("hello");
+                await PrintAsync("hi");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+            async Task PrintAsync(string message)
+            {
+                if (message.Length < 3) throw new ArgumentException($"Invalid string length{message.Length}");
+
+                await Task.Delay(200);
+                Console.WriteLine(message);
+            }
+        }
+        public static async Task ExceptionTaskAsync()
+        {
+            Task task = PrintAsync("hi");
+
+            try
+            {
+                await task;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine(task.Exception.InnerException.Message);
+                Console.WriteLine($"Task status {task.Status}");
+                Console.WriteLine($"Task isFaultad = {task.IsFaulted}");
+            }
+
+            async Task PrintAsync(string message)
+            {
+                if (message.Length < 3) throw new ArgumentException($"Invalid string length{message.Length}");
+
+                await Task.Delay(200);
+                Console.WriteLine(message);
+            }
+        }
+        public static async Task WhenAllTasksExceptionsAsync()
+        {
+            Task task1 = PrintAsync("hi");
+            var task2 = PrintAsync("go");
+
+            Task allTasks = Task.WhenAll(task1, task2);
+
+            try
+            {
+                await allTasks;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception : {ex.Message}");
+                Console.WriteLine($"IsFaulted: {allTasks.IsFaulted}");
+                if ( !(allTasks.Exception is null))
+                {
+                    foreach (var item in allTasks.Exception.InnerExceptions)
+                    {
+                        Console.WriteLine($"InnerExeptions message: {ex.Message}");
+                    }
+                }
+            }
+
+            async Task PrintAsync(string message)
+            {
+                if (message.Length < 3) throw new ArgumentException($"Invalid string length{message.Length}");
+
+                await Task.Delay(200);
+                Console.WriteLine(message);
+            }
+        }
+        //part5
+        public static async Task StreemsAsync()
+        {
+            //код не работает в данной версии с# !!!need ->8.0!!!
+            // важно понимать
+            //Фактически асинхронный стрим объединяет
+            //асинхронность и итераторы
+
+            //await foreach (var number in GetNumbersAsync())
+            //{
+            //    Console.WriteLine(number);
+            //}
+
+            //async IAsyncEnumerable<int> GetNumbersAsync()
+            //{
+            //    for (int i = 0; i < 10; i++)
+            //    {
+            //        await Task.Delay(100);
+            //        yield return i;
+            //    }
+            //}
+        }
+        public static async Task StreemsVolAsync()
+        {
+            //Repository repo = new Repository();
+            //IAsyncEnumerable<string> data = repo.GetDataAsync();
+            //await foreach (var name in data)
+            //{
+            //    Console.WriteLine(name);
+            //}
+
+        }
+    }   
+    public class Person
         {
             public string name;
             public Person(string name)
@@ -213,6 +470,19 @@ namespace Solution.Capture15_asyncProgramming_
             }
 
         }
+    class Repository
+    {
+        string[] data = { "Tom", "Sam", "Kate", "Alice", "Bob" };
+        //public async IAsyncEnumerable<string> GetDataAsync()
+        //{
+        //    for (int i = 0; i < data.Length; i++)
+        //    {
+        //        Console.WriteLine($"Получаем {i + 1} элемент");
+        //        await Task.Delay(500);
+        //        yield return data[i];
+        //    }
+        //}
+    }
 
-    } 
+
 }
