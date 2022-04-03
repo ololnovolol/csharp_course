@@ -19,7 +19,7 @@ namespace Solution.Capture3
                 return new Clock { Hours = x % 24 };
             }
 
-            public static explicit operator int (Clock clock)
+            public static explicit operator int(Clock clock)
             {
                 return clock.Hours;
             }
@@ -78,7 +78,7 @@ namespace Solution.Capture3
 
             public static implicit operator Euro(Dollar v)
             {
-                return new Euro { Sum = v.Sum / DollarToEuro};
+                return new Euro { Sum = v.Sum / DollarToEuro };
             }
 
             //public static explicit operator Dollar(Euro v)

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Solution.Capture3.Indexers
+﻿namespace Solution.Capture3.Indexers
 {
     class Dictionary
     {
@@ -45,7 +43,7 @@ namespace Solution.Capture3.Indexers
                         break;
                 }
             }
-        } 
+        }
     }
 }
 

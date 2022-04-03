@@ -1,6 +1,6 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 
 
 
@@ -17,8 +17,8 @@ namespace Solutin.Capture12
             //SpanStructMemryBostEffectPerformanse();
 
 
-           // Program p = new Program();
-           // p.CatalogsGetSet();
+            // Program p = new Program();
+            // p.CatalogsGetSet();
 
 
             Console.ReadKey();
@@ -34,7 +34,7 @@ namespace Solutin.Capture12
         public static void MathClass()
         {
             int firstValue = 15;
-            int secondValue = 25;;
+            int secondValue = 25; ;
             Console.WriteLine(Math.Abs(-12.5));
             double result1 = Math.Round(20.56); // 21
             double result2 = Math.Round(20.46); //20
@@ -99,7 +99,7 @@ namespace Solutin.Capture12
 
             humansSpan[0] = "Кожемяка";
             humansSpan.Reverse();
-            for(int i = 0; i < humans.Length; i++)
+            for (int i = 0; i < humans.Length; i++)
             {
                 Console.WriteLine($"humans masive have {humans[i]}={humans.Length} items\nspanMassive have {humansSpan[i]}={humansSpan.Length} items");
                 Console.WriteLine("");
@@ -109,12 +109,12 @@ namespace Solutin.Capture12
                 Console.WriteLine(item);
             }
 
-                        int[] temperatures = new int[]
-            {
+            int[] temperatures = new int[]
+{
                 10, 12, 13, 14, 15, 11, 13, 15, 16, 17,
                 18, 16, 15, 16, 17, 14,  9,  8, 10, 11,
                 12, 14, 15, 15, 16, 15, 13, 12, 12, 11
-            };
+};
             Span<int> temperaturesSpan = temperatures;
 
             Span<int> firstDecade = temperaturesSpan.Slice(0, 10);

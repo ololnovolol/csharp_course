@@ -1,5 +1,5 @@
-﻿using System;
-using OlolLybrary;
+﻿using OlolLybrary;
+using System;
 
 namespace Solution.Capture5
 {
@@ -76,7 +76,7 @@ namespace Solution.Capture5
 
             mm.SimilateNewMail(sender, target, message);
         }
-        private static void MailManagerNewMail(object sender,NewMailEventArgs e)
+        private static void MailManagerNewMail(object sender, NewMailEventArgs e)
         {
             var sms = new SMS();
             sms.Send(e.Subject);

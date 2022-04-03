@@ -4,7 +4,8 @@ namespace Solution.Capture2
 {
     public static class BasicDataTypeConversion
     {
-        public static void PrintBDTC() {
+        public static void PrintBDTC()
+        {
 
             Console.WriteLine("Data loss and the checked keyword\n-----------------------------------\nint x = 33;\nint y = 600\n-----------------------------------");
             int x = 33;

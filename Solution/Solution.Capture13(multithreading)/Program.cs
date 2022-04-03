@@ -21,7 +21,7 @@ namespace Solution.Capture13_multithreading_
                     // SynchronizationThreads.Synhro();
                     //monitorMethod();
                     //autoResetEventMethod();
-                    
+
                 }
                 Console.ReadKey();
             }
@@ -256,7 +256,7 @@ namespace Solution.Capture13_multithreading_
             public void Print()
             {
                 autoResetHandler.WaitOne();  //ожидание сигнального состояния тоесть останавливает все процессы кроме выполнения текущего блока кода до вызова Сет     
-                    x = 1;
+                x = 1;
                 for (int i = 1; i < 6; i++)
                 {
                     Console.WriteLine($"{Thread.CurrentThread.Name} : {x}");

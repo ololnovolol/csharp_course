@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Solution.Capture3.OperatorOverloading
+﻿namespace Solution.Capture3.OperatorOverloading
 {
     class State
     {
@@ -18,7 +16,7 @@ namespace Solution.Capture3.OperatorOverloading
             set { _area = value; }
         }
 
-        public static State operator + (State state1, State state2)
+        public static State operator +(State state1, State state2)
         {
             return new State
             {
@@ -26,12 +24,12 @@ namespace Solution.Capture3.OperatorOverloading
                 _area = state1._area + state2._area
             };
         }
-        public static bool operator > (State state1, State state2)
+        public static bool operator >(State state1, State state2)
         {
             return state1._area > state2._area;
         }
 
-        public static bool operator < (State state1, State state2)
+        public static bool operator <(State state1, State state2)
         {
             return state1._area < state2._area;
         }

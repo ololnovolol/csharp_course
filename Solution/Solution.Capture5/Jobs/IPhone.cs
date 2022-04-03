@@ -36,7 +36,7 @@ namespace Solution.Capture5
         {
             Console.WriteLine("Input your msg: ");
             string f = Console.ReadLine();
-            if(f.Length < 1)
+            if (f.Length < 1)
             {
                 Console.WriteLine("no data entered!!!!!!!!!!!!!!!!!!!!");
                 OutgoingMessage();

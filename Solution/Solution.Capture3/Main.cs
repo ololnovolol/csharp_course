@@ -1,8 +1,8 @@
-﻿using System;
+﻿using OlolLybrary;
+using Solution.Capture2;
+using System;
 using print = System.Console;
 using stru = Solution.Capture3.ClassesAndObjects;
-using Solution.Capture2;
-using OlolLybrary;
 
 namespace Solution.Capture3
 {

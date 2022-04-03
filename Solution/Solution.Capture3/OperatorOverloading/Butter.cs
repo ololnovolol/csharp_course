@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Solution.Capture3.OperatorOverloading
+﻿namespace Solution.Capture3.OperatorOverloading
 {
     class Butter
     {

@@ -7,7 +7,7 @@ namespace Solution.Capture3
         private string name = "null";
         private int age = 0;
         private string @mail = "null";
-        public ClassesAndObjects(string name) 
+        public ClassesAndObjects(string name)
         {
             this.name = name;
         }

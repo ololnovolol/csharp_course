@@ -6,13 +6,14 @@ namespace Solution.Capture2
     {
         public static int taskOne(int a, int b)
         {
-            int result = 0;     
+            int result = 0;
             Console.WriteLine("--------------------------------------------\nУпражнение 1\nНапишите консольную программу, в которой \nпрограмма сранивает два введенных числа и выводит на консоль результат сравнения (два числа равны,\nпервое число больше второго или первое число меньше второго)");
             Console.WriteLine($"int a = {a}; \nint b = {b};");
-            if (a > b) 
+            if (a > b)
             {
                 Console.WriteLine("\tnumber a is more");
-            }else if (b > a)
+            }
+            else if (b > a)
             {
                 Console.WriteLine("\tnumber b is more");
             }
@@ -23,10 +24,10 @@ namespace Solution.Capture2
             return result;
         }
 
-        public static int taskTwo (int a)
+        public static int taskTwo(int a)
         {
             int result = 0;
-           Console.WriteLine("--------------------------------------------\nУпражнение 2\nНапишите консольную программу, в которой \nЕсли число одновременно больше 5 и меньше 10, то программа выводит (Число больше 5 и меньше 10). Иначе программа выводит сообщение (Неизвестное число)");
+            Console.WriteLine("--------------------------------------------\nУпражнение 2\nНапишите консольную программу, в которой \nЕсли число одновременно больше 5 и меньше 10, то программа выводит (Число больше 5 и меньше 10). Иначе программа выводит сообщение (Неизвестное число)");
             Console.WriteLine($"int a = {a};");
             if (a < 10 && a > 5)
             {
@@ -57,7 +58,7 @@ namespace Solution.Capture2
             return result;
         }
 
-        public static double  taskFour(double a)
+        public static double taskFour(double a)
         {
             double result = 0;
             Console.WriteLine("--------------------------------------------\nУпражнение 4\nНапишите консольную программу, в которую пользователь вводит сумму вклада.\nЕсли сумма вклада меньше 100, то начисляется 5%. \nЕсли сумма вклада от 100 до 200, то начисляется 7%. \nЕсли сумма вклада больше 200, то начисляется 10%.).");
@@ -66,16 +67,17 @@ namespace Solution.Capture2
             {
                 result = Convert.ToDouble((a * 5 / 100) + a);
             }
-            else if(a >= 100 && a < 200)
+            else if (a >= 100 && a < 200)
             {
-                result = Convert.ToDouble((a * 7/ 100) + a);
+                result = Convert.ToDouble((a * 7 / 100) + a);
 
-            }else if (a >= 200)
+            }
+            else if (a >= 200)
             {
                 result = Convert.ToDouble((a * 10 / 100) + a);
 
             }
-            Console.WriteLine("the amount of the deposit with accrued interest = "+ result);
+            Console.WriteLine("the amount of the deposit with accrued interest = " + result);
 
             return result;
         }
@@ -86,7 +88,7 @@ namespace Solution.Capture2
             Console.WriteLine($"deposit = {a};");
             if (a < 100)
             {
-                result = Convert.ToDouble((a * 5 / 100) + a) ;
+                result = Convert.ToDouble((a * 5 / 100) + a);
                 result += 15;
             }
             else if (a >= 100 && a < 200)

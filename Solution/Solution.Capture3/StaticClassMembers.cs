@@ -2,7 +2,7 @@
 
 namespace Solution.Capture3
 {
-    public  class StaticClassMembers
+    public class StaticClassMembers
     {
         private static int count = 0;
         public int number;
@@ -22,7 +22,7 @@ namespace Solution.Capture3
 
         public static void Accessor() { }
         public static void Printer()
-        {    
+        {
             Console.WriteLine($"count of starts Printer()= {count}");
         }
 

@@ -18,11 +18,11 @@ namespace Solution.Capture2
             decimal mounts = Convert.ToDecimal(b);
             decimal result = 0;
 
-            Console.WriteLine("your sum of depisit = " + sum+ "grn");
-            Console.WriteLine("your time for depisit = " + mounts+" mounts");
+            Console.WriteLine("your sum of depisit = " + sum + "grn");
+            Console.WriteLine("your time for depisit = " + mounts + " mounts");
             for (int i = 0; i < mounts; i++)
             {
-                result = (a*7/100) + a;               
+                result = (a * 7 / 100) + a;
             }
             Console.WriteLine("\tyour deposit amount in a year  = " + result);
         }
@@ -46,13 +46,13 @@ namespace Solution.Capture2
         public static void taskThree()
         {
             //Напишите программу, которая выводит на консоль таблицу умножения`
-            for(int i = 1; i < 10 ; i++)
+            for (int i = 1; i < 10; i++)
             {
                 Console.WriteLine($"multiply table for {i}");
                 for (int j = 1; j < 10; j++)
                 {
-                    Console.Write($"{i} * {j} = {i*j}\n" );
-                }              
+                    Console.Write($"{i} * {j} = {i * j}\n");
+                }
             }
         }
         public static void taskFour(int a, int b)
@@ -69,13 +69,13 @@ namespace Solution.Capture2
             int result = 0;
             for (int i = 0; i < 100; i++)
             {
-                if(a>=0 && a<10 | b >= 0 && b < 10)
+                if (a >= 0 && a < 10 | b >= 0 && b < 10)
                 {
                     result = a * b;
-                    Console.WriteLine("result for miltiply = "+ result);
+                    Console.WriteLine("result for miltiply = " + result);
                     break;
                 }
-                else if (a<0 && a>10)
+                else if (a < 0 && a > 10)
                 {
                     Console.WriteLine("First number dont are in the range 0 to 10 ");
                     i--;

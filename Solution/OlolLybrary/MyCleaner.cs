@@ -1,5 +1,4 @@
 ﻿using System;
-using Solution.Capture1;
 
 
 
@@ -18,7 +17,7 @@ namespace OlolLybrary
             Console.Clear();
         }
 
-        public static void Clear ()
+        public static void Clear()
         {
             new MyCleaner();
         }

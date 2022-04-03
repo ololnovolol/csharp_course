@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Solution.Capture3
+﻿namespace Solution.Capture3
 {
     internal class GenericAccount<T>
     {

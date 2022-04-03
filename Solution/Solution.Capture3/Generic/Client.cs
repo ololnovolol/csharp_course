@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Solution.Capture3.Generic
+﻿namespace Solution.Capture3.Generic
 {
     internal class Client
     {

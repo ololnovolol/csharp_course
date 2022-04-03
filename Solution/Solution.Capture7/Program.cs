@@ -26,7 +26,7 @@ namespace Solution.Capture7
         }
         static void UseHuman(Person p)
         {
-            switch(p)
+            switch (p)
             {
                 case Human human:
                     human.Say();
@@ -59,10 +59,10 @@ namespace Solution.Capture7
                 ("Pepito", _, "Italian", _) => "Pepito say 'Hola'",
                 ("Pepito", _, "American", _) => "Pepito say 'Hi'",
                 ("Pepito", _, "Ukraine", _) => "Pepito say 'Здоровенькі Були, як ся маєш'",
-                ("Andy", _,"American", _) => "Andy say 'Hi'",
-                ("Tolyan", _, "Ukraine", _) =>"Tolyan say 'Здоровенькі Були, як ся маєш'",
-                (var name, var age, var language,var translate) => $"{name} not found, {age} unknown, {language} undefined",
-            _ => "Здрасьть"
+                ("Andy", _, "American", _) => "Andy say 'Hi'",
+                ("Tolyan", _, "Ukraine", _) => "Tolyan say 'Здоровенькі Були, як ся маєш'",
+                (var name, var age, var language, var translate) => $"{name} not found, {age} unknown, {language} undefined",
+                _ => "Здрасьть"
             };
         }
         static decimal Calculate(decimal sum)

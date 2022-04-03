@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Solution.Capture15_asyncProgramming_
 {
@@ -8,29 +8,29 @@ namespace Solution.Capture15_asyncProgramming_
     {
         static async Task Main(string[] args)
         {
-            //BaseExampleVol1Async();
-            //BaseExampleVol2Async();
-            //await LyambdaAsynkExample();
+            BaseExampleVol1Async();
+            BaseExampleVol2Async();
+            await LyambdaAsynkExample();
 
-            //await ReturnRezultVoidAsync();
-            //await ReturnRezultTaskAsync();
-            //await ReturnRezultTaskAsyncVol1();
-            //await ReturnRezultTaskTAsyncVol2();
-            //await ReturnRezultTaskTAsyncVol3();
-            //await ReturnRezultVALUETaskTisSTRUCTAsync();
+            await ReturnRezultVoidAsync();
+            await ReturnRezultTaskAsync();
+            await ReturnRezultTaskAsyncVol1();
+            await ReturnRezultTaskTAsyncVol2();
+            await ReturnRezultTaskTAsyncVol3();
+            await ReturnRezultVALUETaskTisSTRUCTAsync();
 
-            //await TaskWhenAllAsync();
-            //await TaskWhenAnyAsync();
-            //await TaskWhenAll2Async();
-            //await TaskWhenAny2Async();
+            await TaskWhenAllAsync();
+            await TaskWhenAnyAsync();
+            await TaskWhenAll2Async();
+            await TaskWhenAny2Async();
 
-            //ErrorProcessingVoidAsynk();
-            //await ErrorProcessingTaskAsynk();
-            //await ExceptionTaskAsync();
-            //await WhenAllTasksExceptionsAsync();
+            ErrorProcessingVoidAsynk();
+            await ErrorProcessingTaskAsynk();
+            await ExceptionTaskAsync();
+            await WhenAllTasksExceptionsAsync();
 
-            //StreemsVolAsync(); //c# 8.0
-            //StreemsVolAsync(); //c# 8.0
+            StreemsVolAsync(); //c# 8.0
+            StreemsVolAsync(); //c# 8.0
 
             Console.ReadKey();
         }
@@ -279,7 +279,7 @@ namespace Solution.Capture15_asyncProgramming_
             int iter = 0;
             foreach (var item in MasTask)
             {
-                
+
                 Console.WriteLine($"mas[{iter}] = {item}");
                 iter++;
             }
@@ -304,7 +304,7 @@ namespace Solution.Capture15_asyncProgramming_
             //так нельзя
             //MasTask = await Task.WhenAny(task2, task1, task3);
 
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 if (!task1.IsCanceled)
                     MasTas[i] = await task1;
@@ -313,7 +313,7 @@ namespace Solution.Capture15_asyncProgramming_
                 if (!task3.IsCanceled)
                     MasTas[i] = await task3;
             }
-            
+
             int iter = 0;
             foreach (var item in MasTas)
             {
@@ -346,7 +346,7 @@ namespace Solution.Capture15_asyncProgramming_
                     Console.WriteLine(message);
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
@@ -411,7 +411,7 @@ namespace Solution.Capture15_asyncProgramming_
             {
                 Console.WriteLine($"Exception : {ex.Message}");
                 Console.WriteLine($"IsFaulted: {allTasks.IsFaulted}");
-                if ( !(allTasks.Exception is null))
+                if (!(allTasks.Exception is null))
                 {
                     foreach (var item in allTasks.Exception.InnerExceptions)
                     {
@@ -460,16 +460,16 @@ namespace Solution.Capture15_asyncProgramming_
             //}
 
         }
-    }   
+    }
     public class Person
+    {
+        public string name;
+        public Person(string name)
         {
-            public string name;
-            public Person(string name)
-            {
-                this.name = name;
-            }
-
+            this.name = name;
         }
+
+    }
     class Repository
     {
         string[] data = { "Tom", "Sam", "Kate", "Alice", "Bob" };

@@ -12,12 +12,12 @@ namespace Solution.Capture2
             Console.WriteLine();
             Console.Write("input number two : 25");
             int b = 25;
-            Console.WriteLine() ;
+            Console.WriteLine();
 
             int sum = a + b;
             Console.WriteLine("sum result this numbers = " + sum);
 
-            int minus  = a - b;
+            int minus = a - b;
             Console.WriteLine("minus result this numbers = " + minus);
 
             int multiply = a * b;

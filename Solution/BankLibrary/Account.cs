@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiteLibrary
+﻿namespace SiteLibrary
 {
     public abstract class Account : IAcount
     {
@@ -100,7 +94,7 @@ namespace SiteLibrary
         public virtual void SendingAnOrder(bool Seal)
         {
             seal = Seal;
-            
+
             if (seal)
             {
                 OnProductsSended(new AccountEventArgs($"a parcel has been sent to you, receive it in 3 days and pay the amount =  = ", seal));
@@ -119,7 +113,7 @@ namespace SiteLibrary
 
         public virtual void NewMail()
         {
-            OnRegistration(new AccountEventArgs($"a message has been sent to you ",0));
+            OnRegistration(new AccountEventArgs($"a message has been sent to you ", 0));
         }
 
     }

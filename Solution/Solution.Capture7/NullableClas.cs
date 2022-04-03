@@ -5,7 +5,7 @@ namespace Solution.Capture7
     public class NullableClas
     {
         int? x = 35;
-         string? str = null;
+        string? str = null;
         bool? enable = null;
 
         public void PrinterNullable()

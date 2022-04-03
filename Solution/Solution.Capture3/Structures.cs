@@ -6,7 +6,7 @@ namespace Solution.Capture3
     {
         public string name;
         public int age;
-        public Structures(string n,int a)
+        public Structures(string n, int a)
         {
             name = n;
             age = a;

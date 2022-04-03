@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiteLibrary
 {
@@ -127,7 +123,7 @@ namespace SiteLibrary
             T account = FindAccount(id, out index);
             if (account == null)
             {
-               // throw new Exception("Account not found");
+                // throw new Exception("Account not found");
                 account.Registration(login, pasword, mail);
 
                 if (accounts.Length <= 1)

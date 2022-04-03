@@ -15,7 +15,8 @@ namespace Solution.Capture3
         }
         public override bool Equals(object obj)
         {
-            if (obj.GetType() != this.GetType()) {
+            if (obj.GetType() != this.GetType())
+            {
                 return false;
             }
             else

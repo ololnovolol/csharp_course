@@ -11,7 +11,7 @@ namespace Solution.Capture2
             Console.Write("Input your Name : ");
             string name = Console.ReadLine();
             Console.Write("Input your Age : ");
-            var age = Convert.ToInt32(Console.ReadLine());          
+            var age = Convert.ToInt32(Console.ReadLine());
             Console.Write("Input your Height : ");
 
             NumberFormatInfo nfi = new NumberFormatInfo()
@@ -19,7 +19,7 @@ namespace Solution.Capture2
                 NumberDecimalSeparator = ".",
             };
 
-            double height = Convert.ToDouble(Console.ReadLine(), nfi); 
+            double height = Convert.ToDouble(Console.ReadLine(), nfi);
 
             Console.WriteLine("First variant input");
             Console.WriteLine($"Имя: {name}  Возраст: {age}  Рост: {height}");

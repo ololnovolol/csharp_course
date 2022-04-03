@@ -4,7 +4,7 @@ namespace Solution.Capture2
 {
     public static class Methods
     {
-        public static void Met1 ()
+        public static void Met1()
         {
             Console.WriteLine("Hello i am Method Met1");
         }
@@ -13,7 +13,7 @@ namespace Solution.Capture2
             return "Hello i am Method Met2";
         }
 
-        public static void Met3(string str,string hello = "hi")
+        public static void Met3(string str, string hello = "hi")
         {
             Console.WriteLine($"Hello i am Method Met3 i have parametr = {str}");
         }
@@ -32,7 +32,7 @@ namespace Solution.Capture2
             x += y;
         }
 
-        public static  void IncrementVal(int x)
+        public static void IncrementVal(int x)
         {
             x++;
             Console.WriteLine($"IncrementVal: {x}");

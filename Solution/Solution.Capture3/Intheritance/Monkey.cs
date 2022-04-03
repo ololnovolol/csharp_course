@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Solution.Capture3.Intheritance
+﻿namespace Solution.Capture3.Intheritance
 {
     abstract class Monkey
     {

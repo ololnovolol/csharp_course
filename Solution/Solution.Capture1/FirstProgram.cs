@@ -9,6 +9,6 @@ namespace Solution.Capture1
             Console.WriteLine("Thank you Brother =)");
             Console.ReadKey();
         }
-        
+
     }
 }

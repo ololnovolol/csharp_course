@@ -1,8 +1,8 @@
 ﻿using System;
-using System.IO;
-using System.Threading.Tasks;
-using System.Threading;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Solution.Capture14_ParallelProgrammingTPL_
 {
@@ -134,7 +134,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
 
             };
 
-            foreach(var task in tasks)
+            foreach (var task in tasks)
             {
                 task.Start();
             }
@@ -151,7 +151,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
             {
                 var id = i + 1;
                 tasks[i] = new Task(() =>
-                { 
+                {
                     Thread.Sleep(10);
                     Console.WriteLine($"Task{id} is finished"); // разобпались)
                 });
@@ -185,7 +185,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
         {
             PersonForReturnsTaskClass person = new PersonForReturnsTaskClass("Tolya", 25);
             Task<PersonForReturnsTaskClass> personTask = new Task<PersonForReturnsTaskClass>(() => person);
-            personTask.Start(); 
+            personTask.Start();
 
             var personRetursResultTask = personTask.Result;
             Console.WriteLine($"name:{personRetursResultTask.Name} Age:{personRetursResultTask.Age}");
@@ -195,7 +195,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
         public static void ContinuationTasks()
         {
             Task taskOne = new Task(() => Console.WriteLine($"Id задачи: { Task.CurrentId.Value }"));
-            
+
 
             Task taskTwo = taskOne.ContinueWith(PrintForContinuatuonalTasks);
             //Task taskThree = taskTwo.ContinueWith(PrintForContinuatuonalTasks);
@@ -260,7 +260,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
         public static void ParallelFor()
         {
             // вызывается как цикл начиная с 1 до 4, в аргумент метода пердается текущий итератор
-           // Parallel.For(1, 4, MultipleForParallelVol1);
+            // Parallel.For(1, 4, MultipleForParallelVol1);
             Parallel.For(1, 5, MultipleForParallelVol1); //!!! обязательно принимает метод c параметром - ами,<<<<<<
 
             Razdelitel();
@@ -269,7 +269,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
         {
             // результатом вывода будет кол-во итераций = кол-ву елементов масива
             // каждый елемент масива попадает в аргумет метода или делената
-            ParallelLoopResult loop = Parallel.ForEach<int>(new List<int>() { 1, 3, 5, 8}, MultipleForParallelVol1);
+            ParallelLoopResult loop = Parallel.ForEach<int>(new List<int>() { 1, 3, 5, 8 }, MultipleForParallelVol1);
 
             Razdelitel();
         }
@@ -277,7 +277,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
         {
             ParallelLoopResult result = Parallel.For(1, 10, ForParallelExitingg);
 
-            if (!result.IsCompleted) 
+            if (!result.IsCompleted)
                 Console.WriteLine($"\nexecution process completed " +
                     $",but was paused for >>№{result.LowestBreakIteration}<<" +
                     $" iterations of running the thread");
@@ -329,7 +329,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
             CancellationToken token = cts.Token;
 
             Task myTask = new Task(() =>
-            {               
+            {
                 int i = 1;
                 var name = $"Task{i}";
                 Thread.CurrentThread.Name = name;
@@ -357,7 +357,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
 
             Console.WriteLine($"Task status is = {myTask.Status}");
             cts.Dispose();
-            
+
             Razdelitel();
         }
         public static void OperationCanceledExceptionVol3()
@@ -392,7 +392,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
             Console.WriteLine($"Task status = {newTask.Status}");
 
             Razdelitel();
-        }     
+        }
         public static void PrintForOperationsCancelVol3(CancellationToken t)
         {
             for (int i = 1; i < 11; i++)
@@ -417,7 +417,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
                 Console.WriteLine("----------------->Cancelation is aviable");
 
                 cts.Cancel();
-            }); 
+            });
             task.Start();
 
             try
@@ -435,7 +435,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
 
 
         }
-        
+
         public class PersonForReturnsTaskClass
         {
             private int age;
@@ -447,7 +447,7 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
                 this.age = age;
                 this.name = name;
             }
-        } 
+        }
 
     }
 }
