@@ -118,7 +118,7 @@ namespace Solution.Capture10
         public static void RegularExpressions()
         {
             string s = "Бык тупогуб, тупогубенький бычок, у быка губа бела была тупа";
-            string ss = "Жыд жыл жыва жизнь жыза жыга, жлоб жыло жыла джын джып";
+            //string ss = "Жыд жыл жыва жизнь жыза жыга, жлоб жыло жыла джын джып";
             Regex regex = new Regex(@"туп(\w*)", RegexOptions.IgnoreCase);
             MatchCollection matches = regex.Matches(s);
             if (matches.Count > 0)

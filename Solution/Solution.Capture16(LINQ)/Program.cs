@@ -13,14 +13,19 @@ namespace Solution.Capture16_LINQ_
             //part 1
             //BASEsyntaxisOPERATORSrequestLINQ();
             //BASEsyntaxisMETHODSextenshionsLINQ();
-            //part2
+            //part 2
+
+
+            //part 3
             //EnumerationinMassive();
-            //EnumerationinMassiveHard(); // опять версия с#
-            //part3
+            EnumerationinMassiveHard(); // опять версия с#
+            //part 4
             //SortNumbersOrderBy();
             //SortStringsOrderBy();
             //SortObjOrderBy();
-            SortStringsIComparerOrderBy();
+            //SortStringsIComparerOrderBy();
+            //part 5
+
 
 
             Console.ReadKey();
@@ -127,38 +132,54 @@ namespace Solution.Capture16_LINQ_
         }
         public static void EnumerationinMassiveHard()
         {
-            //    int[] AgeMas = { 55, 10, 15, 18, 25, 24, 35, 40, 80, 66 };
-            //    string[] NameMas = { "Bob", "Oleg", "Sam", "Jack", "Dick", "Pusie", "Petro", "Kim", "Tom", "JrJim", };
+            int[] AgeMas = { 55, 10, 15, 18, 25, 24, 35, 40, 80, 66 };
+            string[] NameMas = { "Bob", "Oleg", "Sam", "Jack", "Dick", "Pusie", "Petro", "Kim", "Tom", "JrJim", };
 
-            //    Dictionary<string, int> peoples = new Dictionary<string, int>();
-            //    for (int i = 0; i < AgeMas.Length; i++)
-            //    {
-            //        if (AgeMas.Length == NameMas.Length)
-            //        {
-            //            peoples.Add(NameMas[i], AgeMas[i]);
+            Dictionary<string, int> peoples = new Dictionary<string, int>();
+            for (int i = 0; i < AgeMas.Length; i++)
+            {
+                if (AgeMas.Length == NameMas.Length)
+                {
+                    peoples.Add(NameMas[i], AgeMas[i]);
+                }
+            }
 
-            //        }
-            //    }
+            int countIter = 1;
+            var peoplesCanSpeack = new List<PersonSpeack>();
+            
+            foreach (var item in peoples)
+            {
+                if (countIter % 2 == 0)
+                {
+                    peoplesCanSpeack.Add(new PersonSpeack(item.Key, item.Value, new List<string> { "English", "German" }));
+                    countIter++;
+                }
+                else
+                {
+                    peoplesCanSpeack.Add(new PersonSpeack(item.Key, item.Value, new List<string> { "Rusian", "*****" }));
+                    countIter++;
+                }
+            }
+
+            foreach (var item in peoplesCanSpeack)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine();
+
+            var selectedPeopleCanSpeackEnglish = from person in peoplesCanSpeack
+                                                 from lang in person.Language
+                                                 where lang == "English"
+                                                 where person.Age < 30
+                                                 select person;
 
 
-            //    var peoplesCanSpeack = new List<Person>
-            //{
-            //    new Person("Bobbbb", 2555, new List<string> { "english", "german" }),
-            //    new Person("Bobbbb", 2555, new List<string> { "english", "german" })
-            //};
-            //    Person p = new Person("Bob", 25, new List<string> { "english", "german" });
-            //    peoplesCanSpeack.Add(p);
 
-            //    var selectedPeople = from person in people
-            //                         from lang in person.Languages
-            //                         where person.Age < 28
-            //                         where lang == "english"
-            //                         select person;
+            foreach (var person in selectedPeopleCanSpeackEnglish)
+            {
+                Console.WriteLine(person);
+            }
 
-            //    foreach (Person person in peoplesCanSpeack)
-            //        Console.WriteLine($"{person.Name} - {person.Age}");
-
-            //record class Person(string Name, int Age, List<string> Languages);
 
         }
         public void EnumeratorOfType()
@@ -290,6 +311,38 @@ namespace Solution.Capture16_LINQ_
                 return string.Format($"Name:{Name}, Age:{Age}");
             }
         }
+        class PersonSpeack
+        {
+            public int Age { get; }
+            public string Name { get; }
+            public List<string> Language { get; set; }
+
+            public PersonSpeack(string name, int age, List<string> Language)
+            {
+                this.Name = name;
+                this.Age = age;
+                this.Language = Language;
+
+            }
+
+            public override string ToString()
+            {
+                if(Language.Count == 1)
+                {
+                    return string.Format($"Name:{Name}, Age:{Age}, Speack:{Language[0]}");
+                }
+                if(Language.Count == 2)
+                {
+                    return string.Format($"Name:{Name}, Age:{Age}, Speack:{Language[0]},{Language[1]}");
+                }
+                else
+                {
+                    return string.Format($"Name:{Name}, Age:{Age}, Speack: None=(");
+                }
+
+
+            }
+        }
         class customStringComparer : IComparer<String>
         {
             public int Compare(string x, string y)
@@ -300,7 +353,6 @@ namespace Solution.Capture16_LINQ_
             }
 
         }
-       //record class Personss(string Name, int Age);
     }
 
 }
