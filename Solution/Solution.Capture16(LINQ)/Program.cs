@@ -14,23 +14,26 @@ namespace Solution.Capture16_LINQ_
             //BASEsyntaxisOPERATORSrequestLINQ();
             //BASEsyntaxisMETHODSextenshionsLINQ();
             //part 2
-
-
+            //DataProjectionVol1();
+            //DataProjectionVol2();
+            //DataProjectionVol3();
             //part 3
             //EnumerationinMassive();
-            EnumerationinMassiveHard(); // опять версия с#
+            //EnumerationinMassiveHard(); // опять версия с#
             //part 4
             //SortNumbersOrderBy();
             //SortStringsOrderBy();
             //SortObjOrderBy();
             //SortStringsIComparerOrderBy();
             //part 5
+            //Worker();
+            HardWorker();
 
 
 
             Console.ReadKey();
         }
-        //part1
+        //part 1
         public static void BASEsyntaxisOPERATORSrequestLINQ()
         {
             string[] people = { "Sam", "Tom", "Evgen", "Tolya", "Entony", "Tony", "Oleg", "Sanya" };
@@ -102,7 +105,94 @@ namespace Solution.Capture16_LINQ_
             LastOrDefault: выбирает последний элемент коллекции или возвращает значение по умолчанию
             */
         }
-        //part2
+        //part 2
+        public static void DataProjectionVol1()
+        {
+            // создать обьект анонимного типа с помощью LINQ select new оператора LET и метода LINQ
+            var people = new List<Person>
+            {
+                new Person("Sam", 25),
+                new Person("Bob", 30),
+                new Person("Smith", 25),
+                new Person("Jordj", 55),
+                new Person("JB", 46),
+                new Person("Onyx", 33),
+            };
+
+            //var newPeople = from p in people
+            //                select new {p.Name, yearBird = ( DateTime.Now.Year - p.Age) };
+
+            var newPeople = from p in people
+                            let name = $"Mr.{p.Name}"
+                            let age = ( DateTime.Now.Year - p.Age)
+                            select new { name, age };
+
+
+            foreach (var item in newPeople)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+        public static void DataProjectionVol2()
+        {
+            // сделать выборку и слияние с нескольких обьектов класса select new
+            var people = new List<Person>
+            {
+                new Person("Sam", 25),
+                new Person("Bob", 30),
+                new Person("Smith", 25),
+                new Person("Jordj", 55),
+                new Person("JB", 46),
+                new Person("Onyx", 33),
+            };
+
+            var company = new List<Company>
+            {
+                new Company ("BBC"),
+                new Company ("node"),
+                new Company ("utp"),
+                new Company ("volya"),
+            };
+
+            var employers = from p in people
+                            from c in company
+                            orderby c.Name
+                            select new { Company = c.Name, Emploee = p.Name };
+
+
+            foreach (var item in employers)
+            {
+                Console.WriteLine(item.Company + " - " + item.Emploee);
+            }
+
+        }
+        public static void DataProjectionVol3()
+        {
+            // SelectMany с помощью оператора и метода LINQ
+            var companies = new List<SomeCompany>
+                {
+                    new SomeCompany("Google", new List<string>{"Jeremy", "Olol" }),
+                    new SomeCompany("Moogle", new List<string>{"Dim", "Dimych" }),
+                    new SomeCompany("Jungle", new List<string>{"Sam", "Gad" })
+                };
+
+            //var employers = companies.SelectMany(p => p.Stuff);
+            //var employers = from com in companies
+            //               from emp in com.Stuff
+            //               select emp;
+            var employers = from com in companies
+                            from emp in com.Stuff
+                            select new { name = com.Name, company = emp };
+
+
+            foreach (var item in employers)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+        //part 3
         public static void EnumerationinMassive()
         {
             string[] nameWithThreeLeunght = { "Tom", "Sam", "Ban", "Elice", "Karl", "Bob" };
@@ -202,6 +292,7 @@ namespace Solution.Capture16_LINQ_
             //record class Student(string Name): Person(Name);
             //    record class Employee(string Name) : Person(Name);
         }
+        //part 4
         public static void SortNumbersOrderBy()
         {
             int[] numbers = { 5, 2, 3, 9, 10, 6, 7, 8, 4, 1 };
@@ -245,7 +336,6 @@ namespace Solution.Capture16_LINQ_
             }
 
         }
-
         public static void SortObjOrderBy()
         {
             var people = new List<Person>
@@ -293,6 +383,106 @@ namespace Solution.Capture16_LINQ_
             }
 
         }
+        //part 5
+        public static void Worker()
+        {
+            string[] species = { "перец", "соль", "10_овощей", "паприка", "карри", };
+            string[] speseasoningcies = { "сахар", "перец", "паприка", "соевый_соус", "темьян", };
+
+            Excepter(species, speseasoningcies);
+            Intersecter(species, speseasoningcies);
+            Distincter(species);
+            Distincter(speseasoningcies);
+            Unioner(species, speseasoningcies);
+            Concater(species, speseasoningcies);
+
+        }
+        public static void Excepter(string[] one, string[] two)
+        {
+            // Except() можно получить разность двух последовательностей:
+            var result = one.Except(two);
+
+            foreach(var item in result)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("---------------");
+
+        }
+        public static void Intersecter(string[] one, string[] two)
+        {
+            // Intersect Для получения пересечения последовательностей
+            var result = one.Intersect(two);
+
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("---------------");
+        }
+        public static void Distincter(string[] one)
+        {
+            // Для удаления дублей в наборе используется метод Distinct:
+            var result = one.Distinct();
+
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("---------------");
+        }
+        public static void Unioner(string[] one, string[] two)
+        {
+            // для объединения двух последовательностей используется метод Union и убирает дубли
+            var result = one.Union(two);
+
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("---------------");
+        }
+        public static void Concater(string[] one, string[] two)
+        {
+            // Если же нам нужно простое объединение двух наборов, то мы можем использовать метод Concat:
+            var result = one.Concat(two);
+
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("---------------");
+
+        }
+        public static void HardWorker()
+        {
+            //Работа со сложными объектами
+            //Для сравнения объектов в последовательностях применяются
+            //реализации методов GetHeshCode() и Equals(). 
+            //Поэтому если мы хотим работать с последовательностями, 
+            //которые содержат объекты своих классов и структур, то нам
+            //необходимо определить для них подобные методы:
+            var pers1 = new List<Person>{new Person("po", 25), new Person("by", 35), new Person("bi", 45), new Person("bi", 45) };
+            var pers2 = new List<Person> { new Person("po", 52), new Person("py", 53), new Person("bi", 54) };
+
+            //var young = pers1.Distinct();
+            var young = pers2.Except(pers1);
+            //var young = pers1.Intersect(pers2);
+            //var young = pers1.Union(pers2);
+            //var young = pers1.Concat(pers2);
+
+            foreach (var item in young)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+
 
         class Person
         {
@@ -309,6 +499,31 @@ namespace Solution.Capture16_LINQ_
             public override string ToString()
             {
                 return string.Format($"Name:{Name}, Age:{Age}");
+            }
+
+            public override int GetHashCode() => Name.GetHashCode();
+
+            public override bool Equals(object obj)
+            {
+                if (obj is Person person) return Name.Equals(person.Name);
+                return false;
+            }
+        }
+        class Company
+        {
+            public string Name { get; set; }
+            public Company(string name)
+            {
+                Name = name;
+            }
+        }
+        class SomeCompany : Company
+        {
+           public List<string> Stuff;
+
+            public SomeCompany(string name, List<string> stuff) : base(name)
+            {
+                Stuff = stuff;
             }
         }
         class PersonSpeack
