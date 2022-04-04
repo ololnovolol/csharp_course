@@ -15,23 +15,23 @@ namespace Solution.Capture14_ParallelProgrammingTPL_
                 string line;
                 while ((line = sm.ReadLine()) != null)
                 {
-                    //BasePrincipsTasks();
-                    //WaitMethodTaskPrincipis();
-                    //SynhroStartedTasks();
-                    //NestedTask();
-                    //MassiveTaskVar1();
-                    //MassiveTaskVar2();
-                    //ReturnsTaskMethod();
-                    //ReturnsTaskClass();
-                    //ContinuationTasks();
-                    //ContinuationTaskVol2();
-                    //ParalellClassOfTasVol1();
-                    //ParallelFor();
-                    //ParallelForEach();
-                    //ParallelExitingForOperatorBreack();
-                    //SoftOperationCanceledExceptionVol1();
-                    //SoftOperationCanceledExceptionVol2();
-                    //OperationCanceledExceptionVol3();
+                    BasePrincipsTasks();
+                    WaitMethodTaskPrincipis();
+                    SynhroStartedTasks();
+                    NestedTask();
+                    MassiveTaskVar1();
+                    MassiveTaskVar2();
+                    ReturnsTaskMethod();
+                    ReturnsTaskClass();
+                    ContinuationTasks();
+                    ContinuationTaskVol2();
+                    ParalellClassOfTasVol1();
+                    ParallelFor();
+                    ParallelForEach();
+                    ParallelExitingForOperatorBreack();
+                    SoftOperationCanceledExceptionVol1();
+                    SoftOperationCanceledExceptionVol2();
+                    OperationCanceledExceptionVol3();
                     ParallelCAnselation();
 
 

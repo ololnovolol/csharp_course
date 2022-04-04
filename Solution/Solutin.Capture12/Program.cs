@@ -10,15 +10,15 @@ namespace Solutin.Capture12
     {
         static void Main(string[] args)
         {
-            //LazyIni();
-            // MathClass();
-            // ConvertTypes();
-            // ArrayStaticClass();
-            //SpanStructMemryBostEffectPerformanse();
+            LazyIni();
+            MathClass();
+            ConvertTypes();
+            ArrayStaticClass();
+            SpanStructMemryBostEffectPerformanse();
 
 
-            // Program p = new Program();
-            // p.CatalogsGetSet();
+            Program p = new Program();
+            p.CatalogsGetSet();
 
 
             Console.ReadKey();
@@ -33,14 +33,10 @@ namespace Solutin.Capture12
 
         public static void MathClass()
         {
-            int firstValue = 15;
-            int secondValue = 25; ;
             Console.WriteLine(Math.Abs(-12.5));
             double result1 = Math.Round(20.56); // 21
             double result2 = Math.Round(20.46); //20
             double result = Math.Truncate(16.89); // 16
-
-
 
         }
 

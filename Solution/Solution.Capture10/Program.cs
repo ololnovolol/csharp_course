@@ -8,9 +8,9 @@ namespace Solution.Capture10
     {
         static void Main(string[] args)
         {
-            //VariableMethodString();
-            //FormatNumbers();
-            //CreateStringBuilder();
+            VariableMethodString();
+            FormatNumbers();
+            CreateStringBuilder();
             RegularExpressions();
 
         }
