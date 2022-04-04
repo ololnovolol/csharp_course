@@ -27,7 +27,19 @@ namespace Solution.Capture16_LINQ_
             //SortStringsIComparerOrderBy();
             //part 5
             //Worker();
-            HardWorker();
+            //HardWorker();
+            //pert 6
+            //AgregateOperation();
+            //part 7
+            //SkipTakeSkipWhileTakeWhile();
+            //part 8
+            //Group();
+            //GroupObj();
+            GroupeWithSubqueries();
+            // part 9
+
+
+
 
 
 
@@ -481,6 +493,145 @@ namespace Solution.Capture16_LINQ_
                 Console.WriteLine(item);
             }
         }
+        //part 6
+        public static void AgregateOperation()
+        {
+            int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            int[] go =
+                {
+                numbers.Aggregate((x, y) => x - y),
+                numbers.Aggregate((x, y) => x + y),
+                numbers.Count(),
+                numbers.Sum(),
+                numbers.Min(),
+                numbers.Max(),
+                (int)numbers.Average()
+                };
+
+            foreach (var item in go)
+            {
+                Console.WriteLine(item);
+            }
+
+            var person = new List<Person>
+            {
+                    new Person("One", 1),
+                    new Person("Two", 1),
+                    new Person("Three", 1)
+            };
+
+            int minAge = person.Min(p => p.Age); // минимальный возраст
+            int maxAge = person.Max(p => p.Age); // максимальный возраст
+            double averageAge = person.Average(p => p.Age); //средний возраст
+
+            Console.WriteLine($"Min Age: {minAge}");           // Min Age: 28
+            Console.WriteLine($"Max Age: {maxAge}");           // Max Age: 41
+            Console.WriteLine($"Average Age: {averageAge}");   // Average Age: 35,33
+
+        }
+        //part 7
+        public static void SkipTakeSkipWhileTakeWhile()
+        {
+            string[] people = { "Tom", "Sam", "Bob", "Mike", "Kate", "Alice" };
+
+            //var result = people.Skip(2);
+            //var result = people.SkipWhile(p => p.Length == 3);
+            //var result = people.Take(3);
+            //var result = people.TakeWhile(p => p.Length == 3);
+            var result = people.Skip(3).Take(2);
+
+            foreach (var person in result)
+                Console.WriteLine(person);
+
+
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        //part 8
+        public static void Group()
+        {
+            var people = new List<Person>
+            {
+                new Person("Tom", "Microsoft"), new Person("Sam", "Google"),
+                new Person("Bob", "JetBrains"), new Person("Mike", "Microsoft"),
+                new Person("Kate", "JetBrains"), new Person("Alice", "Microsoft"),
+            };
+
+            //var groupe = from p in people
+            //             group p by p.CompanyName;
+
+            var groupe = people.GroupBy(p => p.CompanyName);
+
+            foreach (var company in groupe)
+            {
+                Console.WriteLine(company.Key);
+
+                foreach (var person in company)
+                {
+                    Console.WriteLine(person.Name);
+                }
+                Console.WriteLine("-------"); // для разделения между группами
+            }
+        }
+        public static void GroupObj()
+        {
+            var people = new List<Person>
+            {
+                    new Person("Tom", "Microsoft"), new Person("Sam", "Google"),
+                    new Person("Bob", "JetBrains"), new Person("Mike", "Microsoft"),
+                    new Person("Kate", "JetBrains"), new Person("Alice", "Microsoft"),
+             };
+
+            var companies = people
+                    .GroupBy(p => p.CompanyName)
+                    .Select(g => new { Name = g.Key, Count = g.Count() });
+
+
+            foreach (var company in companies)
+            {
+                Console.WriteLine($"{company.Name} : {company.Count}");
+            }
+
+        }
+        public static void GroupeWithSubqueries()
+        {
+            Person[] people =
+            {
+                new Person("Tom", "Microsoft"), new Person("Sam", "Google"),
+                new Person("Bob", "JetBrains"), new Person("Mike", "Microsoft"),
+                new Person("Kate", "JetBrains"), new Person("Alice", "Microsoft"),
+            };
+
+            //var companies = from person in people
+            //                group person by person.CompanyName into g
+            //                select new
+            //                {
+            //                    Name = g.Key,
+            //                    Count = g.Count(),
+            //                    Employees = from p in g select p
+            //                };
+
+            var companies = people.GroupBy(p => p.CompanyName).Select(g => new
+                    {
+                        Name = g.Key,
+                        Count = g.Count(),
+                        Employees = g.Select(p => p)
+                    });
+
+            foreach (var company in companies)
+            {
+                Console.WriteLine($"{company.Name} : {company.Count}");
+                foreach (var employee in company.Employees)
+                {
+                    Console.WriteLine(employee.Name);
+                }
+                Console.WriteLine("--------------");
+            }
+        }
+        //part 9
 
 
 
@@ -488,11 +639,18 @@ namespace Solution.Capture16_LINQ_
         {
             public int Age { get; }
             public string Name { get; }
+            public string CompanyName {  get; }
 
             public Person(string name, int age)
             {
                 this.Name = name;
                 this.Age = age;
+
+            }
+            public Person(string name, string cName)
+            {
+                this.Name = name;
+                CompanyName = cName;
 
             }
 
