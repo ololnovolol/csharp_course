@@ -5,4 +5,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Solution.Capture12\Solution.Capture12.csproj" />
+  </ItemGroup>
+
 </Project>

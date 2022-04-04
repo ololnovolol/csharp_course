@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Solution.Capture12\Solution.Capture12.csproj" />
     <ProjectReference Include="..\Solution.Capture1\Solution.Capture1.csproj" />
   </ItemGroup>
 

@@ -194,7 +194,7 @@ namespace Solution.Capture16_LINQ_
                 this.Languages = Languages;
             }
         }
-        record class Personss(string Name, int Age);
+       // record class Personss(string Name, int Age);
     }
 
 }
