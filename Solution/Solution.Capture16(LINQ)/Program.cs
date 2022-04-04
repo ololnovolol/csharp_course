@@ -177,6 +177,10 @@ namespace Solution.Capture16_LINQ_
             //record class Student(string Name): Person(Name);
             //    record class Employee(string Name) : Person(Name);
         }
+        public static void OperathorOrderBy()
+        {
+
+        }
 
         class Person
         {
@@ -194,7 +198,7 @@ namespace Solution.Capture16_LINQ_
                 this.Languages = Languages;
             }
         }
-       // record class Personss(string Name, int Age);
+       //record class Personss(string Name, int Age);
     }
 
 }
