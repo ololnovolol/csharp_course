@@ -16,7 +16,11 @@ namespace Solution.Capture16_LINQ_
             //part2
             //EnumerationinMassive();
             //EnumerationinMassiveHard(); // опять версия с#
-
+            //part3
+            //SortNumbersOrderBy();
+            //SortStringsOrderBy();
+            //SortObjOrderBy();
+            SortStringsIComparerOrderBy();
 
 
             Console.ReadKey();
@@ -177,26 +181,124 @@ namespace Solution.Capture16_LINQ_
             //record class Student(string Name): Person(Name);
             //    record class Employee(string Name) : Person(Name);
         }
-        public static void OperathorOrderBy()
+        public static void SortNumbersOrderBy()
         {
+            int[] numbers = { 5, 2, 3, 9, 10, 6, 7, 8, 4, 1 };
+            // отсортировать масив чисел с помощью OrderBy метода оператора расширения
+            var numbersSort = from n in numbers
+                              where n > 0
+                              orderby n
+                              select n;
+
+            foreach (var item in numbersSort)
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine();
+            // отсортировать масив чисел с помощью OrderByDescending() метода расширения
+            var numbersDescendingSort = numbers.OrderByDescending(x => x);
+            foreach (var item in numbersDescendingSort)
+            {
+                Console.Write(item + " ");
+            }
+
+        }
+        public static void SortStringsOrderBy()
+        {
+            string[] strings = { "Samuel", "Ed", "Thomas", "D", "GoldenRush", "abc", "-Tp-Link" };
+            //  отсортировать масив строк помощью OrderBy по алфавиту
+            var stringsSortAZ = from n in strings
+                                orderby n
+                                select n;
+
+            foreach (var item in stringsSortAZ)
+            {
+                Console.Write("_" + item);
+            }
+            Console.WriteLine();
+            //  отсортировать масив строк помощью OrderBy метода расширения по длинне строки
+            var stringsLeunghtSort = strings.OrderBy(s => s.Length);
+            foreach (var item in stringsLeunghtSort)
+            {
+                Console.Write("_" + item);
+            }
+
+        }
+
+        public static void SortObjOrderBy()
+        {
+            var people = new List<Person>
+            {
+                new Person("Sam", 25),
+                new Person("Thor", 10),
+                new Person("Ban", 80),
+                new Person("Lol", 65),
+                new Person("Oleg", 32),
+            };
+
+            //   отсортировать масив обьектов с помощью OrderBy метода расширения
+            var peoplesOrderByAge = people.OrderBy(x => x.Age);
+            var peoplesOrderByName = people.OrderBy(x => x.Name);
+
+            //   отсортировать масив обьектов с помощью OrderByDescending() и OrderByAscending()метода расширения
+            var peoplesOrderNameZAAgeAscend = people.OrderByDescending(x => x.Name).OrderBy(y => y.Age);
+
+            foreach (var item in peoplesOrderNameZAAgeAscend)
+            {
+                Console.WriteLine("Age: " + item.Age + ", " + "Name: " + item.Name);
+            }
+            Console.WriteLine();
+
+            //   отсортировать масив обьектов с помощью OrderByDescending() и OrderByAscending()операторров
+            var peoplesOrderNameAZAgeDescend = from n in people
+                                               orderby n.Name, n.Age
+                                               select n;
+            foreach (var item in peoplesOrderNameAZAgeDescend)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+        }
+        public static void SortStringsIComparerOrderBy()
+        {
+            string[] strings = { "Samuel", "Ed", null, "D", "GoldenRush", "abc", "-Tp-Link" };
+            //  отсортировать масив строк помощью созданного CustomStringComparer : IComparer<String>
+
+            var stringSortByMyICOmparer = strings.OrderBy(s => s, new customStringComparer());
+
+            foreach (var item in stringSortByMyICOmparer)
+            {
+                Console.WriteLine(item);
+            }
 
         }
 
         class Person
         {
-            string name;
-            int age;
-            public List<string> Languages;
-
             public int Age { get; }
             public string Name { get; }
 
-            public Person(string name, int age, List<string> Languages)
+            public Person(string name, int age)
             {
-                this.name = name;
-                this.age = age;
-                this.Languages = Languages;
+                this.Name = name;
+                this.Age = age;
+
             }
+
+            public override string ToString()
+            {
+                return string.Format($"Name:{Name}, Age:{Age}");
+            }
+        }
+        class customStringComparer : IComparer<String>
+        {
+            public int Compare(string x, string y)
+            {
+                int xLength = x?.Length ?? 0; // если x равно null, то длина 0
+                int yLength = y?.Length ?? 0;
+                return xLength - yLength;
+            }
+
         }
        //record class Personss(string Name, int Age);
     }
