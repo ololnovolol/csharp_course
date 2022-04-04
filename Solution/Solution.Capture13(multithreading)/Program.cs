@@ -14,13 +14,13 @@ namespace Solution.Capture13_multithreading_
                 string line;
                 while ((line = sm.ReadLine()) != null)
                 {
-                    //ThreadBase();
-                    //ThreadUseDelegate();
-                    //ThreadsDuplet();
-                    //ThreadDupletObj();
-                    // SynchronizationThreads.Synhro();
-                    //monitorMethod();
-                    //autoResetEventMethod();
+                    ThreadBase();
+                    ThreadUseDelegate();
+                    ThreadsDuplet();
+                    ThreadDupletObj();
+                    SynchronizationThreads.Synhro();
+                    monitorMethod();
+                    autoResetEventMethod();
 
                 }
                 Console.ReadKey();
