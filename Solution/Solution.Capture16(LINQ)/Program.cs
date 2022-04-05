@@ -8,42 +8,50 @@ namespace Solution.Capture16_LINQ_
     {
         static void Main(string[] args)
         {
-            //SelectLinq.txt key : value
-
-            //part 1
-            //BASEsyntaxisOPERATORSrequestLINQ();
-            //BASEsyntaxisMETHODSextenshionsLINQ();
-            //part 2
-            //DataProjectionVol1();
-            //DataProjectionVol2();
-            //DataProjectionVol3();
-            //part 3
-            //EnumerationinMassive();
-            //EnumerationinMassiveHard(); // опять версия с#
-            //part 4
-            //SortNumbersOrderBy();
-            //SortStringsOrderBy();
-            //SortObjOrderBy();
-            //SortStringsIComparerOrderBy();
-            //part 5
-            //Worker();
-            //HardWorker();
-            //pert 6
-            //AgregateOperation();
-            //part 7
-            //SkipTakeSkipWhileTakeWhile();
-            //part 8
-            //Group();
-            //GroupObj();
-            GroupeWithSubqueries();
-            // part 9
-
-
-
-
-
+                            
+            Play();
 
             Console.ReadKey();
+        }
+
+        public static void Play()
+        {
+            BASEsyntaxisOPERATORSrequestLINQ();
+            BASEsyntaxisMETHODSextenshionsLINQ();
+
+            DataProjectionVol1();
+            DataProjectionVol2();
+            DataProjectionVol3();
+
+            EnumerationinMassive();
+            EnumerationinMassiveHard(); // опять версия с#
+
+            SortNumbersOrderBy();
+            SortStringsOrderBy();
+            SortObjOrderBy();
+            SortStringsIComparerOrderBy();
+
+            Worker();
+            HardWorker();
+
+            AgregateOperation();
+
+            SkipTakeSkipWhileTakeWhile();
+
+            Group();
+            GroupObj();
+            GroupeWithSubqueries();
+
+            WorkJoin();
+
+            Checks();
+
+            Deferred();
+            Immediate();
+
+            DelegateinOperations();
+
+
         }
         //part 1
         public static void BASEsyntaxisOPERATORSrequestLINQ()
@@ -614,6 +622,7 @@ namespace Solution.Capture16_LINQ_
             //                    Employees = from p in g select p
             //                };
 
+            
             var companies = people.GroupBy(p => p.CompanyName).Select(g => new
                     {
                         Name = g.Key,
@@ -632,6 +641,176 @@ namespace Solution.Capture16_LINQ_
             }
         }
         //part 9
+        public static void WorkJoin()
+        {
+            var people = new List<Person>
+            {
+                new Person("Senya", "NazTextile"),
+                new Person("Oleg", "NazTextile"),
+                new Person("Serg", "Elmir"),
+                new Person("BOB", "bbc")
+            };
+
+            var companies = new List<Company>
+            {
+                new Company("NazTextile", "Rus"),
+                new Company("NazTextile", "Ukr"),
+                new Company("Elmir", "Ukr"),
+                new Company("gga", "dodik")
+            };
+
+            JoinerVar1(people, companies);
+            Console.WriteLine();
+            JoinerVar2(people, companies);
+            Console.WriteLine();
+            JoinerVar3(people, companies);
+
+        }
+        static void JoinerVar1(List<Person> people, List<Company> companies)
+        {
+            var joinPersons = from p in people
+                              join c in companies on p.CompanyName equals c.Name
+                              select new { Name = p.Name, CompanyName = c.Name, Language = c.Language };
+
+            foreach (var item in joinPersons)
+            {
+                Console.WriteLine(item);
+
+            }
+        }
+        static void JoinerVar2(List<Person> people, List<Company> companies)
+        {
+            var joinPersons = people.Join(companies, p => p.CompanyName, c => c.Name, (p, c) => new { Name = p.Name, CompanyName = c.Name, Language = c.Language });
+
+            foreach (var item in joinPersons)
+            {
+                Console.WriteLine(item);
+
+            }
+        }
+        static void JoinerVar3(List<Person> people, List<Company> companies)
+        {
+           // var joinPersons = companies.GroupJoin(people, c => c.Name, p => p.CompanyName, (c, employers)=> new {nameCOMPANY = c.Name, Employee = employers});
+            var joinPersons = from c in companies
+                              join p in people on c.Name equals p.CompanyName into g
+                              select new { nameCOMPANY = c.Name, Employee = g};
+
+            foreach (var item in joinPersons)
+            {
+                Console.WriteLine(item.nameCOMPANY);
+                foreach (var item1 in item.Employee )
+                {
+                    Console.Write(item1.Name+"\n");
+                }
+                Console.WriteLine();
+
+            }
+        }
+        //part 10
+        public static void Checks()
+        {
+            string[] people = { "Tom", "Bob", "Kate", "Tim", "Mike", "Sam" };
+
+            //all
+            var peopleAll = people.All(p => p.Length > 3);
+            Console.WriteLine(peopleAll);
+            //any
+            var peopleAny = people.Any(p => p.Length > 3);
+            Console.WriteLine(peopleAny);
+            //Contains
+            var peopleContains = people.Contains("T");
+            Console.WriteLine(peopleContains);
+            //First
+            var peopleFirst = people.First();
+            Console.WriteLine(peopleFirst);
+            //FirstOrdefault
+            var peopleFirstorDef = people.FirstOrDefault(p => p.Length == 5);
+            Console.WriteLine(peopleFirstorDef);
+            //Last 
+            var peopleLast = people.Last();
+            Console.WriteLine(peopleLast);
+            //LastOrDefault
+            var peopleLastorDef = people.LastOrDefault(p => p.Length == 5);
+            Console.WriteLine(peopleLastorDef);
+        }
+        //part 11
+        public static void Deferred()
+        {
+            //AsEnumerable
+
+            //Cast Concat  DefaultIfEmpty  Distinct  Except  GroupBy
+
+            //GroupJoin  Intersect  Join  OfType  OrderBy  OrderByDescending
+
+            //Range  Repeat  Reverse  Select  SelectMany  Skip
+
+            //SkipWhile  Take  TakeWhile  ThenBy  ThenByDescending
+
+            //Union  Where
+
+            string[] people = { "Tom", "Sam", "Bob" };
+
+            var selectedPeople = people.Where(s => s.Length == 3).OrderBy(s => s);
+
+            people[2] = "Mike"; // не активно !!!! нужно понимать что данная часть не будет учтена
+
+
+            // выполнение LINQ-запроса
+            foreach (string s in selectedPeople)
+                Console.WriteLine(s);
+
+            people[2] = "Mike"; // не активно !!!! и даже после первого перебора
+
+            foreach (string s in selectedPeople)
+                Console.WriteLine(s);
+
+
+        }
+        public static void Immediate()
+        {
+            //Aggregate  All  Any  Average  Contains  Count  ElementAt  ElementAtOrDefault
+
+            //Empty  First  FirstOrDefault  Last  LastOrDefault  LongCount  Max  Min
+
+            //SequenceEqual  Single  SingleOrDefault  Sum  ToArray  ToDictionary  ToList
+
+            //ToLookup
+
+            string[] people = { "Tom", "Sam", "Bob" };
+            // определение LINQ-запроса
+            var selectedPeople = people.Where(s => s.Length == 3).OrderBy(s => s);
+            // выполнение запроса
+            Console.WriteLine(selectedPeople.Count());   // 3 - до изменения коллекции
+
+            people[2] = "Mike";
+            // выполнение запроса
+            Console.WriteLine(selectedPeople.Count());   // 2 - после изменения коллекции
+
+
+        }
+        // part 12
+        public static void DelegateinOperations()
+        {
+            string[] people = { "Tom", "Bob", "Kate", "Tim", "Mike", "Sam" };
+
+            var result = people.Where(LenghtIs3);
+
+            foreach (var person in result)
+                Console.WriteLine(person);
+
+            bool LenghtIs3(string name) => name.Length == 3;
+
+
+
+            int[] numbers = { -2, -1, 0, 1, 2, 3, 4, 5, 6, 7 };
+
+            var result2 = numbers.Where(i => i > 0).Select(Square);
+
+            foreach (int i in result2)
+                Console.WriteLine(i);
+
+            int Square(int n) => n * n;
+        }
 
 
 
@@ -670,9 +849,15 @@ namespace Solution.Capture16_LINQ_
         class Company
         {
             public string Name { get; set; }
+            public string Language { get; set; }
             public Company(string name)
             {
                 Name = name;
+            }
+            public Company(string cName, string language)
+            {
+                Name = cName;
+                Language = language;
             }
         }
         class SomeCompany : Company
