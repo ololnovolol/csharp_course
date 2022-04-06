@@ -29,8 +29,8 @@ namespace Solution.Capture15_asyncProgramming_
             await ExceptionTaskAsync();
             await WhenAllTasksExceptionsAsync();
 
-            StreemsVolAsync(); //c# 8.0
-            StreemsVolAsync(); //c# 8.0
+            //StreemsVolAsync(); //c# 8.0
+            //StreemsVolAsync(); //c# 8.0
 
             Console.ReadKey();
         }
@@ -429,37 +429,37 @@ namespace Solution.Capture15_asyncProgramming_
             }
         }
         //part5
-        public static async Task StreemsAsync()
-        {
-            //код не работает в данной версии с# !!!need ->8.0!!!
-            // важно понимать
-            //Фактически асинхронный стрим объединяет
-            //асинхронность и итераторы
+        //public static async Task StreemsAsync()
+        //{
+        //    //код не работает в данной версии с# !!!need ->8.0!!!
+        //    // важно понимать
+        //    //Фактически асинхронный стрим объединяет
+        //    //асинхронность и итераторы
 
-            //await foreach (var number in GetNumbersAsync())
-            //{
-            //    Console.WriteLine(number);
-            //}
+        //    //await foreach (var number in GetNumbersAsync())
+        //    //{
+        //    //    Console.WriteLine(number);
+        //    //}
 
-            //async IAsyncEnumerable<int> GetNumbersAsync()
-            //{
-            //    for (int i = 0; i < 10; i++)
-            //    {
-            //        await Task.Delay(100);
-            //        yield return i;
-            //    }
-            //}
-        }
-        public static async Task StreemsVolAsync()
-        {
-            //Repository repo = new Repository();
-            //IAsyncEnumerable<string> data = repo.GetDataAsync();
-            //await foreach (var name in data)
-            //{
-            //    Console.WriteLine(name);
-            //}
+        //    //async IAsyncEnumerable<int> GetNumbersAsync()
+        //    //{
+        //    //    for (int i = 0; i < 10; i++)
+        //    //    {
+        //    //        await Task.Delay(100);
+        //    //        yield return i;
+        //    //    }
+        //    //}
+        //}
+        //public static async Task StreemsVolAsync()
+        //{
+        //    //Repository repo = new Repository();
+        //    //IAsyncEnumerable<string> data = repo.GetDataAsync();
+        //    //await foreach (var name in data)
+        //    //{
+        //    //    Console.WriteLine(name);
+        //    //}
 
-        }
+        //}
     }
     public class Person
     {

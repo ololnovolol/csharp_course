@@ -1,7 +1,5 @@
-﻿
-using System;
-using System.Reflection;
-using System.Linq;
+﻿using System.Reflection;
+
 
 namespace Solution.Capture18_Reflection_
 {
@@ -139,17 +137,27 @@ namespace Solution.Capture18_Reflection_
         public static void Worker()
         {
             Type type1 = typeof(PersonNonGratt1);
-            Type type2 = typeof(Solution.Test.PersonNonGratt2);
-            
+            Type type2 = typeof(Test.PersonNonGratt2);
 
-            Part3Test1(type1.Name + " Class", type1);
-            Part3Test1(type2.Name + " Class", type2);
+
+            //Part3InfoMethods(type1.Name + " Class", type1);
+            //Part3InfoMethods(type2.Name + " Class", type2);
+
+            //Part3InfoParams(type1.Name + " Class", type1);
+
+            //CallPublicMethod(type1.Name + " Class", type1);
+            //CallPrivateMethod(type1.Name + " Class", type1);
+            //Console.WriteLine(CallPrivateMethod( type1));
+            // CallWithDoubleAndTrancendParameters(type1.Name + " Class", type1);
+            //CallTtypes();
+
         }
-        public static void Part3Test1(string name, Type type)
+        public static void Part3InfoMethods(string name, Type type)
         {
 
             Console.WriteLine(name);
-            foreach (var item in type.GetMethods().Where(m => !m.Name.StartsWith("get_") && !m.Name.StartsWith("set_")))
+            foreach (var item in type.GetMethods(System.Reflection.BindingFlags.DeclaredOnly | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic).Where(m => !m.Name.StartsWith("get_") && !m.Name.StartsWith("set_")))
             {
                 string modyficator = "";
 
@@ -179,7 +187,104 @@ namespace Solution.Capture18_Reflection_
             Console.WriteLine();
 
         }
-  
+        public static void Part3InfoParams(string name, Type type)
+        {
+            Console.WriteLine(name);
+            foreach (var item in type.GetMethods())
+            {
+                ParameterInfo[] parametrs = item.GetParameters();
+                string modific = " ";
+
+                Console.Write($"{item.ReturnType.Name} {item.Name} (");
+
+                for (int i = 0; i < parametrs.Length; i++)
+                {
+                    if (parametrs[i].IsIn)
+                    {
+                        modific += " In";
+                    }
+                    if (parametrs[i].IsOut)
+                    { 
+                        modific += " out";
+                    }
+
+                    Console.Write($" {parametrs[i].ParameterType.Name} {parametrs[i].Name}");
+
+                    if (parametrs[i].HasDefaultValue) Console.Write($"={parametrs[i].DefaultValue}");
+                    if (i < parametrs.Length - 1)
+                    {
+                        Console.Write(",");
+                    }
+                }
+
+                Console.Write(");");
+                Console.WriteLine();
+
+            }
+        }
+        public static void CallPublicMethod(string name, Type type)
+        {
+            Console.WriteLine(name);
+
+            PersonNonGratt1 objectOne = new PersonNonGratt1("moveee");
+            var paramsss = type.GetMethod("Puck");
+
+            paramsss?.Invoke(objectOne, parameters: null);
+        }
+        public static void CallPrivateMethod(string name, Type type)
+        {
+            Console.WriteLine(name);
+
+            PersonNonGratt1 objectOne = new PersonNonGratt1("moveee");
+            string nameMethod = String.Format("belching").Replace('b', 'B');
+
+            var serj = type.GetMethod((nameMethod), System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+
+            serj?.Invoke(objectOne, parameters: null);
+        }
+        public static object CallPrivateMethod(Type type)
+        {
+            
+            PersonNonGratt1 objectOne = new PersonNonGratt1("moveee");
+            string nameMethod = String.Format("belching").Replace('b', 'B');
+
+            var serj = type.GetMethod((nameMethod), System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);          
+            
+            var result = serj?.Invoke(objectOne, parameters: null);
+
+            return result;
+        }
+        public static void CallWithDoubleAndTrancendParameters(string name, Type type)
+        {
+            Console.WriteLine(name);
+
+            PersonNonGratt1 p1 = new PersonNonGratt1();
+
+            var human = type.GetMethod("Say", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Static
+                | System.Reflection.BindingFlags.Public);
+
+            human?.Invoke(p1, new object[] { "Privet" });
+
+
+
+        }
+        public static void CallTtypes()
+        {
+            Console.WriteLine();
+
+            PersonNonGratt1 p1 = new PersonNonGratt1();
+
+            var getMethod = typeof(PersonNonGratt1).GetMethod("Print");
+
+            var getTMethod = getMethod?.MakeGenericMethod(typeof(string));
+
+            var result = getTMethod.Invoke(p1, new object[] { "a4" });
+
+
+
+
+        }
+
 
     }
 
