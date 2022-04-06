@@ -17,6 +17,12 @@ namespace Solution.Capture18_Reflection_
         public PersonNonGratt1()
         {
         }
+        protected  PersonNonGratt1(int age, string name)
+        {
+
+        }
+
+
         public static void Say(string message)
         {
             Console.WriteLine(message);

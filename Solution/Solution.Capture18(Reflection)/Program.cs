@@ -11,7 +11,7 @@ namespace Solution.Capture18_Reflection_
             //GetMembers();
             //BindingFlags();
             //resultComponents();
-            Worker();
+            //Worker();
 
 
             Console.ReadKey();
@@ -132,7 +132,6 @@ namespace Solution.Capture18_Reflection_
                 Console.WriteLine($"{item.DeclaringType} {item.MemberType} {item.Name}");
             }
         }
-
         //part 3
         public static void Worker()
         {
@@ -150,6 +149,7 @@ namespace Solution.Capture18_Reflection_
             //Console.WriteLine(CallPrivateMethod( type1));
             // CallWithDoubleAndTrancendParameters(type1.Name + " Class", type1);
             //CallTtypes();
+           // GetCtor();
 
         }
         public static void Part3InfoMethods(string name, Type type)
@@ -284,7 +284,44 @@ namespace Solution.Capture18_Reflection_
 
 
         }
+        public static void GetCtor()
+        {
+            var p1 = typeof(PersonNonGratt1);
 
+            foreach (ConstructorInfo ctor in p1.GetConstructors(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.NonPublic))
+            {
+                Console.WriteLine();
+                string paramss = "";
+                if(ctor.IsAbstract) paramss += "abstract";
+                if (ctor.IsPublic) paramss += "public";
+                if (ctor.IsPrivate) paramss += "sealed";
+                if (ctor.IsPrivate) paramss += "private";
+                if (ctor.IsAbstract) paramss += "abstract";
+                if (ctor.IsVirtual) paramss += "virtual";
+                if (ctor.IsAssembly) paramss += "internal";
+                if (ctor.IsFamily) paramss += "protected";
+
+                ParameterInfo[] pi = ctor.GetParameters();
+
+                Console.Write($"{paramss} {p1.Name}( ");
+
+                for (int i = 0; i < pi.Length; i++)
+                {
+                    var param = pi[i];
+                    Console.Write($"{pi[i].ParameterType.Name} {pi[i].Name}");
+                    if (i < pi.Length - 1) Console.Write(", ");
+                }
+                Console.Write(" )");
+
+            }
+            Console.WriteLine();
+        }
+        //part 4
+
+        //part 5
+
+        //part 6
 
     }
 
