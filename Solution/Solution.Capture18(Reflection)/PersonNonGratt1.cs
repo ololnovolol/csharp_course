@@ -14,12 +14,16 @@ namespace Solution.Capture18_Reflection_
         {
             this.name = name;
         }
-        void Say()
+        public void Say()
         {
             Console.WriteLine(name);
         }
 
         public void Eat()
+        {
+            Console.WriteLine("Eating"); ;
+        }
+        private static void Eat(string ame)
         {
             Console.WriteLine("Eating"); ;
         }
