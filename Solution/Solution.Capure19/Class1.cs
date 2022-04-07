@@ -6,10 +6,41 @@ using System.Threading.Tasks;
 
 namespace Solution.Capure19
 {
-    public class Program
+    class Program
 
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
+        {
+            //Runner();
+
+            var bee1 = new Bee("jo", 10);
+            var bee2 = new Bee("jojo", 1010);
+
+            bool bee1isValid = ValidateUser(bee1);
+            bool bee2isValid = ValidateUser(bee2);
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+
+        }
+
+        static bool ValidateUser(Bee bee)
+        {
+            Type type = typeof(Bee);
+
+            object[] attributes = type.GetCustomAttributes(false);
+
+            foreach (object attr in attributes)
+            {
+                if (attr is AgeValidationAttribute ageAttr) 
+                    return bee.Age >= ageAttr.Age;
+            }
+            return false;
+        }
+
+        public static void Runner()
         {
             Bee bee = new Bee("jonny", 11);
             Honey honey = new Honey();
@@ -17,18 +48,18 @@ namespace Solution.Capure19
             honey.GetHoney();
             bee.Eat();
             honey.GetHoney();
-
         }
 
-        class Bee
+        [AgeValidation(20)]
+        public class Bee
         {
             string name = "bee";
-            public int age { get; set; } = 2;
+            public int Age { get; set; } = 2;
 
             public Bee(string name, int age)
             {
                 this.name = name;
-                this.age = age;
+                this.Age = age;
             }
 
             public void Eat()
@@ -57,5 +88,13 @@ namespace Solution.Capure19
                 Console.WriteLine("count honey is" + countHoney);
             }
         }
+
+    }
+
+    class AgeValidationAttribute : Attribute
+    {
+        public int Age { get; }
+        public AgeValidationAttribute() { }
+        public AgeValidationAttribute(int age) => Age = age;
     }
 }

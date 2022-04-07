@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using Solution.Capure19;
+
 
 
 namespace Solution.Capture18_Reflection_
@@ -8,13 +8,14 @@ namespace Solution.Capture18_Reflection_
     {
         public static void Main(string[] args)
         {
-            //BasePrincips();
-            //GetMembers();
-            //BindingFlags();
-            //resultComponents();
-            //Worker();
-            //Upper();
+            BasePrincips();
+            GetMembers();
+            BindingFlags();
+            resultComponents();
+            Worker();
+            Upper();
             AssemblyLoadForm();
+            Attributs();
 
 
             Console.ReadKey();
@@ -411,17 +412,21 @@ namespace Solution.Capture18_Reflection_
             {
                 object? obj1 = Activator.CreateInstance(type1);
 
-                MethodInfo? main = type1?.GetMethod("Main", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);           
+                MethodInfo? main = type1?.GetMethod("Runner", System.Reflection.BindingFlags.Instance
+                    | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
 
-                main?.Invoke(obj1, new object[] {new string[] { } });
+                
+                main?.Invoke(obj1, new object[] { new string[] { } });
+
+
             }
             if (type2 != null)
             {
                 object? obj2 = Activator.CreateInstance(type2);
 
-                MethodInfo? bee = type1?.GetMethod("Bee", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-
-                bee?.Invoke(obj2, null);
+                MethodInfo? bee = type1?.GetMethod("GetGoney", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+              
+                var n = bee?.Invoke(obj2, null);
                
             }
             if (type3 != null)
@@ -429,22 +434,65 @@ namespace Solution.Capture18_Reflection_
                 object? obj3 = Activator.CreateInstance(type3);
 
                 MethodInfo? honey = type1?.GetMethod("Honey", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-
+            
                 honey?.Invoke(obj3, null);
             }
-
            
-
-
-            
-
-
-
 
 
         }
         //part 6
+        public static void Attributs()
+        {
+            var bee1 = new Bee("jo", 10);
+            var bee2 = new Bee("jojo", 1010);
 
+            bool bee1isValid = ValidateUser(bee1);
+            bool bee2isValid = ValidateUser(bee2);
+
+            Console.WriteLine(bee1isValid);
+            Console.WriteLine(bee2isValid);
+        }
+
+        [AttributeUsage(AttributeTargets.Class | AttributeTargets.Field)]
+        class AgeValidationAttribute : Attribute
+        {
+            public int Age { get; }
+            public AgeValidationAttribute() { }
+            public AgeValidationAttribute(int age) => Age = age;
+        }
+        static bool ValidateUser(Bee bee)
+        {
+            Type type = typeof(Bee);
+
+            object[] attributes = type.GetCustomAttributes(false);
+
+            foreach (object attr in attributes)
+            {
+                if (attr is AgeValidationAttribute ageAttr)
+                    return bee.Age >= ageAttr.Age;
+            }
+            return false;
+        }
+
+
+        [AgeValidation(18)]
+        public class Bee
+        {
+            string name = "bee";
+            public int Age { get; set; } = 2;
+
+            public Bee(string name, int age)
+            {
+                this.name = name;
+                this.Age = age;
+            }
+
+            public void Eat()
+            {
+                Console.WriteLine("scscsc");
+            }
+        }
     }
 
 }
