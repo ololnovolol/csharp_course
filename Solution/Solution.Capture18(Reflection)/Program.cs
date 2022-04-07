@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Solution.Capure19;
 
 
 namespace Solution.Capture18_Reflection_
@@ -12,6 +13,8 @@ namespace Solution.Capture18_Reflection_
             //BindingFlags();
             //resultComponents();
             //Worker();
+            //Upper();
+            AssemblyLoadForm();
 
 
             Console.ReadKey();
@@ -252,7 +255,17 @@ namespace Solution.Capture18_Reflection_
             
             var result = serj?.Invoke(objectOne, parameters: null);
 
-            return result;
+            object obj = 0;
+
+            if (result != null)
+            {
+                return result;
+            }
+            else
+            {
+                return obj;
+            }
+
         }
         public static void CallWithDoubleAndTrancendParameters(string name, Type type)
         {
@@ -278,7 +291,7 @@ namespace Solution.Capture18_Reflection_
 
             var getTMethod = getMethod?.MakeGenericMethod(typeof(string));
 
-            var result = getTMethod.Invoke(p1, new object[] { "a4" });
+            var result = getTMethod?.Invoke(p1, new object[] { "a4" });
 
 
 
@@ -318,9 +331,118 @@ namespace Solution.Capture18_Reflection_
             Console.WriteLine();
         }
         //part 4
+       public static void Upper()
+        {
+            GetFildes();
+            GetProperties();
 
+        }
+        public static void GetFildes()
+        {
+            Type type = typeof(PersonNonGratt1);
+
+            foreach (FieldInfo item in type.GetFields(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Static))
+            {
+                string pip = "";
+                if (type.IsAbstract) pip += "abstract ";
+                if (type.IsPublic) pip += "public ";
+                if (type.IsSealed) pip += "sealed ";
+                if (type.IsNestedPrivate) pip += "private ";
+                if (type.IsNestedFamily) pip += "protected ";
+                if (type.IsNestedAssembly) pip += "internal ";
+              
+
+                Console.WriteLine($"{pip} {item.FieldType.Name} {item.Name}");
+
+            }
+
+        }
+        public static void GetFilde()
+        {
+            Type type = typeof(PersonNonGratt1);
+
+
+            
+        }
+        public static void GetProperties()
+        {
+            var person = new PersonNonGratt1("Saha", 25, "Black");
+            person.Prntered();
+            Type type = typeof(PersonNonGratt1);
+
+            Console.WriteLine();
+
+            var name = type.GetField("name", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+            var age = type.GetProperty("Age", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+            var race = type?.GetField("race", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+
+            Console.WriteLine($"{name?.FieldType.Name} {name?.Name} = {name?.GetValue(person)};");
+            Console.WriteLine($"{age?.PropertyType.Name} {age?.Name} = {age?.GetValue(person)};");
+            Console.WriteLine($"{race?.FieldType.Name} {race?.Name} = {race?.GetValue(person)};");
+            var value = name?.GetValue(person);
+            name?.SetValue(person, "Reflection_Man");
+            age?.SetValue(person, 33);
+
+
+            person.Prntered();
+
+
+        }
         //part 5
+        public static void AssemblyLoadForm()
+        {
+            Assembly asm = Assembly.LoadFrom("Solution.Capure19.dll");
 
+            // Console.WriteLine(asm.FullName); //Solution.Capure19, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+
+            var typesAll = asm.GetTypes();   // we get a list clases
+
+            foreach (var item in typesAll)
+            {
+                Console.WriteLine(item); // we get a list clases
+            }
+
+            Type? type1 = asm.GetType("Program");
+            Type? type2 = asm.GetType("Bee");
+            Type? type3 = asm.GetType("Honey");
+
+            if (type1 != null)
+            {
+                object? obj1 = Activator.CreateInstance(type1);
+
+                MethodInfo? main = type1?.GetMethod("Main", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);           
+
+                main?.Invoke(obj1, new object[] {new string[] { } });
+            }
+            if (type2 != null)
+            {
+                object? obj2 = Activator.CreateInstance(type2);
+
+                MethodInfo? bee = type1?.GetMethod("Bee", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+
+                bee?.Invoke(obj2, null);
+               
+            }
+            if (type3 != null)
+            {
+                object? obj3 = Activator.CreateInstance(type3);
+
+                MethodInfo? honey = type1?.GetMethod("Honey", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+
+                honey?.Invoke(obj3, null);
+            }
+
+           
+
+
+            
+
+
+
+
+
+        }
         //part 6
 
     }

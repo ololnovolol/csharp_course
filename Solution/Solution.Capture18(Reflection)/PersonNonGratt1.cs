@@ -9,17 +9,42 @@ namespace Solution.Capture18_Reflection_
     class PersonNonGratt1 : IEater, IMovable
     {
         private string name = "dcvdc";
-        public int Age { get; set; }
+        public int Age { get; set; } = 25;
+        readonly string race;
+
+
+
+
         public PersonNonGratt1(string name)
         {
             this.name = name;
+            this.race = "whote";
         }
         public PersonNonGratt1()
         {
+            this.race = "whote";
         }
         protected  PersonNonGratt1(int age, string name)
         {
+            this.race = "whote";
+        }
+        public PersonNonGratt1(string name, int age, string race)
+        {
+            this.name=name;
+            this.Age = age;
+            if (race is not null)
+            {
+                this.race = race;
+            }
+            else
+            {
+                this.race = "whote";
+            }
+        }
 
+        public void Prntered()
+        {
+            Console.WriteLine($"Hello!!!  my name = {name};  my age {Age};  my race = {race}");
         }
 
 
