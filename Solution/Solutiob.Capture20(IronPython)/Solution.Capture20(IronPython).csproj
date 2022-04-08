@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Solution.Capture20_IronPython_</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net5.0\hello.py" />
+    <None Include="bin\Debug\net5.0\hello2.py" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DynamicLanguageRuntime" Version="1.3.1" />
+    <PackageReference Include="IronPython" Version="2.7.12" />
+  </ItemGroup>
+
+</Project>
