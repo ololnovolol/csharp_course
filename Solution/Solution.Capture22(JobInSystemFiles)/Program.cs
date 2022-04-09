@@ -5,14 +5,15 @@ namespace Solution.Capture22_JobInSystemFiles_
 {
     internal class Program
     {
-        private static object t;
 
         static void Main(string[] args)
         {
 
             //DriveInfoMethod();
             //DirectoryOrDirectoryInfo();
-            TestRunner();
+            //TestRunner();
+            //FileTests();
+            ReadorWriteFiels();
 
 
             Console.ReadKey();
@@ -174,7 +175,6 @@ namespace Solution.Capture22_JobInSystemFiles_
             MoveTo();
 
         }
-
         public static void Deleter()
         {
             if (Directory.Exists(@"D:\OlegLearning\dirSearcTest\MoveTo"))
@@ -310,6 +310,116 @@ namespace Solution.Capture22_JobInSystemFiles_
                 Console.WriteLine("Files moved in new catalog ");
             }
         }
-        
+
+        public static void FileTests()
+        {
+            //string myFile = @"D:\OlegLearning\dirSearcTest\myFile.txt";
+            //string myFile1 = @"myFile.txt";
+
+            //CreateFile(myFile, myFile1);
+            //System.Threading.Thread.Sleep(2000);
+
+            ////InfoforFile(myFile, myFile1);
+            //CopyFile(myFile, myFile1);
+            //System.Threading.Thread.Sleep(9000);
+
+            //DeleteFile(myFile, myFile1);
+            //System.Threading.Thread.Sleep(2000);
+
+            //MoveFile(myFile, myFile1);
+            //System.Threading.Thread.Sleep(2000);
+
+        }
+        public static void CreateFile(string f1, string f2)
+        {
+            FileInfo file = new FileInfo(f2);
+            if (file.Exists)
+            {
+                Console.WriteLine("File is Exists");
+            }
+            file.Create();
+        }
+        public static void InfoforFile(string f1, string f2)
+        {
+            FileInfo file = new FileInfo(f2);
+            if (file.Exists)
+            {
+                Console.WriteLine("name: " + file.Name);
+                Console.WriteLine("FullName: " + file.FullName);
+                Console.WriteLine("Leunght: " + file.Length);
+                Console.WriteLine("attribute: " + file.Attributes);
+                Console.WriteLine("creattime: " + file.CreationTime);
+                Console.WriteLine("creattime-utc: " + file.CreationTimeUtc);
+                Console.WriteLine("dir: " + file.Directory);
+                Console.WriteLine("dirName: " + file.DirectoryName);
+                Console.WriteLine("Extension: " + file.Extension);
+                Console.WriteLine("is read only: " + file.IsReadOnly);
+                Console.WriteLine("last acces: " + file.LastAccessTime);
+                Console.WriteLine("last acces utc: " + file.LastAccessTimeUtc);
+                Console.WriteLine("last write: " + file.LastWriteTime);
+                Console.WriteLine("last write utc: " + file.LastWriteTimeUtc);
+            }
+        }
+        public static void DeleteFile(string f1, string f2)
+        {
+            FileInfo file = new FileInfo(f2);
+            if (file.Exists)
+            {
+                file.Delete();
+                Console.WriteLine("File deeleted");
+            }
+            Console.WriteLine("File is not exists");
+        }
+        public static void MoveFile(string f1, string f2)
+        {
+            FileInfo file = new FileInfo(f2);
+            if (file.Exists)
+            {
+                file.MoveTo(@"D:\OlegLearning\csharp_course\Solution\Solution.Capture22(JobInSystemFiles)\bin\Debug\dd\newnew.txt");
+                Console.WriteLine("File is moved");
+                
+            }
+            Console.WriteLine("File is not exists");
+        }
+        public static void CopyFile(string f1, string f2)
+        {
+            FileInfo file = new FileInfo(f2);
+            if (file.Exists)
+            {
+                file.CopyTo("newFileafterCopy.txt");
+            }
+            Console.WriteLine("File is not exists");
+        }
+
+        public static void ReadorWriteFiels()
+        {
+
+            //string path = @"c:\app\content.txt";
+
+            //string originalText = "Hello Metanit.com";
+            //// запись строки
+            //await File.WriteAllTextAsync(path, originalText);
+            //// дозапись в конец файла
+            //await File.AppendAllTextAsync(path, "\nHello work");
+
+            //// чтение файла
+            //string fileText = await File.ReadAllTextAsync(path);
+            //Console.WriteLine(fileText);
+
+            
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
     }
 }
