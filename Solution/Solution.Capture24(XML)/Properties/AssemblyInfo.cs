@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные с этой сборкой.
-[assembly: AssemblyTitle("Solution.Capture23(Json)")]
+[assembly: AssemblyTitle("Solution.Capture24(XML)")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Solution.Capture23(Json)")]
+[assembly: AssemblyProduct("Solution.Capture24(XML)")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID представляет идентификатор typelib, если этот проект доступен из модели COM
-[assembly: Guid("f4751c39-2540-410e-b983-a075a752c11d")]
+[assembly: Guid("4d3c0814-c315-4829-9d35-10f168992893")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
