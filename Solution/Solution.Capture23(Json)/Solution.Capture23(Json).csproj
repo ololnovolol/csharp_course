@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{908CA4D3-7628-4853-9A98-F4C13F2F3743}</ProjectGuid>
+    <ProjectGuid>{F4751C39-2540-410E-B983-A075A752C11D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Solution.Capture22_FileStream_</RootNamespace>
-    <AssemblyName>Solution.Capture22%28FileStream%29</AssemblyName>
+    <RootNamespace>Solution.Capture23_Json_</RootNamespace>
+    <AssemblyName>Solution.Capture23%28Json%29</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,7 +35,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
