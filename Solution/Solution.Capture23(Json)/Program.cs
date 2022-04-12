@@ -28,7 +28,7 @@ namespace Solution.Capture23_Json_
             Console.WriteLine("Json FileText >> " + json);
 
             Person? p1 = JsonSerializer.Deserialize<Person>(json);
-            Console.WriteLine("with Json to obj Person  >> Name =" + p1.Name + ", Age = " + p1.Age);
+            Console.WriteLine("with Json to obj Person  >> Name =" + p1?.Name + ", Age = " + p1?.Age);
         }
 
         public static async Task WriteCreateJsonFileAsync(Person person)
@@ -55,7 +55,7 @@ namespace Solution.Capture23_Json_
             {
                 Person? newPerson = await JsonSerializer.DeserializeAsync<Person>(fs);
 
-                Console.WriteLine($"name ={newPerson.Name}, age = {newPerson.Age}");
+                Console.WriteLine($"name ={newPerson?.Name}, age = {newPerson?.Age}");
             }
 
         }

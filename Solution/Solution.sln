@@ -78,9 +78,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture22(JobInSys
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture22(FileStream)", "Solution.Capture22(FileStream)\Solution.Capture22(FileStream).csproj", "{908CA4D3-7628-4853-9A98-F4C13F2F3743}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture23(Json)", "Solution.Capture23(Json)\Solution.Capture23(Json).csproj", "{3E28EA5E-C83E-410A-9540-1AF5A7DA8E28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.Capture23(Json)", "Solution.Capture23(Json)\Solution.Capture23(Json).csproj", "{3E28EA5E-C83E-410A-9540-1AF5A7DA8E28}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture24(XML)", "Solution.Capture24(XML)\Solution.Capture24(XML).csproj", "{4D3C0814-C315-4829-9D35-10F168992893}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture25(processDomainsApps)", "Solution.Capture25(processDomainsApps)\Solution.Capture25(processDomainsApps).csproj", "{9B886117-5E8D-404E-AB0A-41C89633AE1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Capture26(Validation)", "Solution.Capture26(Validation)\Solution.Capture26(Validation).csproj", "{CCA2837D-0DFF-4690-A15F-9B23EA13398B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -212,6 +216,14 @@ Global
 		{4D3C0814-C315-4829-9D35-10F168992893}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D3C0814-C315-4829-9D35-10F168992893}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D3C0814-C315-4829-9D35-10F168992893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B886117-5E8D-404E-AB0A-41C89633AE1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B886117-5E8D-404E-AB0A-41C89633AE1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B886117-5E8D-404E-AB0A-41C89633AE1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B886117-5E8D-404E-AB0A-41C89633AE1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCA2837D-0DFF-4690-A15F-9B23EA13398B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCA2837D-0DFF-4690-A15F-9B23EA13398B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCA2837D-0DFF-4690-A15F-9B23EA13398B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCA2837D-0DFF-4690-A15F-9B23EA13398B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -247,6 +259,7 @@ Global
 		{34D3B732-FAC4-46D3-852C-1F8319C26F4E} = {F10949A6-68C2-4C31-9C42-0E673DB69F45}
 		{908CA4D3-7628-4853-9A98-F4C13F2F3743} = {F10949A6-68C2-4C31-9C42-0E673DB69F45}
 		{3E28EA5E-C83E-410A-9540-1AF5A7DA8E28} = {F10949A6-68C2-4C31-9C42-0E673DB69F45}
+		{4D3C0814-C315-4829-9D35-10F168992893} = {F10949A6-68C2-4C31-9C42-0E673DB69F45}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1083A2E2-50AC-4338-B7AD-938DFFB4685B}
