@@ -106,29 +106,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.ASP.Net", "3.ASP.Net", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Bases Data", "4.Bases Data", "{976774FF-6B8D-4AA4-950D-6096F817B9F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.BaseNetwork(AddressIP.NET)", "Solution.BaseNetwork(AddressIP.NET)\Solution.BaseNetwork(AddressIP.NET).csproj", "{EF9448E7-9610-4164-86A7-DF394D36D86E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.BaseNetwork(AddressIP.NET)", "Solution.BaseNetwork(AddressIP.NET)\Solution.BaseNetwork(AddressIP.NET).csproj", "{EF9448E7-9610-4164-86A7-DF394D36D86E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "999-Finally", "999-Finally", "{489C118C-5B3E-4C05-872C-364ADCC3ADA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.BaseNetwork(WebClient)", "Solution.BaseNetwork(WebClient)\Solution.BaseNetwork(WebClient).csproj", "{6F76EEAF-8A25-4F8F-A309-3CA966260A82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.BaseNetwork(WebClient)", "Solution.BaseNetwork(WebClient)\Solution.BaseNetwork(WebClient).csproj", "{6F76EEAF-8A25-4F8F-A309-3CA966260A82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.BaseNetwork(ServerAppsocketTCP)", "Solution.BaseNetwork(ServerAppsocketTCP)\Solution.BaseNetwork(ServerAppsocketTCP).csproj", "{D4C15CDB-F8C8-40B8-921F-8551C3B7DF3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.BaseNetwork(ServerAppsocketTCP)", "Solution.BaseNetwork(ServerAppsocketTCP)\Solution.BaseNetwork(ServerAppsocketTCP).csproj", "{D4C15CDB-F8C8-40B8-921F-8551C3B7DF3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.BaseNetwork(KlientAppsocketTCP)", "Solution.BaseNetwork(KlientAppsocketTCP)\Solution.BaseNetwork(KlientAppsocketTCP).csproj", "{9D4A1C57-F5EB-44EF-A022-195A53BBAB53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.BaseNetwork(KlientAppsocketTCP)", "Solution.BaseNetwork(KlientAppsocketTCP)\Solution.BaseNetwork(KlientAppsocketTCP).csproj", "{9D4A1C57-F5EB-44EF-A022-195A53BBAB53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.BaseNetwork(Server-KlientAppUTP)", "Solution.BaseNetwork(Server-KlientAppUTP)\Solution.BaseNetwork(Server-KlientAppUTP).csproj", "{B1CD059F-67A4-4C65-B258-1437D8A4DD0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.BaseNetwork(Server-KlientAppUTP)", "Solution.BaseNetwork(Server-KlientAppUTP)\Solution.BaseNetwork(Server-KlientAppUTP).csproj", "{B1CD059F-67A4-4C65-B258-1437D8A4DD0A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console TCP chat", "Console TCP chat", "{C8406BF9-3165-42D5-A4EF-C188F795C167}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCP_Chat-Server", "TCP_Chat\TCP_Chat-Server.csproj", "{18353FD2-A5A9-47BD-A2B2-56F1C7AC39D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCP_Chat-Server", "TCP_Chat\TCP_Chat-Server.csproj", "{18353FD2-A5A9-47BD-A2B2-56F1C7AC39D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatClient", "ChatClient\ChatClient.csproj", "{03D8B8DA-D598-4913-A1E4-0001DE34EB86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatClient", "ChatClient\ChatClient.csproj", "{03D8B8DA-D598-4913-A1E4-0001DE34EB86}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ChatUDP-WinForm", "ChatUDP-WinForm", "{D8265440-5697-4E49-9838-B18558267B30}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdpChat", "UdpChat\UdpChat.csproj", "{C67E9ADB-B6F5-4C5E-A130-10F894BF11E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniUDPchat", "miniUDPchat\miniUDPchat.csproj", "{357B6CA3-0ECF-49DA-9857-4B9341F3B5EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "miniUDPchat", "miniUDPchat\miniUDPchat.csproj", "{357B6CA3-0ECF-49DA-9857-4B9341F3B5EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.BaseNetwork(StreamsBinaryData)", "Solution.BaseNetwork(StreamsBinaryData)\Solution.BaseNetwork(StreamsBinaryData).csproj", "{D0A708DD-727F-4101-A02A-CF367C57FFC8}"
 EndProject
@@ -139,6 +139,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.BaseNetwork(Send@mail-SmtpClient)", "Solution.BaseNetwork(Send@mail-SmtpClient)\Solution.BaseNetwork(Send@mail-SmtpClient).csproj", "{3C3606FF-F227-434F-AA04-20E7A16961E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.BaseNetwork(FTP)", "Solution.BaseNetwork(FTP)\Solution.BaseNetwork(FTP).csproj", "{9C72ACEB-D4CE-45A0-96E6-04F4D47F2004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Algorithms(FundamentalOfAlgoAndDataStructures)", "Solution.Algorithms(FundamentalOfAlgoAndDataStructures)\Solution.Algorithms(FundamentalOfAlgoAndDataStructures).csproj", "{D160D30A-B894-4C72-9CE5-9BAE960F06AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -334,6 +336,10 @@ Global
 		{9C72ACEB-D4CE-45A0-96E6-04F4D47F2004}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C72ACEB-D4CE-45A0-96E6-04F4D47F2004}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C72ACEB-D4CE-45A0-96E6-04F4D47F2004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D160D30A-B894-4C72-9CE5-9BAE960F06AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D160D30A-B894-4C72-9CE5-9BAE960F06AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D160D30A-B894-4C72-9CE5-9BAE960F06AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D160D30A-B894-4C72-9CE5-9BAE960F06AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -396,6 +402,7 @@ Global
 		{044E4B52-7E8F-4DD6-AC03-AA2F12D5DA06} = {E92C3775-2B30-407A-86B0-C2122A02A47C}
 		{3C3606FF-F227-434F-AA04-20E7A16961E2} = {E92C3775-2B30-407A-86B0-C2122A02A47C}
 		{9C72ACEB-D4CE-45A0-96E6-04F4D47F2004} = {E92C3775-2B30-407A-86B0-C2122A02A47C}
+		{D160D30A-B894-4C72-9CE5-9BAE960F06AC} = {32E60B9C-E6E0-494C-8A9E-EA70037AA170}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1083A2E2-50AC-4338-B7AD-938DFFB4685B}
