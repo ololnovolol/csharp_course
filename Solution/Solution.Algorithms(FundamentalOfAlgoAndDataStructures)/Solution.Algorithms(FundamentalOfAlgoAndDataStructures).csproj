@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CircularLinkedList\CircularLinkedList.cs" />
+    <Compile Include="CircularLinkedList\Node.cs" />
+    <Compile Include="Deque\Deque.cs" />
+    <Compile Include="Deque\DoublyNode.cs" />
+    <Compile Include="DualCircularLinkedList\DualCircularLinkedList.cs" />
+    <Compile Include="DualCircularLinkedList\Node.cs" />
     <Compile Include="DualLinkedList\DoublyLinkedList.cs" />
     <Compile Include="DualLinkedList\DounlyNode.cs" />
     <Compile Include="LinkedList\Node.cs" />

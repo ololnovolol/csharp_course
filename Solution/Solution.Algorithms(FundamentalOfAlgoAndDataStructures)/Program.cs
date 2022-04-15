@@ -1,8 +1,11 @@
 ﻿using System;
 using Solution.Algorithms_FundamentalOfAlgoAndDataStructures_.Queue;
+using Solution.Algorithms_FundamentalOfAlgoAndDataStructures_.Deque;
 using Solution.Algorithms_FundamentalOfAlgoAndDataStructures_.StackLink;
 using Solution.Algorithms_FundamentalOfAlgoAndDataStructures_.LinkedList;
 using Solution.Algorithms_FundamentalOfAlgoAndDataStructures_.DualLinkedList;
+using Solution.Algorithms_FundamentalOfAlgoAndDataStructures_.CircularLinkedList;
+using Solution.Algorithms_FundamentalOfAlgoAndDataStructures_.DualCircularLinkedList;
 
 namespace Solution.Algorithms_FundamentalOfAlgoAndDataStructures_
 {
@@ -13,7 +16,10 @@ namespace Solution.Algorithms_FundamentalOfAlgoAndDataStructures_
             //ExpectedMyLinkedList();
             //ExpectedMyDualLinkedList();
             //ExpectedMyStackLink();
-            ExpectedQueue();
+            //ExpectedQueue();
+            //ExpectedDeque();
+            //ExpectedCircularLinkedList();
+            ExpectedDualCircularLinkedList();
 
 
 
@@ -190,6 +196,96 @@ namespace Solution.Algorithms_FundamentalOfAlgoAndDataStructures_
 
             foreach (string item in queue)
                 Console.WriteLine(item);
+        }
+
+        static void ExpectedDeque()
+        {
+            DoublyNodeDeque<string> myDeque = new DoublyNodeDeque<string>();
+
+            myDeque.AddFirst("Alice");
+            myDeque.AddLast("Kate");
+            myDeque.AddLast("Tom");
+  
+
+            foreach (var item in myDeque)
+            {
+                Console.WriteLine(item);
+            }
+
+            string first = myDeque.RemoveFirst();
+            //string last = myDeque.RemoveLast();
+
+            Console.WriteLine("first removed :" + first);
+            //Console.WriteLine("last removed :" + last);
+
+            foreach (var item in myDeque)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine();
+
+        }
+
+        static void ExpectedCircularLinkedList()
+        {
+            CircularLinkedList<string> c1 = new CircularLinkedList<string>();
+
+            c1.Add("A");
+            c1.Add("b");
+            c1.Add("c");
+            c1.Add("d");
+            c1.Add("e");
+            c1.Add("f");
+            c1.Add("g");
+            c1.Add("z");
+
+
+
+            foreach (var item in c1)
+            {
+                Console.Write(" " + item);
+            }
+            Console.WriteLine();
+            c1.Remove("A");
+            c1.Remove("z");
+
+            foreach (var item in c1)
+            {
+                Console.Write(" " + item);
+            }
+            
+            c1.Remove("b");
+            c1.Remove("g");
+
+            foreach (var item in c1)
+            {
+                Console.Write(" " + item);
+            }
+
+        }
+
+        static void ExpectedDualCircularLinkedList()
+        {
+            DualCircularLinkedList<string> c1 = new DualCircularLinkedList<string>();
+
+            c1.Add("A");
+            c1.Add("B");
+            c1.Add("C");
+            //c1.Add("D");
+            //c1.Add("E");
+
+            //Console.WriteLine(c1.Remove("A"));
+            //Console.WriteLine(c1.Remove("C"));
+            Console.WriteLine(c1.Remove("C"));
+            Console.WriteLine(c1.Remove("B"));
+
+            foreach (var item in c1)
+            {
+                Console.Write(" [" + item + "]");
+            }
+
+
         }
 
     }
