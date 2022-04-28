@@ -1,0 +1,43 @@
+им€ екземпл€ра -- SQLEXPRESS
+строка подключени€ -- Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
+јдминистраторы -- DESKTOP-Q4PJU9S\¬ременный путь -- C:\Program Files\Microsoft SQL Server\150\Setup Bootstrap\Log\20220425_135222
+компоненты -- SQLENGINE -- C:\SQL2019\Express_RUS
+верси€ -- 15.0.2000.5, RTM -- C:\Program Files\Microsoft SQL Server\150\SSEI\Resources 
+
+
+
+
+DDL (Data Definition Language / язык определени€ данных).
+  этому типу относ€тс€ различные команды, которые создают 
+базу данных, таблицы, индексы, хранимые процедуры и т.д. ¬ общем определ€ют данные.
+
+				CREATE: создает объекты базы данных (саму базу даных, таблицы, индексы и т.д.)
+
+				ALTER: измен€ет объекты базы данных
+
+				DROP: удал€ет объекты базы данных
+
+				TRUNCATE: удал€ет все данные из таблиц
+
+DML (Data Manipulation Language / язык манипул€ции данными).
+  этому типу относ€т команды на выбору данных, их обновление, добавление, удаление
+- в общем все те команды, с помощью которыми мы можем управл€ть данными.
+
+				SELECT: извлекает данные из Ѕƒ
+
+				UPDATE: обновл€ет данные
+
+				INSERT: добавл€ет новые данные
+
+				DELETE: удал€ет данные
+
+DCL (Data Control Language / язык управлени€ доступа к данным).
+  этому типу относ€т команды, которые управл€ют правами по доступу к данным.
+
+				GRANT: предоставл€ет права дл€ доступа к данным
+
+				REVOKE: отзывает права на доступ к данным
+
+—“–ќ ј ѕќƒ Ћё„≈Ќ»я SQL Server Express = string connectionString = "Server=.\SQLEXPRESS;Database=master;Trusted_Connection=True;";
+—“–ќ ј ѕќƒ Ћё„≈Ќ»я локалка = string connectionString = "Server=localhost;Database=master;Trusted_Connection=True;";
+

@@ -142,7 +142,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.BaseNetwork(FTP)",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.Algorithms(FundamentalOfAlgoAndDataStructures)", "Solution.Algorithms(FundamentalOfAlgoAndDataStructures)\Solution.Algorithms(FundamentalOfAlgoAndDataStructures).csproj", "{D160D30A-B894-4C72-9CE5-9BAE960F06AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.ASPnetCore.HelloApp", "Solution.ASPnetCore.HelloApp\Solution.ASPnetCore.HelloApp.csproj", "{F36AE1D6-608C-432C-A13B-D01AB9402C3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.ASPnetCore.HelloApp", "Solution.ASPnetCore.HelloApp\Solution.ASPnetCore.HelloApp.csproj", "{F36AE1D6-608C-432C-A13B-D01AB9402C3B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.ASPnetCORE.JsonReadandWrite", "Solution.ASPnetCORE.JsonReadandWrite\Solution.ASPnetCORE.JsonReadandWrite.csproj", "{AAAD21F5-E60F-4CA7-A0B3-E44330EEC428}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "comands", "comands", "{0E057D98-CDBB-4885-9B9C-2E3317CC4E36}"
+	ProjectSection(SolutionItems) = preProject
+		Comands.txt = Comands.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.BAssesData.FirstConnectionToSql", "Solution.BAssesData.FirstConnectionToSql\Solution.BAssesData.FirstConnectionToSql.csproj", "{706366FE-1896-48B2-BDCC-841A826FFB95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -346,6 +355,14 @@ Global
 		{F36AE1D6-608C-432C-A13B-D01AB9402C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F36AE1D6-608C-432C-A13B-D01AB9402C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F36AE1D6-608C-432C-A13B-D01AB9402C3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAAD21F5-E60F-4CA7-A0B3-E44330EEC428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAAD21F5-E60F-4CA7-A0B3-E44330EEC428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAAD21F5-E60F-4CA7-A0B3-E44330EEC428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAAD21F5-E60F-4CA7-A0B3-E44330EEC428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{706366FE-1896-48B2-BDCC-841A826FFB95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{706366FE-1896-48B2-BDCC-841A826FFB95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{706366FE-1896-48B2-BDCC-841A826FFB95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{706366FE-1896-48B2-BDCC-841A826FFB95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -411,6 +428,9 @@ Global
 		{9C72ACEB-D4CE-45A0-96E6-04F4D47F2004} = {E92C3775-2B30-407A-86B0-C2122A02A47C}
 		{D160D30A-B894-4C72-9CE5-9BAE960F06AC} = {32E60B9C-E6E0-494C-8A9E-EA70037AA170}
 		{F36AE1D6-608C-432C-A13B-D01AB9402C3B} = {A981DBD4-1B90-4B70-816D-5002655CFE44}
+		{AAAD21F5-E60F-4CA7-A0B3-E44330EEC428} = {A981DBD4-1B90-4B70-816D-5002655CFE44}
+		{0E057D98-CDBB-4885-9B9C-2E3317CC4E36} = {ECC16426-BF5A-4BF5-A711-99DEA77ECA36}
+		{706366FE-1896-48B2-BDCC-841A826FFB95} = {ECC16426-BF5A-4BF5-A711-99DEA77ECA36}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1083A2E2-50AC-4338-B7AD-938DFFB4685B}
