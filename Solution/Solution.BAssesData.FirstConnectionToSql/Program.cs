@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
 
 namespace Solution.BAssesData.FirstConnectionToSql
@@ -7,11 +6,13 @@ namespace Solution.BAssesData.FirstConnectionToSql
     class Program
     {
         public static string connectionString = @"Server=.\SQLEXPRESS;Database=master;Trusted_Connection=True;";
-        static async Task Main(string[] args)
+
+        public static async Task Main(string[] args)
         {
             //await CreaterSqlValues();
             //SQLCreater();
-            await ExecuteScalarAsync();
+            //await ExecuteScalarAsync();
+            await UseParametersSqlAsync();
 
             Console.ReadKey();
         }
@@ -39,7 +40,7 @@ namespace Solution.BAssesData.FirstConnectionToSql
         }
 
         public static void ConnectionInfo(SqlConnection connection)
-        {         
+        {
             Console.WriteLine($"\tСвойства подключения:");
             Console.WriteLine($"\t\tстрока подключения: {connection.ConnectionString}");
             Console.WriteLine($"\t\tСервер: {connection.Database}");
@@ -67,7 +68,7 @@ namespace Solution.BAssesData.FirstConnectionToSql
         {
             string CommandText = $"use adonetdb; INSERT INTO Users (Name, Age) VAlUES ('TOM', 11),('BOB', 12),('SAM', 13),('TIM', 14),('BEN',15)";
             SqlCommand command = new SqlCommand(CommandText, connection);
-                     
+
             int countLineAdded = await command.ExecuteNonQueryAsync();
 
             Console.WriteLine($"Добавлено объектов: {countLineAdded}");
@@ -124,12 +125,12 @@ namespace Solution.BAssesData.FirstConnectionToSql
 
                     Console.WriteLine($"{columnName1}\t{columnName3}\t{columnName2}");
 
-                    while(await reader.ReadAsync())
+                    while (await reader.ReadAsync())
                     {
                         object id = reader.GetValue(0);
                         object age = reader[1];
                         object name = reader["name"];
-                        
+
 
                         Console.WriteLine($"{id} \t{name} \t{age}");
                     }
@@ -180,7 +181,7 @@ namespace Solution.BAssesData.FirstConnectionToSql
 
                 }
             }
-        }            
+        }
         public static void RunnerSqlReader()
         {
             string commandText = "USE productsdb; SELECT * FROM Products";
@@ -227,12 +228,12 @@ namespace Solution.BAssesData.FirstConnectionToSql
         {
             string commandString1 = "USE productsdb; SELECT Count(*) FROM SummaryProducts";
 
-            using(SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 await connection.OpenAsync();
 
                 SqlCommand command = new SqlCommand(commandString1, connection);
-                object? countRows =  command.ExecuteScalar();
+                object? countRows = command.ExecuteScalar();
 
                 command.CommandText = "select min(Productcount) from summaryproducts";
                 object? productCountsMin = command.ExecuteScalar();
@@ -252,6 +253,72 @@ namespace Solution.BAssesData.FirstConnectionToSql
         }
         #endregion
 
+        #region UseParametersSql
+        public async static Task UseParametersSqlAsync()
+        {
+            string nameLong = "123456789";
+            string namePlusComand = "Tom',10);INSERT INTO Users (Name, Age) VALUES('Hack";
+            int age = 333;
+
+            using (SqlConnection connection = new(connectionString))
+            {
+                await connection.OpenAsync();
+
+                SqlCommand command = new SqlCommand($"use adonetdb;INSERT INTO Users(Name, Age) VALUES(@name, @age); SET @Id = scope_IDENTITY()", connection);
+                SqlParameter paramName2 = new SqlParameter("@name", SqlDbType.NVarChar, 3);
+                paramName2.Value = nameLong;
+                command.Parameters.Add(paramName2);
+                SqlParameter paramAge = new SqlParameter("@age", age);
+                command.Parameters.Add(paramAge);
+                SqlParameter idParam = new SqlParameter
+                {
+                    ParameterName = "@Id",
+                    SqlDbType = SqlDbType.Int,
+                    Direction = ParameterDirection.Output // параметр выходной
+                };
+                command.Parameters.Add(idParam);
+
+                await command.ExecuteNonQueryAsync();
+
+                Console.WriteLine($"Id нового объекта: {idParam.Value}");
+
+                SqlCommand command1 = new SqlCommand($"use adonetdb; INSERT INTO Users (Name, age) VALUES (@name, @age)", connection);
+                paramName2 = new SqlParameter("@name", SqlDbType.NVarChar, 6);
+                paramName2.Value = namePlusComand;
+                command1.Parameters.Add(paramName2);
+                SqlParameter paramAge1 = new SqlParameter("@age", age);
+                command1.Parameters.Add(paramAge);
+                await command1.ExecuteNonQueryAsync();
+
+
+                //вывод на консоль
+                command.CommandText = "select * from Users";
+                using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                {
+                    if (reader.HasRows)
+                    {
+                        string ColumnName1 = reader.GetName(0);
+                        string ColumnName2 = reader.GetName(1);
+                        string ColumnName3 = reader.GetName(2);
+
+                        Console.WriteLine($"{ColumnName1}\t{ColumnName2}\t{ColumnName3}");
+
+                        while (await reader.ReadAsync())
+                        {
+                            object? Id = reader.GetValue(0);
+                            object? Name = reader.GetValue(1);
+                            object? Age = reader.GetValue(2);
+
+                            Console.WriteLine($"{Id}\t{Name}\t{Age}");
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+        #endregion
 
 
     }
