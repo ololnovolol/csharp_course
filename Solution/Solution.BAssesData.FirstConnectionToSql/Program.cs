@@ -1,5 +1,7 @@
-﻿using System.Data;
+﻿using System.IO;
+using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace Solution.BAssesData.FirstConnectionToSql
 {
@@ -12,7 +14,9 @@ namespace Solution.BAssesData.FirstConnectionToSql
             //await CreaterSqlValues();
             //SQLCreater();
             //await ExecuteScalarAsync();
-            await UseParametersSqlAsync();
+            //await UseParametersSqlAsync();
+            //await UseProcedure();
+            await SaveAndPutDataFromSQL();
 
             Console.ReadKey();
         }
@@ -319,6 +323,304 @@ namespace Solution.BAssesData.FirstConnectionToSql
         }
 
         #endregion
+
+        #region  StoredProcedurs
+        public static async Task StoredProcedurs()
+        {
+            string UsingDataBase = "USE adonetdb;";
+
+            string procedureInsert = "CREATE PROCEDURE [dbo].[sp_InsertUser] @name nvarchar(50), @age int " +
+                "AS " +
+                "INSERT INTO Users(Name, Age) " +
+                "VALUES(@name, @age) " +
+                "SELECT SCOPE_IDENTITY() GO ";
+
+            string procedure_2 = " CREATE PROCEDURE [dbo].[sp_GetUsers] " +
+                "AS " +
+                "SELECT * FROM Users " +
+                "GO ";
+            string procedure_3 = " CREATE PROCEDURE [dbo].[sp_GetAgeRange] " +
+                "@name nvarchar(50), " +
+                "@minAge int out, " +
+                "@maxAge int out " +
+                "AS  " +
+                " SELECT @minAge = MIN(Age), @maxAge = MAX(Age) FROM Users WHERE Name LIKE '%' + @name + '%';";
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                SqlCommand command = new SqlCommand(UsingDataBase, connection);
+                await command.ExecuteNonQueryAsync();
+
+                //command.CommandText = procedureInsert;
+                //await command.ExecuteNonQueryAsync();
+
+                //command.CommandText = procedure_2;
+                //await command.ExecuteNonQueryAsync();
+
+                command.CommandText = procedure_3;
+                await command.ExecuteNonQueryAsync();
+
+                Console.WriteLine("Procedure  added to SQL");
+
+            }
+
+        }
+        public static async Task UseProcedure()
+        {
+            // await StoredProcedurs();
+            //string name = "Kolyan3";
+            //int age = 55;
+
+            //await AddToPrecedureUsERSaSYNC(name, age);
+            //Console.WriteLine();
+            //await GetUsersAsync();
+            //Console.WriteLine();
+            //await OutParams("Kolyan");
+            //await TransactionsBase();
+
+        }
+        public static async Task AddToPrecedureUsERSaSYNC(string name, int age)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                SqlCommand command = new SqlCommand("USE adonetdb", connection);
+                command.ExecuteNonQuery();
+
+                command.CommandText = "sp_InsertUser";
+
+                command.CommandType = CommandType.StoredProcedure;
+                SqlParameter nameParameter = new SqlParameter("@name", name);
+                command.Parameters.Add(nameParameter);
+
+                SqlParameter AgeParameter = new SqlParameter("@age", age);
+                command.Parameters.Add(AgeParameter);
+
+                Console.WriteLine($"ид добавленного параметра: {await command.ExecuteScalarAsync()} ");
+
+            }
+
+        }
+        public static async Task GetUsersAsync()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                SqlCommand command = new SqlCommand("USE adonetdb", connection);
+                command.ExecuteNonQuery();
+
+                command.CommandText = "sp_GetUsers";
+                command.CommandType = CommandType.StoredProcedure;
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        Console.WriteLine($"{reader.GetName(0)}\t{reader.GetName(1)}\t{reader.GetName(2)}");
+
+                        while (reader.Read())
+                        {
+                            Console.WriteLine($"{reader.GetValue(0)}\t{reader.GetValue(1)}\t{reader.GetValue(2)}");
+                        }
+                    }
+                }
+            }
+
+
+        }
+        public static async Task OutParams(string name)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                SqlCommand command = new SqlCommand("USE adonetdb;", connection);
+                command.ExecuteNonQuery();
+
+                command.CommandText = "sp_GetAgeRange";
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter nameParam = new SqlParameter
+                {
+                    ParameterName = "@name",
+                    Value = name
+                };
+                command.Parameters.Add(nameParam);
+
+                SqlParameter minAgeParam = new SqlParameter
+                {
+                    ParameterName = "@minAge",
+                    SqlDbType = SqlDbType.Int,
+                    Direction = ParameterDirection.Output
+                };
+                command.Parameters.Add(minAgeParam);
+
+                SqlParameter maxAgeParam = new SqlParameter
+                {
+                    ParameterName = "@maxAge",
+                    SqlDbType = SqlDbType.Int,
+                    Direction = ParameterDirection.Output
+                };
+                command.Parameters.Add(maxAgeParam);
+
+                await command.ExecuteNonQueryAsync();
+                object minAge = command.Parameters[1].Value;
+                object maxAge = command.Parameters["@maxAge"].Value;
+
+                Console.WriteLine($"FOR {name} Range age:\nminimal Age {minAge}\tmaximal Age {maxAge}");
+
+            }
+
+        }
+        public static async Task TransactionsBase()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                SqlCommand command = connection.CreateCommand();
+                
+                command.Transaction = transaction;
+                command.CommandText = "USE adonetdb;";
+                await command.ExecuteNonQueryAsync();
+
+                try
+                {
+                    command.CommandText = "INSERT INTO Users (Name, Age) VALUES ('rfr',123);";
+                    await command.ExecuteNonQueryAsync();
+
+                    command.CommandText = "INSERT INTO Users (Name, Age) VALUES ('ghgh',8);";
+                    await command.ExecuteNonQueryAsync();
+
+                    await transaction.CommitAsync();
+                    Console.WriteLine("Data is trancend to DataBase");
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    await transaction.RollbackAsync();
+                }
+
+            }
+
+        }
+        #endregion
+
+        #region SaveAndPutDataFromSQL
+        public static async Task SaveAndPutDataFromSQL()
+        {
+            //await CreateDBAsync("filedb");
+            string newConnectionString = connectionString.Replace("Database=master", "Database=filedb");
+            //await CreateTableAsync(newConnectionString);
+            //await AddFilesToBaseAsynk(newConnectionString,
+            //    @$"D:\OlegLearning\csharp_course\Solution\Solution.BAssesData.FirstConnectionToSql\logoImages\logoFaceboock.jpg"
+            //    , "faceboock");
+            //await AddFilesToBaseAsynk(newConnectionString,
+            //    @$"D:\OlegLearning\csharp_course\Solution\Solution.BAssesData.FirstConnectionToSql\logoImages\logoInstagramm.jpg"
+            //    , "instagramm");
+            //await AddFilesToBaseAsynk(newConnectionString,
+            //    @$"D:\OlegLearning\csharp_course\Solution\Solution.BAssesData.FirstConnectionToSql\logoImages\logoTelegram.jpg"
+            //    , "telegram");
+
+            await ReadFileFromDatabaseAsync(newConnectionString);
+
+
+
+        }
+
+        public static async Task CreateDBAsync(string baseName)
+        {
+           using(SqlConnection connection = new SqlConnection(connectionString))
+           {
+                await connection.OpenAsync();
+
+                SqlCommand command = new SqlCommand($"CREATE  DATABASE {baseName}", connection);
+
+                await command.ExecuteNonQueryAsync();
+
+                Console.WriteLine("Base is Created");
+           }
+        }
+        public static async Task CreateTableAsync(string newConnectionString)
+        {
+            using(SqlConnection connection = new SqlConnection(newConnectionString))
+            {
+                await connection.OpenAsync();
+
+                SqlCommand command = new SqlCommand($"CREATE TABLE Files (Id INT PRIMARY KEY IDENTITY, Title NVARCHAR(200) NOT NULL,FileName NVARCHAR(200)NOT NULL,ImageData varbinary(MAX))", connection);
+
+                await command.ExecuteNonQueryAsync();
+
+                Console.WriteLine("Table has been Created<");
+
+            }
+        }
+        public static async Task AddFilesToBaseAsynk(string newConnectionString, string fileName, string title)
+        {
+            using (SqlConnection connection = new SqlConnection(newConnectionString))
+            {
+                await connection.OpenAsync();
+                SqlCommand command = new SqlCommand(@"INSERT INTO Files VALUES (@FileName, @Title, @ImageData)", connection);
+                command.Parameters.Add("@FileName", SqlDbType.NVarChar, 50);
+                command.Parameters.Add("@Title", SqlDbType.NVarChar, 50);
+
+                string shortFileName = fileName[(fileName.LastIndexOf('\\') + 1)..];
+
+                byte[] imageData;
+
+                using (FileStream fs = new FileStream(fileName, FileMode.Open))
+                {
+                    imageData = new byte[fs.Length];
+                    fs.Read(imageData, 0, imageData.Length);
+                    command.Parameters.Add("@ImageData", SqlDbType.Image, Convert.ToInt32(fs.Length));
+                }
+
+                command.Parameters["@FileName"].Value = shortFileName;
+                command.Parameters["@Title"].Value = title;
+                command.Parameters["@ImageData"].Value = imageData;
+
+                await command.ExecuteNonQueryAsync();
+                Console.WriteLine("File Saved");
+            }
+
+
+        }
+
+        public static async Task ReadFileFromDatabaseAsync(string newConnectionString)
+        {
+            List<Image> images = new List<Image>();
+
+            using (SqlConnection connection = new SqlConnection(newConnectionString))
+            {
+                await connection.OpenAsync();
+                SqlCommand command = new SqlCommand("SELECT * FROM Files", connection);
+
+                using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                {
+                    while(await reader.ReadAsync())
+                    {
+                        Image image = new(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), (byte[])reader.GetValue(3));
+                        images.Add(image);
+                    }
+                }
+                for (int i = 0; i < images.Count; i++)
+                {
+                    using (FileStream fs = new FileStream(images[i].Filename, FileMode.OpenOrCreate))
+                    {
+                        fs.Write(images[i].Data, 0, images[i].Data.Length);
+                        Console.WriteLine($"Файл {images[0].Title} сохранен");
+                    }
+                }
+            }
+        }
+
+        # endregion
 
 
     }

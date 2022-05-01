@@ -5,8 +5,8 @@ namespace ChatServer
 {
     class Program
     {
-        static ServerObject server; // сервер
-        static Thread listenThread; // потока для прослушивания
+        static ServerObject? server; // сервер
+        static Thread? listenThread; // потока для прослушивания
 
         static void Main(string[] args)
         {
@@ -18,7 +18,7 @@ namespace ChatServer
             }
             catch (Exception ex)
             {
-                server.Disconnect();
+                server?.Disconnect();
                 Console.WriteLine(ex.Message);
             }
         }

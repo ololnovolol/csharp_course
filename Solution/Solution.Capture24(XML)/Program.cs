@@ -245,7 +245,6 @@ namespace Solution.Capture24_XML_
         {
             using (StreamReader sm = new StreamReader("text.txt"))
             {
-                // TODO доделать чтоб дозаписываося в файлб а не перезпписывал каждый раз
 
                 //XDocument xDoc = new XDocument(
                 //    new XElement(FileName,
