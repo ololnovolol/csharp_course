@@ -1,3 +1,13 @@
+https://metanit.com/sql/sqlserver/1.1.php
+
+https://metanit.com/sql/tutorial/1.1.php
+
+https://metanit.com/sql/
+
+
+
+
+
 им€ екземпл€ра -- SQLEXPRESS
 строка подключени€ -- Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
 јдминистраторы -- DESKTOP-Q4PJU9S\¬ременный путь -- C:\Program Files\Microsoft SQL Server\150\Setup Bootstrap\Log\20220425_135222
