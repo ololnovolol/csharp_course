@@ -151,7 +151,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "comands", "comands", "{0E05
 		Comands.txt = Comands.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.BAssesData.FirstConnectionToSql", "Solution.BAssesData.FirstConnectionToSql\Solution.BAssesData.FirstConnectionToSql.csproj", "{706366FE-1896-48B2-BDCC-841A826FFB95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.BAssesData.FirstConnectionToSql", "Solution.BAssesData.FirstConnectionToSql\Solution.BAssesData.FirstConnectionToSql.csproj", "{706366FE-1896-48B2-BDCC-841A826FFB95}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solution.BAsses.Data.SQlite", "Solution.BAsses.Data.SQlite\Solution.BAsses.Data.SQlite.csproj", "{B3676A2E-48EF-4C91-A485-A7013DC65FDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.ASPnetCoreMyFirstAPI", "Solution.ASPnetCoreMyFirstAPI\Solution.ASPnetCoreMyFirstAPI.csproj", "{A5B6222C-465A-4083-9073-2635ACEE81F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -363,6 +367,14 @@ Global
 		{706366FE-1896-48B2-BDCC-841A826FFB95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{706366FE-1896-48B2-BDCC-841A826FFB95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{706366FE-1896-48B2-BDCC-841A826FFB95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3676A2E-48EF-4C91-A485-A7013DC65FDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3676A2E-48EF-4C91-A485-A7013DC65FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3676A2E-48EF-4C91-A485-A7013DC65FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3676A2E-48EF-4C91-A485-A7013DC65FDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5B6222C-465A-4083-9073-2635ACEE81F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5B6222C-465A-4083-9073-2635ACEE81F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5B6222C-465A-4083-9073-2635ACEE81F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5B6222C-465A-4083-9073-2635ACEE81F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -431,6 +443,8 @@ Global
 		{AAAD21F5-E60F-4CA7-A0B3-E44330EEC428} = {A981DBD4-1B90-4B70-816D-5002655CFE44}
 		{0E057D98-CDBB-4885-9B9C-2E3317CC4E36} = {ECC16426-BF5A-4BF5-A711-99DEA77ECA36}
 		{706366FE-1896-48B2-BDCC-841A826FFB95} = {ECC16426-BF5A-4BF5-A711-99DEA77ECA36}
+		{B3676A2E-48EF-4C91-A485-A7013DC65FDE} = {ECC16426-BF5A-4BF5-A711-99DEA77ECA36}
+		{A5B6222C-465A-4083-9073-2635ACEE81F6} = {A981DBD4-1B90-4B70-816D-5002655CFE44}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1083A2E2-50AC-4338-B7AD-938DFFB4685B}

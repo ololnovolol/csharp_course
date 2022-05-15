@@ -11,12 +11,13 @@ namespace Solution.BAssesData.FirstConnectionToSql
 
         public static async Task Main(string[] args)
         {
-            //await CreaterSqlValues();
-            //SQLCreater();
-            //await ExecuteScalarAsync();
-            //await UseParametersSqlAsync();
-            //await UseProcedure();
+            await CreaterSqlValues();
+            await SQLCreater();
+            await ExecuteScalarAsync();
+            await UseParametersSqlAsync();
+            await UseProcedure();
             await SaveAndPutDataFromSQL();
+            DataAdapterRunner();
 
             Console.ReadKey();
         }
@@ -329,16 +330,16 @@ namespace Solution.BAssesData.FirstConnectionToSql
         {
             string UsingDataBase = "USE adonetdb;";
 
-            string procedureInsert = "CREATE PROCEDURE [dbo].[sp_InsertUser] @name nvarchar(50), @age int " +
-                "AS " +
-                "INSERT INTO Users(Name, Age) " +
-                "VALUES(@name, @age) " +
-                "SELECT SCOPE_IDENTITY() GO ";
+            //string procedureInsert = "CREATE PROCEDURE [dbo].[sp_InsertUser] @name nvarchar(50), @age int " +
+            //    "AS " +
+            //    "INSERT INTO Users(Name, Age) " +
+            //    "VALUES(@name, @age) " +
+            //    "SELECT SCOPE_IDENTITY() GO ";
 
-            string procedure_2 = " CREATE PROCEDURE [dbo].[sp_GetUsers] " +
-                "AS " +
-                "SELECT * FROM Users " +
-                "GO ";
+            //string procedure_2 = " CREATE PROCEDURE [dbo].[sp_GetUsers] " +
+            //    "AS " +
+            //    "SELECT * FROM Users " +
+            //    "GO ";
             string procedure_3 = " CREATE PROCEDURE [dbo].[sp_GetAgeRange] " +
                 "@name nvarchar(50), " +
                 "@minAge int out, " +
@@ -370,16 +371,16 @@ namespace Solution.BAssesData.FirstConnectionToSql
         }
         public static async Task UseProcedure()
         {
-            // await StoredProcedurs();
-            //string name = "Kolyan3";
-            //int age = 55;
+            await StoredProcedurs();
+            string name = "Kolyan3";
+            int age = 55;
 
-            //await AddToPrecedureUsERSaSYNC(name, age);
-            //Console.WriteLine();
-            //await GetUsersAsync();
-            //Console.WriteLine();
-            //await OutParams("Kolyan");
-            //await TransactionsBase();
+            await AddToPrecedureUsERSaSYNC(name, age);
+            Console.WriteLine();
+            await GetUsersAsync();
+            Console.WriteLine();
+            await OutParams("Kolyan");
+            await TransactionsBase();
 
         }
         public static async Task AddToPrecedureUsERSaSYNC(string name, int age)
@@ -485,7 +486,7 @@ namespace Solution.BAssesData.FirstConnectionToSql
                 SqlTransaction transaction = connection.BeginTransaction();
 
                 SqlCommand command = connection.CreateCommand();
-                
+
                 command.Transaction = transaction;
                 command.CommandText = "USE adonetdb;";
                 await command.ExecuteNonQueryAsync();
@@ -501,7 +502,7 @@ namespace Solution.BAssesData.FirstConnectionToSql
                     await transaction.CommitAsync();
                     Console.WriteLine("Data is trancend to DataBase");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     await transaction.RollbackAsync();
@@ -536,8 +537,8 @@ namespace Solution.BAssesData.FirstConnectionToSql
 
         public static async Task CreateDBAsync(string baseName)
         {
-           using(SqlConnection connection = new SqlConnection(connectionString))
-           {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
                 await connection.OpenAsync();
 
                 SqlCommand command = new SqlCommand($"CREATE  DATABASE {baseName}", connection);
@@ -545,11 +546,11 @@ namespace Solution.BAssesData.FirstConnectionToSql
                 await command.ExecuteNonQueryAsync();
 
                 Console.WriteLine("Base is Created");
-           }
+            }
         }
         public static async Task CreateTableAsync(string newConnectionString)
         {
-            using(SqlConnection connection = new SqlConnection(newConnectionString))
+            using (SqlConnection connection = new SqlConnection(newConnectionString))
             {
                 await connection.OpenAsync();
 
@@ -603,7 +604,7 @@ namespace Solution.BAssesData.FirstConnectionToSql
 
                 using (SqlDataReader reader = await command.ExecuteReaderAsync())
                 {
-                    while(await reader.ReadAsync())
+                    while (await reader.ReadAsync())
                     {
                         Image image = new(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), (byte[])reader.GetValue(3));
                         images.Add(image);
@@ -611,7 +612,7 @@ namespace Solution.BAssesData.FirstConnectionToSql
                 }
                 for (int i = 0; i < images.Count; i++)
                 {
-                    using (FileStream fs = new FileStream(images[i].Filename, FileMode.OpenOrCreate))
+                    using (FileStream fs = new FileStream(path: images[i].Filename ?? "scsc", FileMode.OpenOrCreate))
                     {
                         fs.Write(images[i].Data, 0, images[i].Data.Length);
                         Console.WriteLine($"Файл {images[0].Title} сохранен");
@@ -620,7 +621,54 @@ namespace Solution.BAssesData.FirstConnectionToSql
             }
         }
 
-        # endregion
+        #endregion
+
+        #region Sq;DataReader_DataAdapter
+        public static void DataAdapterRunner()
+        {
+            string newConnectionString = connectionString.Replace("Database=master", "Database=adonetdb");
+
+            using (SqlConnection connection = new SqlConnection(newConnectionString))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter("USE adonetdb; SELECT * FROM Users", connection);
+
+                DataSet dataSet = new DataSet();
+
+                adapter.Fill(dataSet);
+
+                foreach (DataTable dataTable in dataSet.Tables)
+                {
+                    foreach (DataColumn column in dataTable.Columns)
+                    {
+                        Console.Write(column.ColumnName + "\t");
+                    }
+                    Console.WriteLine();
+
+                    foreach (DataRow rows in dataTable.Rows)
+                    {
+
+                        var cells = rows.ItemArray;
+
+                        foreach (object? cell in cells)
+                        {
+                            Console.Write(cell + "\t");
+
+                        }
+                        Console.WriteLine();
+
+                    }
+
+                }
+
+
+            }
+
+
+
+        }
+
+
+        #endregion
 
 
     }
